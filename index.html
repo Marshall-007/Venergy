@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Solar - V Energy Website</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link href="img/icon.svg" rel="icon" />
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />
+
+  <!-- Libraries Stylesheet -->
+  <link rel="stylesheet" href="lib/owlcarousel/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="lib/lightbox/css/lightbox.min.css" />
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+
+
+
+
+  <style>
+    .demo {
+      background: #e8f5fc;
+      padding: 30px 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .pricingTable {
+      padding: 25px 10px 70px;
+      margin: 0 15px;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    .pricingTable:after,
+    .pricingTable:before {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .pricingTable .price-value .amount {
+      display: inline-block;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .pricingTable .price-value .month {
+      display: block;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 10px;
+      text-transform: uppercase;
+    }
+
+    .pricingTable:before {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      top: 0;
+      z-index: -1;
+      -webkit-clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
+      clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
+    }
+
+    .pricingTable:after {
+      width: 70px;
+      height: 30px;
+      background: #1daa72;
+      margin: 0 auto;
+      top: 70px;
+      right: 0;
+      -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+    }
+
+    .pricingTable .title {
+      padding: 15px 0;
+      margin: 0 -25px 30px;
+      background: #1daa72;
+      font-size: 25px;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .pricingTable .title:after,
+    .pricingTable .title:before {
+      border-top: 15px solid #51836d;
+      border-bottom: 15px solid transparent;
+      position: absolute;
+      bottom: -30px;
+      content: "";
+    }
+
+    .pricingTable .title:before {
+      border-left: 15px solid transparent;
+      left: 0;
+    }
+
+    .pricingTable .title:after {
+      border-right: 15px solid transparent;
+      right: 0;
+    }
+
+    .pricingTable .price-value {
+      margin-bottom: 25px;
+      color: #1daa72;
+    }
+
+    .pricingTable .currency {
+      display: inline-block;
+      font-size: 30px;
+      vertical-align: top;
+      margin-top: 8px;
+    }
+
+    .price-value .amount {
+      display: inline-block;
+      font-size: 50px;
+      font-weight: 700;
+    }
+
+    .price-value .month {
+      display: block;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 10px;
+      text-transform: uppercase;
+    }
+
+    .pricingTable .pricing-content {
+      padding: 0;
+      margin: 0 0 25px;
+      list-style: none;
+      border-top: 1px solid #8f8f8f;
+      border-bottom: 1px solid #8f8f8f;
+    }
+
+    .pricingTable .pricing-content li {
+      font-size: 17px;
+      color: #8f8f8f;
+      line-height: 55px;
+    }
+
+    .pricingTable .pricingTable-signup {
+      display: inline-block;
+      padding: 10px 30px;
+      background: #1daa72;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.7s ease 0s;
+    }
+
+    .pricingTable .pricingTable-signup:before {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0) 0,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: translate(0, 100%);
+      transition: all 0.6s ease-in-out 0s;
+    }
+
+    .pricingTable .pricingTable-signup:hover:before {
+      opacity: 1;
+      transform: translate(0, -100%);
+    }
+
+    /* Blue color */
+    .pricingTable.blue .pricingTable-signup,
+    .pricingTable.blue .title,
+    .pricingTable.blue:after {
+      background: #49b0ca;
+    }
+
+    .pricingTable.blue .title:after,
+    .pricingTable.blue .title:before {
+      border-top: 15px solid #407a88;
+    }
+
+    .pricingTable.blue .price-value {
+      color: #49b0ca;
+    }
+
+    /* Yellow color  */
+
+
+
+
+    .pricingTable.yellow .pricingTable-signup,
+    .pricingTable.yellow .title,
+    .pricingTable.yellow:after {
+      background: #fad51e;
+    }
+
+    .pricingTable.yellow .title:after,
+    .pricingTable.yellow .title:before {
+      border-top: 15px solid #d8b81b;
+    }
+
+    .pricingTable.yellow .price-value {
+      color: #fad51e;
+    }
+
+
+
+
+
+    /* End of color  */
+
+    .pricingTable.pink .pricingTable-signup,
+    .pricingTable.pink .title,
+    .pricingTable.pink:after {
+      background: #f06ace;
+    }
+
+    .pricingTable.pink .price-value {
+      color: #f06ace;
+    }
+
+    .pricingTable.pink .title:after,
+    .pricingTable.pink .title:before {
+      border-top: 15px solid #773667;
+    }
+
+    @media only screen and (max-width: 990px) {
+      .pricingTable {
+        margin-bottom: 30px;
+      }
+    }
+
+    /* Scrolling */
+    .scrolling-wrapper {
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
+
+
+    /* Adjust CSS to make tables appear in one line */
+    .pricingTable {
+      display: inline-block;
+      margin: 0 15px;
+      vertical-align: top;
+    }
+  </style>
+  <script type="text/javascript" src=""></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script type="text/javascript"
+    src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+  <!-- Navbar Start -->
+  <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-1 py-lg-0 px-lg-5">
+    <a href="index.html" class="navbar-brand d-block d-lg-none">
+      <h1 class="display-4 text-white text-uppercase m-0">V Energy</h1>
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <div class="navbar-nav ml-auto py-0">
+        <a href="#home" class="nav-item nav-link active">Home</a>
+        <a href="#about" class="nav-item nav-link">About</a>
+        <a href="#service" class="nav-item nav-link">Service</a>
+        <a href="#project" class="nav-item nav-link">Project</a>
+      </div>
+      <a href="index.html" class="navbar-brand bg-primary px-4 mx-3 d-none d-lg-block">
+        <h1 class="display-4 text-white text-uppercase m-0">V Energy</h1>
+      </a>
+      <div class="navbar-nav mr-auto py-0">
+        <a href="#faqs" class="nav-item nav-link">FAQs</a>
+        <a href="#testimonial" class="nav-item nav-link">Testimonial</a>
+        <a href="#prices" class="nav-item nav-link">Prices</a>
+        <a href="#contact" class="nav-item nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <!-- Carousel Start -->
+  <div class="container-fluid p-0 mb-5 pb-1" id="home">
+    <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px">
+          <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover" />
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <div class="p-3" style="max-width: 900px">
+              <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px">
+                V Energy
+              </h4>
+              <div class="mb-lg-0 fade-in-image">
+                <h3 class="display-2 font-secondary text-white mb-4">
+                  Innovative Solar Solution For Home
+                </h3>
+              </div>
+              <a class="btn btn-light font-weight-bold py-3 px-5 mt-2 btn-scroll" href="#contact">Get A Quote</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px">
+          <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover" />
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <div class="p-3" style="max-width: 900px">
+              <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px">
+                V Energy
+              </h4>
+              <div class="mb-lg-0 fade-in-image">
+                <h3 class="display-2 font-secondary text-white mb-4">
+                  Let The Sun Work For Your Home
+                </h3>
+              </div>
+              <a class="btn btn-light font-weight-bold py-3 px-5 mt-2 btn-scroll" href="#contact">Get A Quote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Carousel End -->
+
+  <!-- About Start -->
+  <div class="container-fluid py-5" id="about">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-5">
+          <img class="img-fluid1 mb-5 mb-lg-0 ml-1 fade-in-image" src="img/about.jpg" alt="About Image" />
+        </div>
+        <div class="col-lg-6">
+          <h1 class="text-uppercase text-primary mb-2" style="letter-spacing: 2px">
+            About Us
+          </h1>
+          <p>
+            V Energy is a leading provider of solar solutions for commercial
+            and residential use in South Africa. We offer high-quality solar
+            panels, inverters, batteries and systems that are designed to meet
+            your electrical needs and budget. Whether you want to save money,
+            increase your property value, or reduce your environmental impact,
+            we have the right solar solution for you.
+          </p>
+
+          <p>
+            We have a team of experienced and qualified engineers, installers
+            and technicians who can handle any solar project from start to
+            finish. We also provide ongoing maintenance and support to ensure
+            your solar system performs optimally for years to come. At V
+            Energy, we are passionate about solar power and its benefits for
+            our customers and our planet. We are committed to delivering
+            exceptional service and customer satisfaction. Contact us today
+            for a free quote and consultation. Let us help you harness the
+            power of the sun!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- About End -->
+
+  <!-- Service Start -->
+  <div class="container-fluid py-5" id="service">
+    <div class="container py-5">
+      <div class="section-title position-relative text-center">
+        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
+          Services
+        </h6>
+        <h7>
+          Whatever your electrical requirements are, our professional team at
+          Vees Capital(Pty) Ltd offers a wide range of services.
+          <p>We never ask our customers to compromise.</p>
+        </h7>
+        <h1 class="font-secondary display-4">What We Cover</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mb-3">
+          <div class="product-item mb-2">
+            <div class="product-img">
+
+              <img class="img-fluid mb-lg-0 fade-in-image" src="img/product-1.jpg" alt />
+              <!-- <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                <i class="fa fa-2x fa-plus text-white"></i>
+                            </a> -->
+            </div>
+            <div class="bg-secondary text-center p-4">
+              <h3 class="m-0">Residencial Services</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <div class="product-item mb-2">
+            <div class="product-img">
+              <img class="img-fluid mb-lg-0 fade-in-image" src="img/product-2.jpg" alt />
+
+            </div>
+            <div class="bg-secondary text-center p-4">
+              <h3 class="m-0">Commercial Services</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <div class="product-item mb-2">
+            <div class="product-img">
+              <img class="img-fluid mb-lg-0 fade-in-image" src="img/product-3.jpg" alt />
+            </div>
+            <div class="bg-secondary text-center p-4">
+              <h3 class="m-0">Emergency Services</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Service End -->
+
+  <!-- Gallery Start -->
+  <div class="container-fluid bg-gallery" id="project" style="padding: 120px 0; margin: 90px 0">
+    <div class="section-title position-relative text-center" style="margin-bottom: 120px">
+      <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
+        Project
+      </h6>
+      <h1 class="font-secondary display-4 text-white">
+        Project Photo Gallery
+      </h1>
+    </div>
+    <div class="owl-carousel gallery-carousel">
+      <div class="gallery-item">
+        <img class="img-fluid w-100" src="img/gallery-1.jpeg" alt />
+        <a class="btn btn-primary" href="img/gallery-1.jpeg" data-lightbox="gallery">
+          <i class="fa fa-2x fa-plus text-white"></i>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <img class="img-fluid w-100" src="img/gallery-2.jpeg" alt />
+        <a class="btn btn-primary" href="img/gallery-2.jpeg" data-lightbox="gallery">
+          <i class="fa fa-2x fa-plus text-white"></i>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <img class="img-fluid w-100" src="img/gallery-3.jpeg" alt />
+        <a class="btn btn-primary" href="img/gallery-3.jpeg" data-lightbox="gallery">
+          <i class="fa fa-2x fa-plus text-white"></i>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <img class="img-fluid w-100" src="img/gallery-4.jpg" alt />
+        <a class="btn btn-primary" href="img/gallery-4.jpg" data-lightbox="gallery">
+          <i class="fa fa-2x fa-plus text-white"></i>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <img class="img-fluid w-100" src="img/gallery-5.jpg" alt />
+        <a class="btn btn-primary" href="img/gallery-5.jpg" data-lightbox="gallery">
+          <i class="fa fa-2x fa-plus text-white"></i>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <img class="img-fluid w-100" src="img/Residencial.webp" alt />
+        <a class="btn btn-primary" href="img/Residencial.webp" data-lightbox="gallery">
+          <i class="fa fa-2x fa-plus text-white"></i>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <img class="img-fluid w-100" src="img/Intallation.webp" alt />
+        <a class="btn btn-primary" href="img/Intallation.webp" data-lightbox="gallery">
+          <i class="fa fa-2x fa-plus text-white"></i>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <img class="img-fluid w-100" src="img/gallery-9.jpg" alt />
+        <a class="btn btn-primary" href="img/gallery-9.jpg" data-lightbox="gallery">
+          <i class="fa fa-2x fa-plus text-white"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Gallary end -->
+
+  <!-- FAQs Start -->
+  <div class="container-fluid py-5" id="faqs">
+    <div class="container py-5">
+      <div class="section-title position-relative text-center">
+        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
+          FAQs
+        </h6>
+        <h1 class="display-4">You Should Know</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 border-right border-primary">
+          <div class="text-center text-md-left mr-md-3 mb-4 mb-md-0">
+            <h3 class="mb-4">Why Switch to Solar?</h3>
+            <h5 class="mb-3 fade-in-from-bottom ">
+              Save money on your electricity bills by reducing your grid
+              dependence.
+            </h5>
+            <h5 class="mb-3">
+              Increase your property value by making your home or business
+              more energy-efficient.
+            </h5>
+            <h5 class="mb-3">
+              Reduce your carbon footprint by using a clean, renewable and
+              abundant source of power.
+            </h5>
+            <h5 class="mb-0">
+              Gain more control and independence over your energy supply and
+              avoid rising grid prices.
+            </h5>
+          </div>
+        </div>
+        <hr />
+        <div class="col-md-6">
+          <div class="text-center text-md-left ml-md-3">
+            <h3 class="mb-4">Why Choose V Energy?</h3>
+            <h5 class="mb-3">
+              <i class="fa fa-check text-success mr-2"></i>Get high-quality
+              solar products and services from a leading solar provider in
+              South Africa.
+            </h5>
+            <h5 class="mb-3">
+              <i class="fa fa-check text-success mr-2"></i>Enjoy free
+              consultation, site inspection and system design.
+            </h5>
+            <h5 class="mb-3">
+              <i class="fa fa-check text-success mr-2"></i>
+              Helps you stay powered and reduce the inconvenience caused by loadshedding.
+
+            </h5>
+            <h5 class="mb-0">
+              <i class="fa fa-check text-success mr-2"></i>Receive exceptional
+              service and customer satisfaction from our qualified and
+              experienced team.
+            </h5>
+          </div>
+        </div>
+        <div class="col-md-12 text-center pt-3">
+          <a class="btn btn-primary font-weight-bold py-3 px-5 mt-4 btn-scroll" href="#contact">Get A Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FAQs End -->
+
+  <!-- Testimonial Start -->
+  
+   <div class="container-fluid py-5" id="testimonial">
+<iframe src='https://widgets.sociablekit.com/google-reviews/iframe/25349062' frameborder='0' width='100%'
+    height='450'></iframe>
+    <!--<div class="container py-5">
+      <div class="section-title position-relative text-center" style="margin-bottom: 120px">
+        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
+          Testimonial
+        </h6>
+        <h1 class="display-4">Our Clients Say</h1>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="owl-carousel testimonial-carousel">
+            <div class="text-center">
+              <img class="mx-auto mb-3" src="img/No Image.jpg" style="width: 100px; border-radius: 50%;" />
+              <p style="font-size: 22px">
+                Venergy has transformed our home with their exceptional solar
+                energy installation services. The team was professional,
+                efficient, and provided top-notch customer service throughout
+                the process. We now enjoy the benefits of clean, renewable
+                energy and have significantly reduced our electricity bills.
+                Highly recommended!
+              </p>
+              <h4>John Smith</h4>
+              <span>Homeowner</span>
+            </div>
+            <div class="text-center">
+              <img class="mx-auto mb-3" src="img/No Image.jpg" style="width: 100px; border-radius: 50%;" />
+              <p style="font-size: 22px">
+                Choosing Venergy for our solar panel installation was one of
+                the best decisions we made. Their team of experts guided us
+                every step of the way, from system design to installation and
+                maintenance. We are impressed with the quality of their
+                workmanship and the performance of our solar system. Thank
+                you, Venergy, for helping us go green!
+              </p>
+              <h4>Sarah Johnson</h4>
+              <span>Business Owner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+  </div> 
+  <!-- Testimonial End -->
+  <div class="container-fluid " id="prices">
+    <div class="container py-3">
+      <div class="section-title position-relative text-center">
+        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
+          Prices
+        </h6>
+      </div>
+      <div class="demo">
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 fade-in-image ">
+            <div class="pricingTable">
+              <h3 class="title">2.5 Kva System</h3>
+              <div class="price-value">
+                <span class="currency">R</span>
+                <span class="amount">25 000.00</span>
+                <span class="month"></span>
+              </div>
+              <ul class="pricing-content">
+                <li><b>2 </b>X 100ah Battries</li>
+                <li><b>2 </b>X Solar Panels</li>
+                <li><b>2.5Kva </b>X Inverter</li>
+              </ul>
+              <a href="#contact" class="pricingTable-signup">Order Now</a>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-4 fade-in-image">
+            <div class="pricingTable">
+              <h3 class="title">3 Kva System</h3>
+              <div class="price-value">
+                <span class="currency">R</span>
+                <span class="amount">56 000.00</span>
+                <span class="month"></span>
+              </div>
+              <ul class="pricing-content">
+                <li><b>2 </b>X 100ah Battries</li>
+                <li><b>3 </b>X Solar Panels</li>
+                <li><b>3Kva </b> Inverter</li>
+              </ul>
+              <a href="#contact" class="pricingTable-signup">Order Now</a>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-4 fade-in-image">
+            <div class="pricingTable">
+              <h3 class="title">5 Kva System</h3>
+              <div class="price-value">
+                <span class="currency">R</span>
+                <span class="amount">116 000.00</span>
+                <span class="month"></span>
+              </div>
+              <ul class="pricing-content">
+                <li><b>4 </b>X 100ah Battries</li>
+                <li><b>6 </b>X Solar Panels</li>
+                <li><b>5kva </b> Inverter</li>
+              </ul>
+              <a href="#contact" class="pricingTable-signup">Order Now</a>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-4 fade-in-image">
+            <div class="pricingTable">
+              <h3 class="title">10Kva System</h3>
+              <div class="price-value">
+                <span class="currency">R</span>
+                <span class="amount">210 000.00</span>
+                <span class="month"></span>
+              </div>
+              <ul class="pricing-content">
+                <li><b>8 </b>X 100ah Battries</li>
+                <li><b>12 </b>X Solar Panels</li>
+                <li><b>2 X 5Kva</b> Inverter</li>
+              </ul>
+              <a href="#contact" class="pricingTable-signup">Order Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  </div>
+
+
+
+  <!-- Contact Start -->
+  <div class="container-fluid py-5" id="contact">
+    <div class="container py-5">
+      <div class="section-title position-relative text-center">
+        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
+          Contact
+        </h6>
+        <h1 class="font-secondary display-4">Get In Touch</h1>
+        <h6>Get an Obligation- Free Quote and evaluation.</h6>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-form">
+            <div id="success"></div>
+            <form action="https://formsubmit.co/3cd046a3a50af33a7b7bb5796841d5ac" method="POST">
+              <div class="form-row">
+                <div class="col-sm-6 control-group">
+                  <input type="hidden" name="_cc" value="sales@Venergy.co.za,marshall@venergy.co.za">
+                  <input type="hidden" name="_next" value="http://venergy.co.za/Thankyou.html" />
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" class="form-control bg-secondary border-0 py-4 px-3" name="name"
+                    placeholder="Your Name" required="required"
+                    data-validation-required-message="Please enter your name" />
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="col-sm-6 control-group">
+                  <input type="email" class="form-control bg-secondary border-0 py-4 px-3" name="email"
+                    placeholder="Your Email" required="required"
+                    data-validation-required-message="Please enter your email" />
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <!-- Contact details -->
+              <div class="control-group">
+                <input type="text" class="form-control bg-secondary border-0 py-4 px-3" name="Contact Number"
+                  placeholder="Contact Number (Optional)"
+                  data-validation-required-message="Please enter your contact number" />
+                <p class="help-block text-danger"></p>
+              </div>
+              <!-- {{{{{{{{{{}}}}}}}}}} -->
+              <div class="control-group">
+                <input type="text" class="form-control bg-secondary border-0 py-4 px-3" name="Subject"
+                  placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="control-group">
+                <textarea class="form-control bg-secondary border-0 py-2 px-3" rows="6" name="message"
+                  placeholder="Message" required="required"
+                  data-validation-required-message="Please enter your message"></textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Contact End -->
+
+  <!-- Footer Start -->
+  <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style="margin-top: 90px">
+    <div class="row pt-5">
+      <div class="col-12 mb-4 px-4">
+        <div class="row mb-5 p-4" style="background: rgba(256, 256, 256, 0.05)">
+          <div class="col-md-4">
+            <div class="text-md-center">
+              <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px">
+                Our Office
+              </h5>
+              <p class="mb-4 m-md-0">
+                <a href="https://goo.gl/maps/xU1VvJNi6rmhT3R27" style="color: white;"> Franourt Office Park C/O Felstead
+                  and Northumberland Ave,<br />
+                  Northriding, Randburg 2162</a>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-md-center">
+              <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px">
+                Email Us
+              </h5>
+              <a style="color: azure;" href="mailto:sales@Venergy.co.za">
+                <p class="mb-4 m-md-0">sales@Venergy.co.za</p>
+              </a>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-md-center">
+              <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px">
+                Call Us
+              </h5>
+              <p class="m-0">
+                <a style="color: azure;" href="tel:+27108245582">Tel: 010 824 5582</a> <br /><a style="color: azure;"
+                  href="tel:+27790410946">Cell: 079 041 0946</a>
+                <br /><a style="color: azure;" href="tel:+27813471724">Cell: 081 347 1724</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid bg-dark text-white text-center border-top py-4 px-sm-3 px-md-5"
+    style="border-color: rgba(256, 256, 256, 0.05) !important">
+    <i>Please set an apointment with us to see our visiting hours.</i>
+  </div>
+  <div class="container-fluid bg-dark text-white text-center border-top py-4 px-sm-3 px-md-5"
+    style="border-color: rgba(256, 256, 256, 0.05) !important">
+    <p class="m-0 text-white">
+      &copy; . All Rights Reserved.<a href="#">Vees Capital(Pty) Ltd</a>
+      Designed by Marshall Dube
+    </p>
+  </div>
+  <!-- Footer End -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Solar Energy System
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img class="img-fluid mb-4" src="img/carousel-1.jpg" alt />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+
+  <!-- Scroll to Bottom -->
+  <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+  <!-- Contact Javascript File -->
+  <!-- <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script> -->
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

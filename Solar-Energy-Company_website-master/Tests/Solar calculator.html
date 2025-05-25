@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Solar Panel Estimator</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+<h1>Solar Panel Estimator</h1>
+<p>This website will estimate the number of solar panels, inverter size, and number of batteries you need for your home.</p>
+<form action="index.php" method="post">
+<p>Enter a list of the appliances you need to keep on:</p>
+<input type="text" name="applianceList" id="applianceList">
+<p>Enter the power consumption of each appliance:</p>
+<input type="text" name="appliance1Power" id="appliance1Power">
+<input type="text" name="appliance2Power" id="appliance2Power">
+<input type="text" name="appliance3Power" id="appliance3Power">
+<input type="text" name="appliance4Power" id="appliance4Power">
+<input type="text" name="appliance5Power" id="appliance5Power">
+<input type="submit" value="Submit">
+</form>
+<div id="results"></div>
+</body>
+</html>
+
+<style>
+body {
+  font-family: sans-serif;
+  background-color: #fff;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#results {
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+</style>
+
+<script>
+function calculateResults() {
+  var applianceList = document.getElementById("applianceList").value;
+  var appliance1Power = document.getElementById("appliance1Power").value;
+  var appliance2Power = document.getElementById("appliance2Power").value;
+  var appliance3Power = document.getElementById("appliance3Power").value;
+  var appliance4Power = document.getElementById("appliance4Power").value;
+  var appliance5Power = document.getElementById("appliance5Power").value;
+
+  var totalPower = appliance1Power + appliance2Power + appliance3Power + appliance4Power + appliance5Power;
+  var numPanels = totalPower / 300;
+  var inverterSize = totalPower / 0.8;
+  var numBatteries = totalPower / 0.5;
+
+  var results = document.getElementById("results");
+  results.innerHTML = "You need " + numPanels + " solar panels, a " + inverterSize + " kW inverter, and " + numBatteries + " batteries.";
+}
+
+document.getElementById("submit").onclick = calculateResults;
+</script>
+
