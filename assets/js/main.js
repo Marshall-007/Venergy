@@ -571,6 +571,7 @@
     let raf = 0;
     let last = 0;
     let pos = minute;
+    let autoStarted = false; // set once autoplay has run or the visitor has taken control
     const MINUTES_PER_SECOND = 75;
 
     const loop = (now) => {
@@ -597,18 +598,19 @@
     }
 
     ui.range.addEventListener('input', () => {
+      autoStarted = true;
       if (playing) setPlaying(false);
       minute = parseInt(ui.range.value, 10);
       pos = minute;
       render();
     });
-    ui.play.addEventListener('click', () => setPlaying(!playing));
+    ui.play.addEventListener('click', () => { autoStarted = true; setPlaying(!playing); });
     ui.ls.addEventListener('change', () => {
+      autoStarted = true;
       render();
       track('simulator_loadshedding', { on: ui.ls.checked });
     });
 
-    let autoStarted = false;
     onVisible(ui.card, (visible) => {
       inView = visible;
       if (!visible) { cancelAnimationFrame(raf); return; }
