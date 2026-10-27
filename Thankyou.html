@@ -1,228 +1,74 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en-ZA">
 <head>
-    <title>V-Energy Thank you</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 1;
-        }
-
-        .card {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 50px;
-            text-align: center;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #888888;
-            margin-bottom: 20px;
-        }
-
-        .heading {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #007bff;
-        }
-
-        .message {
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .background::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(45deg, #ff0077, #c900ff, #00ffcc, #00baff);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thank you | V Energy</title>
+  <meta name="description" content="Thanks for contacting V Energy. A solar specialist will be in touch shortly.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261027">
+  <style>
+    .simple-header { position: absolute; inset: 0 0 auto; z-index: 2; padding-top: env(safe-area-inset-top); }
+    .simple-header .header-bar { justify-content: space-between; }
+    .thanks { min-height: 100vh; min-height: 100dvh; display: grid; place-items: center; padding: calc(var(--header-h) + 32px) 0 56px; }
+    .thanks-card { max-width: 640px; margin-inline: auto; padding: clamp(28px, 5vw, 48px); border: 1px solid var(--line); border-radius: var(--radius-xl); background: rgba(255, 255, 255, .9); box-shadow: var(--shadow-lg); text-align: center; }
+    .thanks-card h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); letter-spacing: -.03em; }
+    .thanks-card .lead { max-width: 30em; margin-inline: auto; }
+    .next-steps { display: grid; gap: 10px; margin: 28px 0; padding: 0; list-style: none; text-align: left; }
+    .next-steps li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    .next-steps strong { display: block; color: var(--ink); font-family: var(--font-display); }
+    .next-steps span.n { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--navy-800); color: var(--yellow-400); font-weight: 700; font-size: .85rem; }
+    .thanks-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    @media (max-width: 559px) { .thanks-actions .btn { flex: 1 1 100%; } }
+  </style>
 </head>
 <body>
-    <div class="background"></div>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z"/></symbol>
+    <symbol id="i-vmark" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#0A2139" stroke="none"/><circle cx="24" cy="19.6" r="5.3" fill="#FFC629" stroke="none"/><path d="M10 12.5 24 37 38 12.5" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
 
-    <div class="container">
-        <div class="card">
-            <div class="logo">V-Energy</div>
-            <h1 class="heading">Thank you for getting in touch</h1>
-            <p class="message">We appreciate your message and will get back to you as soon as possible.</p>
-            <a href="index.html" class="button">Back to page</a>
-        </div>
+  <header class="simple-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html" aria-label="V Energy home">
+        <svg class="brand-mark" aria-hidden="true"><use href="#i-vmark"/></svg>
+        <span class="brand-word">V&nbsp;Energy</span>
+      </a>
+      <a class="btn btn-outline btn-sm" href="index.html">Back to site</a>
     </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>V-Energy Thank you</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            overflow: hidden;
-        }
+  </header>
 
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 1;
-        }
-
-        .card {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 50px;
-            text-align: center;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #888888;
-            margin-bottom: 20px;
-        }
-
-        .heading {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #007bff;
-        }
-
-        .message {
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .background::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(45deg, #ff0077, #c900ff, #00ffcc, #00baff);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="background"></div>
-
-    <div class="container">
-        <div class="card">
-            <div class="logo">V-Energy</div>
-            <h1 class="heading">Thank you for getting in touch</h1>
-            <p class="message">We appreciate your message and will get back to you as soon as possible.</p>
-            <a href="index.html" class="button">Back to page</a>
-        </div>
+  <main class="hero thanks">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="aurora aurora-1"></div>
+      <div class="aurora aurora-2"></div>
+      <div class="aurora aurora-3"></div>
+      <div class="hero-sun"><span class="rays"></span><span class="core"></span></div>
     </div>
+    <div class="container">
+      <div class="thanks-card">
+        <div class="done-badge" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></div>
+        <h1>Thank you!</h1>
+        <p class="lead">We've received your details. A V Energy solar specialist will be in touch as soon as possible.</p>
+        <ol class="next-steps">
+          <li><span class="n">1</span><span><strong>We review your request</strong>Our team looks at what you'd like to power and your area.</span></li>
+          <li><span class="n">2</span><span><strong>We give you a call</strong>A quick, friendly chat to answer your questions and understand your needs.</span></li>
+          <li><span class="n">3</span><span><strong>Free site assessment</strong>We check your roof and DB board, then send a clear, itemised quote.</span></li>
+        </ol>
+        <div class="thanks-actions">
+          <a class="btn btn-primary" href="index.html">Back to the website</a>
+          <a class="btn btn-wa" href="https://wa.me/27790410946?text=Hi%20V%20Energy%2C%20I%27ve%20just%20sent%20an%20enquiry%20on%20your%20website." target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp us</a>
+          <a class="btn btn-outline" href="tel:+27108245582"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>010&nbsp;824&nbsp;5582</a>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
