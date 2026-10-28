@@ -1538,7 +1538,20 @@ h2 em {
 .custom-body { padding: clamp(24px, 4vw, 44px); }
 .custom-body h3 { font-size: clamp(1.45rem, 1.2rem + 1vw, 1.95rem); }
 .custom-body p:not(.kicker) { max-width: 40em; }
-.packages .fineprint.center { margin-top: 22px; }
+.scope-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 880px;
+  margin: clamp(22px, 3vw, 34px) auto 0;
+  padding: 18px 22px;
+  border: 1px solid var(--blue-100);
+  border-radius: var(--radius-lg);
+  background: var(--blue-50);
+}
+.scope-note .why-ic { width: 42px; height: 42px; border-radius: 12px; }
+.scope-note p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.scope-note strong { display: block; margin-bottom: 3px; color: var(--ink); font-family: var(--font-display); font-size: 1.05rem; }
 
 @media (min-width: 700px) {
   .pkgs { grid-auto-columns: minmax(300px, 46%); }

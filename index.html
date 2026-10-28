@@ -35,9 +35,9 @@
 
   <link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261028">
+  <link rel="stylesheet" href="assets/css/styles.css?v=2026102802">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="assets/js/main.js?v=20261028" defer></script>
+  <script src="assets/js/main.js?v=2026102802" defer></script>
 
   <script type="application/ld+json">
   {
@@ -92,10 +92,10 @@
           "@type": "OfferCatalog",
           "name": "Solar backup packages",
           "itemListElement": [
-            { "@type": "Offer", "price": "25000", "priceCurrency": "ZAR", "itemOffered": { "@type": "Service", "name": "2.5 kVA Essential Backup solar system" } },
-            { "@type": "Offer", "price": "56000", "priceCurrency": "ZAR", "itemOffered": { "@type": "Service", "name": "3 kVA Home Starter solar system" } },
-            { "@type": "Offer", "price": "116000", "priceCurrency": "ZAR", "itemOffered": { "@type": "Service", "name": "5 kVA Family Power solar system" } },
-            { "@type": "Offer", "price": "210000", "priceCurrency": "ZAR", "itemOffered": { "@type": "Service", "name": "10 kVA Whole Home solar system" } }
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "25000", "priceCurrency": "ZAR" }, "itemOffered": { "@type": "Service", "name": "2.5 kVA Essential Backup solar system" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "56000", "priceCurrency": "ZAR" }, "itemOffered": { "@type": "Service", "name": "3 kVA Home Starter solar system" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "116000", "priceCurrency": "ZAR" }, "itemOffered": { "@type": "Service", "name": "5 kVA Family Power solar system" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "210000", "priceCurrency": "ZAR" }, "itemOffered": { "@type": "Service", "name": "10 kVA Whole Home solar system" } }
           ]
         }
       },
@@ -111,7 +111,7 @@
         "@type": "FAQPage",
         "@id": "https://venergy.co.za/#faq",
         "mainEntity": [
-          { "@type": "Question", "name": "How much does a solar system cost?", "acceptedAnswer": { "@type": "Answer", "text": "Our standard packages start from R25 000 for a 2.5 kVA backup system, R56 000 for 3 kVA, R116 000 for 5 kVA and R210 000 for a 10 kVA whole-home system. Your final price depends on your usage, roof and battery needs, and we confirm it in writing after a free site assessment." } },
+          { "@type": "Question", "name": "How much does a solar system cost?", "acceptedAnswer": { "@type": "Answer", "text": "Every installation is priced according to its scope. As a guide, our standard packages start from R25 000 for a 2.5 kVA backup system, R56 000 for 3 kVA, R116 000 for 5 kVA and R210 000 for a 10 kVA whole-home system. Your final price depends on your usage, roof, cabling, battery needs and location, and we confirm it in writing after a free site assessment." } },
           { "@type": "Question", "name": "Will solar keep my lights on during load-shedding?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A hybrid inverter with battery storage switches over automatically when the grid goes down, so your essential appliances keep running. During the day your panels keep powering your home and recharging the batteries." } },
           { "@type": "Question", "name": "How much can I save on electricity?", "acceptedAnswer": { "@type": "Answer", "text": "Savings depend on your system size, usage pattern and tariff. Our Smart Solar Advisor gives an instant estimate, and we confirm exact figures after your free site assessment." } },
           { "@type": "Question", "name": "How long does installation take?", "acceptedAnswer": { "@type": "Answer", "text": "Most residential systems are installed in one to two days once the design is approved and the equipment is on site. Larger commercial projects are scheduled to minimise disruption to your business." } },
@@ -627,7 +627,7 @@
             <a class="btn btn-primary btn-lg btn-block" href="#contact" data-book data-advisor data-source="Savings advisor">
               <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call about this system
             </a>
-            <p class="fineprint">Estimate only, based on typical South African sun hours and a R3.50/kWh tariff. Your free site assessment gives exact figures.</p>
+            <p class="fineprint">Estimate only, based on typical South African sun hours and a R3.50/kWh tariff. Pricing depends on the scope of your installation and is confirmed after a free site assessment.</p>
           </div>
         </div>
       </div>
@@ -639,7 +639,7 @@
         <div class="section-head section-head--center" data-reveal>
           <p class="kicker">Packages &amp; pricing</p>
           <h2 id="packages-title">Clear pricing. <em>Serious hardware.</em></h2>
-          <p class="lead">Our most popular solar backup packages. Every system is fine-tuned to your home after a free site assessment.</p>
+          <p class="lead">Our most popular solar backup packages and their starting prices. Every installation is priced according to its scope, after a free site assessment.</p>
         </div>
 
         <div class="pkgs" data-reveal>
@@ -700,7 +700,7 @@
             </div>
             <p class="pkg-price"><small>From</small><span>R210&nbsp;000</span></p>
             <ul class="pkg-list">
-              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>2 × 5 kVA inverters</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>10 kVA hybrid inverter</li>
               <li><svg class="i" aria-hidden="true"><use href="#i-panel"/></svg>12 × solar panels</li>
               <li><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>8 × 100 Ah batteries</li>
               <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>The whole home, heavier loads included</li>
@@ -709,6 +709,11 @@
           </article>
         </div>
         <p class="swipe-hint" aria-hidden="true"><svg class="i"><use href="#i-arrow"/></svg>Swipe to compare</p>
+
+        <div class="scope-note" data-reveal>
+          <span class="why-ic why-ic--blue" aria-hidden="true"><svg class="i"><use href="#i-file"/></svg></span>
+          <p><strong>Priced according to scope</strong>These are starting prices for the equipment listed. Your final price depends on the scope of your installation, such as your roof and mounting, cable runs, DB board work, battery capacity and location. We confirm it in writing after a free site assessment.</p>
+        </div>
 
         <div class="custom-card" data-reveal>
           <div class="custom-media">
@@ -724,7 +729,6 @@
             <a class="btn btn-dark" href="#contact" data-book data-service="Business / commercial solar" data-source="Packages: custom">Talk to an engineer<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </div>
-        <p class="fineprint center">Package prices are a starting point for the equipment listed. Your final, installed price is confirmed in writing after a free site assessment.</p>
       </div>
     </section>
 
@@ -988,7 +992,7 @@
         <div class="faq-list" data-reveal style="--d: 100ms">
           <details class="faq-item" open>
             <summary><h3>How much does a solar system cost?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
-            <div class="faq-a"><p>Our standard packages start from <strong>R25 000</strong> for a 2.5 kVA backup system, <strong>R56 000</strong> for 3 kVA, <strong>R116 000</strong> for 5 kVA and <strong>R210 000</strong> for a 10 kVA whole-home system. Your final price depends on your usage, roof and battery needs, and we confirm it in writing after a free site assessment.</p></div>
+            <div class="faq-a"><p>Every installation is priced according to its scope. As a guide, our standard packages start from <strong>R25 000</strong> for a 2.5 kVA backup system, <strong>R56 000</strong> for 3 kVA, <strong>R116 000</strong> for 5 kVA and <strong>R210 000</strong> for a 10 kVA whole-home system. Your final price depends on your usage, roof, cabling, battery needs and location, and we confirm it in writing after a free site assessment.</p></div>
           </details>
           <details class="faq-item">
             <summary><h3>Will solar keep my lights on during load-shedding?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
