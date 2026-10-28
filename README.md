@@ -46,8 +46,9 @@ robots.txt, sitemap.xml, site.webmanifest, favicon.*, apple-touch-icon.png, .hta
 - **Prices / packages**: edit the package cards in `index.html` (search for `pkg-price`), the FAQ answer
   about cost, the `hasOfferCatalog` block in the structured data, and `PACKAGES` in `assets/js/main.js`
   (used by the advisor).
-- **Phone numbers, WhatsApp, email**: search `index.html` for `27108245582`, `27790410946` and
-  `sales@venergy.co.za`. The WhatsApp number used by scripts is `CONFIG.whatsapp` in `main.js`.
+- **Phone numbers, WhatsApp, email**: search `index.html` for `27108245582`, `27790410946`, `27813471724`
+  and `sales@venergy.co.za`. WhatsApp goes to 081 347 1724: the `wa.me/27813471724` links in the HTML
+  pages and `CONFIG.whatsapp` in `main.js`.
 - **Call-back hours and holidays**: `CONFIG.hours` and `CONFIG.holidays` in `main.js`.
 - **Advisor assumptions** (tariff, sun hours, panel size): `CONFIG` in `main.js`.
 - **Form destination**: forms post to FormSubmit using the existing endpoint
@@ -78,7 +79,7 @@ stock (for example from Unsplash or Pexels).
       published as real reviews.
 - [ ] Confirm the claims and details: "10+ years / since 2016", the 5-star rating badges in the hero and the
       stats strip (they should match your real Google rating), the brand list, call-back hours,
-      the areas served (all nine provinces) and the WhatsApp number (079 041 0946).
+      and the areas served (all nine provinces).
 - [ ] Name the neighbouring countries you work in, if you want them listed: the site currently says
       "neighbouring countries" without naming them (Areas we serve, and the FAQ about areas).
 - [ ] Check the office address spelling ("Franourt Office Park") matches your Google Business Profile.

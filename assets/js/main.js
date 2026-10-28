@@ -11,7 +11,7 @@
      ------------------------------------------------------------------------ */
   const CONFIG = {
     formAjax: 'https://formsubmit.co/ajax/3cd046a3a50af33a7b7bb5796841d5ac',
-    whatsapp: '27790410946',
+    whatsapp: '27813471724', // 081 347 1724
     phoneDisplay: '010 824 5582',
 
     // Savings advisor assumptions
