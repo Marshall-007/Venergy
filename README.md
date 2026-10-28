@@ -15,10 +15,15 @@ any web host (cPanel/Apache, LiteSpeed, Netlify, GitHub Pages, …).
 | Smart solar advisor | Three questions → recommended package, savings, payback, CO₂ |
 | Packages | 2.5 / 3 / 5 / 10 kVA packages with prices, plus a custom/commercial card |
 | Why V Energy, process, recent installs, reviews, FAQ, contact | Trust, SEO content and conversion points |
-| Booking dialog | 3-step "book a free call" flow with a day/time picker (SAST), calendar file and WhatsApp follow-up |
+| Booking dialog | 3-step "book a free call" flow: visitors pick a time only (SAST) and the site works out the next working day with that time free; calendar file and WhatsApp copy of the booking |
 
-Every "Book a free call" button opens the booking dialog. If JavaScript is off, the same buttons scroll to
+Every "Book a free call" button opens the booking dialog. If JavaScript is off, the same buttons jump to
 the call-back form, which still posts normally.
+
+Bookings and call-back requests are emailed through FormSubmit to the address behind the endpoint, with
+copies to sales@ and marshall@. The WhatsApp buttons open WhatsApp with the details filled in, addressed to
+the number in `CONFIG.whatsapp`; the visitor still taps Send, because a website cannot send a WhatsApp
+message on its own.
 
 ## Files
 

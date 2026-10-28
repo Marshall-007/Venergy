@@ -20,10 +20,10 @@
     panelKw: 0.55,      // rating of one panel in kW
     co2PerKwh: 0.95,    // kg of CO2 avoided per kWh of grid power replaced
 
-    // Call-back booking. Times are South African Standard Time (UTC+2).
-    bookingDays: 10,    // number of open days to offer
-    leadMinutes: 120,   // earliest slot today is at least this far away
-    // First and last call-back slot (hour) per weekday. 0 = Sunday (closed).
+    // Call-back booking. Visitors choose a time only; the call goes on the next working day
+    // that has that time free. Times are South African Standard Time (UTC+2).
+    leadMinutes: 120,   // a call today is at least this far away
+    // First and last call-back time (hour) per weekday. 0 = Sunday (closed).
     hours: { 1: [8, 16], 2: [8, 16], 3: [8, 16], 4: [8, 16], 5: [8, 16], 6: [9, 12] },
     holidays: [
       '2026-01-01', '2026-03-21', '2026-04-03', '2026-04-06', '2026-04-27', '2026-05-01',
@@ -733,24 +733,36 @@
   };
   const isoDate = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
-  function openDays() {
+  // Every hour the team takes calls on any working day: the times a visitor can choose.
+  const SLOT_HOURS = (() => {
+    const spans = Object.values(CONFIG.hours);
+    const first = Math.min(...spans.map((h) => h[0]));
+    const last = Math.max(...spans.map((h) => h[1]));
+    return Array.from({ length: last - first + 1 }, (_, i) => first + i);
+  })();
+
+  // The next working day that has a call at `hour` free (SAST), skipping Sundays, holidays,
+  // days that close earlier and times today that are too soon.
+  function nextCallDay(hour) {
     const now = sastNow();
     const earliest = now.getHours() * 60 + now.getMinutes() + CONFIG.leadMinutes;
-    const list = [];
-    for (let i = 0; i < 30 && list.length < CONFIG.bookingDays; i++) {
+    for (let i = 0; i < 30; i++) {
       const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
       const hours = CONFIG.hours[d.getDay()];
-      const iso = isoDate(d);
-      if (!hours || CONFIG.holidays.includes(iso)) continue;
-      const slots = [];
-      for (let h = hours[0]; h <= hours[1]; h++) {
-        if (i === 0 && h * 60 < earliest) continue;
-        slots.push(`${pad(h)}:00`);
-      }
-      if (!slots.length) continue;
-      list.push({ date: d, iso, slots, offset: i });
+      if (!hours || CONFIG.holidays.includes(isoDate(d))) continue;
+      if (hour < hours[0] || hour > hours[1]) continue;
+      if (i === 0 && hour * 60 < earliest) continue;
+      return { date: d, iso: isoDate(d), offset: i };
     }
-    return list;
+    return null;
+  }
+
+  // "today", "tomorrow (Thursday 29 Oct)" or "on Monday 2 Nov"
+  function dayPhrase(day) {
+    const date = `${DAYS_LONG[day.date.getDay()]} ${day.date.getDate()} ${MONTHS[day.date.getMonth()]}`;
+    if (day.offset === 0) return 'today';
+    if (day.offset === 1) return `tomorrow (${date})`;
+    return `on ${date}`;
   }
 
   (() => {
@@ -767,11 +779,10 @@
     const btnFinish = $('[data-finish]', form);
     const done = $('.book-done', form);
     const fail = $('.book-fail', form);
-    const daysEl = $('#b-days', form);
     const slotsEl = $('#b-slots', form);
+    const whenEl = $('#b-slot-when', form);
     const hidden = { when: $('#b-when'), pkg: $('#b-package'), advisor: $('#b-advisor'), source: $('#b-source') };
     let step = 1;
-    let days = [];
     let lastTrigger = null;
     let completed = false;
 
@@ -782,43 +793,27 @@
       return input ? input.value : '';
     };
 
-    function renderDays() {
-      days = openDays();
-      const chosen = checked('day');
-      daysEl.innerHTML = '';
-      days.forEach((d, idx) => {
-        const label = d.offset === 0 ? 'Today' : d.offset === 1 ? 'Tmrw' : DAYS[d.date.getDay()];
-        const wrap = document.createElement('label');
-        wrap.className = 'day';
-        wrap.innerHTML = `<input type="radio" name="day" value="${d.iso}"><span><small>${label}</small><strong>${d.date.getDate()}</strong><small>${MONTHS[d.date.getMonth()]}</small></span>`;
-        const input = $('input', wrap);
-        input.setAttribute('aria-label', `${DAYS_LONG[d.date.getDay()]} ${d.date.getDate()} ${MONTHS[d.date.getMonth()]}`);
-        if (d.iso === chosen || (!chosen && idx === 0)) input.checked = true;
-        daysEl.appendChild(wrap);
-      });
-      renderSlots();
-    }
-
     function renderSlots() {
-      const iso = checked('day');
-      const day = days.find((d) => d.iso === iso);
       const chosen = checked('slot');
       slotsEl.innerHTML = '';
-      if (!day) {
-        slotsEl.innerHTML = '<p class="slot-empty">No times available. Please choose another day.</p>';
-        return;
-      }
-      day.slots.forEach((s) => {
+      SLOT_HOURS.forEach((h) => {
+        const time = `${pad(h)}:00`;
         const wrap = document.createElement('label');
         wrap.className = 'slot';
-        wrap.innerHTML = `<input type="radio" name="slot" value="${s}"><span>${s}</span>`;
-        if (s === chosen) $('input', wrap).checked = true;
+        wrap.innerHTML = `<input type="radio" name="slot" value="${time}"><span>${time}</span>`;
+        if (time === chosen) $('input', wrap).checked = true;
         slotsEl.appendChild(wrap);
       });
+      showWhen();
     }
 
-    daysEl.addEventListener('change', () => { renderSlots(); setError(2, ''); });
-    slotsEl.addEventListener('change', () => setError(2, ''));
+    // Tell the visitor which day their chosen time falls on.
+    function showWhen() {
+      const when = selectedWhen();
+      whenEl.textContent = when ? `We'll call you ${when.phrase}.` : '';
+    }
+
+    slotsEl.addEventListener('change', () => { showWhen(); setError(2, ''); });
 
     function setError(n, msg) {
       const box = $('.step-error', steps[n - 1]);
@@ -839,7 +834,7 @@
       btnFinish.hidden = true;
       done.hidden = true;
       fail.hidden = true;
-      if (n === 2 && !daysEl.children.length) renderDays();
+      if (n === 2 && !slotsEl.children.length) renderSlots();
       $('.book-body', form).scrollTop = 0;
       if (focus) {
         const target = n === 3 ? $('#b-name') : $('input:checked, input', steps[n - 1]);
@@ -857,8 +852,8 @@
         return ok;
       }
       if (n === 2) {
-        const ok = !!(checked('day') && checked('slot'));
-        setError(2, ok ? '' : 'Please pick a day and a time that suits you.');
+        const ok = !!checked('slot');
+        setError(2, ok ? '' : 'Please pick a time that suits you.');
         return ok;
       }
       const fields = [
@@ -896,15 +891,18 @@
     btnNext.addEventListener('click', () => { if (validate(step)) showStep(step + 1); });
     btnBack.addEventListener('click', () => showStep(Math.max(1, step - 1)));
 
+    // The chosen time and the day it lands on, worked out afresh each time it's needed.
     function selectedWhen() {
-      const iso = checked('day');
-      const day = days.find((d) => d.iso === iso);
       const slot = checked('slot');
-      const method = checked('Call method') || 'Phone call';
-      const date = day ? day.date : new Date(iso);
+      const day = slot ? nextCallDay(parseInt(slot, 10)) : null;
+      if (!day) return null;
+      const d = day.date;
       return {
-        iso, slot, method,
-        human: `${DAYS_LONG[date.getDay()]} ${date.getDate()} ${MONTHS[date.getMonth()]} ${date.getFullYear()} at ${slot}`
+        iso: day.iso, slot,
+        method: checked('Call method') || 'Phone call',
+        phrase: `${dayPhrase(day)} at ${slot}`,
+        human: `${DAYS_LONG[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()} at ${slot}`,
+        short: `${DAYS[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()]} at ${slot}`
       };
     }
 
@@ -930,15 +928,18 @@
       };
     }
 
-    function waSummary(when) {
+    // The booking as a WhatsApp message to the V Energy number.
+    function waSummary(when, intro) {
       const f = form.elements;
       return [
-        'Hi V Energy, I’d like to book a free solar call.',
+        intro,
         `Need: ${checked('Service') || 'Not sure yet'}`,
-        when ? `Preferred time: ${when.human} (${when.method})` : '',
-        f.name.value ? `Name: ${f.name.value}` : '',
-        f.phone.value ? `Phone: ${f.phone.value}` : '',
-        f.Area.value ? `Area: ${f.Area.value}` : ''
+        when ? `Call: ${when.human} (${when.method})` : '',
+        f.name.value.trim() ? `Name: ${f.name.value.trim()}` : '',
+        f.phone.value.trim() ? `Phone: ${f.phone.value.trim()}` : '',
+        f.Area.value.trim() ? `Area: ${f.Area.value.trim()}` : '',
+        hidden.pkg.value ? `Package: ${hidden.pkg.value}` : '',
+        f.Notes.value.trim() ? `Notes: ${f.Notes.value.trim()}` : ''
       ].filter(Boolean).join('\n');
     }
 
@@ -952,16 +953,17 @@
       if (ok) {
         completed = true;
         const phone = form.elements.phone.value.trim();
-        $('.done-summary', done).textContent = `Thanks, ${form.elements.name.value.trim().split(' ')[0]}. We’ve got you down for ${when.human} (${when.method}). A V Energy specialist will contact you on ${phone}.`;
+        const how = when.method === 'WhatsApp call' ? when.method : when.method.toLowerCase();
+        $('.done-summary', done).textContent = `Thanks, ${form.elements.name.value.trim().split(' ')[0]}. We’ll call you ${when.phrase}. Expect a ${how} from a V Energy specialist on ${phone}.`;
         const links = calendarLinks(when, phone);
         $('#b-ics').href = links.ics;
         $('#b-gcal').href = links.google;
-        $('#b-wa-done').href = waLink(`Hi V Energy, I’ve just booked a free call for ${when.human}. My name is ${form.elements.name.value.trim()}.`);
+        $('#b-wa-done').href = waLink(waSummary(when, 'Hi V Energy, I’ve just booked a free solar call on your website.'));
         done.hidden = false;
         btnFinish.hidden = false;
         done.focus();
       } else {
-        $('#b-wa-fail').href = waLink(waSummary(when));
+        $('#b-wa-fail').href = waLink(waSummary(when, 'Hi V Energy, I’d like to book a free solar call.'));
         fail.hidden = false;
         fail.focus();
       }
@@ -969,12 +971,12 @@
 
     async function send() {
       const when = selectedWhen();
-      hidden.when.value = `${when.human} (SAST) · ${when.method}`;
+      if (!when) { showStep(2); validate(2); return; }
+      hidden.when.value = `${when.human} (SAST), ${when.method}`;
       const data = Object.fromEntries(new FormData(form));
-      delete data.day;
       delete data.slot;
       delete data._next;
-      data._subject = `New call booking: ${data.name} · ${DAYS[new Date(when.iso + 'T12:00:00').getDay()]} ${when.iso.slice(8)} ${MONTHS[parseInt(when.iso.slice(5, 7), 10) - 1]}, ${when.slot}`;
+      data._subject = `New call booking: ${data.name}, ${when.short}`;
 
       if (data._honey) { showResult(true, when); return; }
 
@@ -1020,8 +1022,8 @@
 
     function resetForm() {
       form.reset();
-      daysEl.innerHTML = '';
       slotsEl.innerHTML = '';
+      whenEl.textContent = '';
       Object.values(hidden).forEach((h) => { h.value = ''; });
       $$('.is-invalid', form).forEach((x) => x.classList.remove('is-invalid'));
       $$('.step-error', form).forEach((x) => { x.textContent = ''; });
@@ -1057,7 +1059,7 @@
       lastTrigger = trigger || null;
       document.body.classList.add('no-scroll');
       dialog.showModal();
-      renderDays();
+      renderSlots();
       showStep(jump && checked('Service') ? 2 : 1);
       track('booking_open', { source: ds.source || 'unknown' });
     }
