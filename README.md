@@ -61,17 +61,21 @@ To add or replace a photo:
 4. Reference the generated `assets/img/<name>-<width>.avif/.webp` files with a `<picture>` element,
    following the existing examples in `index.html`.
 
-More real project photos (especially rooftop arrays on Gauteng homes) will make the biggest difference to
+More real project photos (especially rooftop arrays on South African homes) will make the biggest difference to
 trust and conversion. The three "Recent installations" photos are V Energy's own work; the other photos
 were carried over from the previous site, so confirm you hold the rights to them, or swap in licensed
 stock (for example from Unsplash or Pexels).
 
 ## Before going live
 
-- [ ] Replace the six **sample reviews** in the Reviews section with genuine customer reviews (for example
-      from your Google Business Profile). They are placeholders and must not be published as real reviews.
-- [ ] Confirm the claims and details: "10+ years / since 2016", the brand list, call-back hours,
-      the areas served and the WhatsApp number (079 041 0946).
+- [ ] Replace the nine **sample reviews** in the Reviews section with genuine customer reviews and their real
+      star ratings (for example from your Google Business Profile). They are placeholders and must not be
+      published as real reviews.
+- [ ] Confirm the claims and details: "10+ years / since 2016", the 5-star rating badges in the hero and the
+      stats strip (they should match your real Google rating), the brand list, call-back hours,
+      the areas served (all nine provinces) and the WhatsApp number (079 041 0946).
+- [ ] Name the neighbouring countries you work in, if you want them listed: the site currently says
+      "neighbouring countries" without naming them (Areas we serve, and the FAQ about areas).
 - [ ] Check the office address spelling ("Franourt Office Park") matches your Google Business Profile.
 - [ ] Confirm package prices are current.
 - [ ] Make sure the site is served over HTTPS (canonical and social tags use `https://venergy.co.za/`).

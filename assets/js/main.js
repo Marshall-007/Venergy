@@ -1,5 +1,5 @@
 /* ==========================================================================
-   V Energy — site behaviour
+   V Energy: site behaviour
    Plain JavaScript, no dependencies. Every feature degrades gracefully:
    without JS, booking links scroll to the contact form, which posts normally.
    ========================================================================== */
@@ -15,8 +15,8 @@
     phoneDisplay: '010 824 5582',
 
     // Savings advisor assumptions
-    tariff: 3.5,        // Rand per kWh (typical Gauteng residential, incl. VAT)
-    sunYield: 4.8,      // kWh produced per installed kWp per day in Gauteng, after losses
+    tariff: 3.5,        // Rand per kWh (typical South African residential, incl. VAT)
+    sunYield: 4.8,      // kWh produced per installed kWp per day in South Africa, after losses
     panelKw: 0.55,      // rating of one panel in kW
     co2PerKwh: 0.95,    // kg of CO2 avoided per kWh of grid power replaced
 
@@ -220,7 +220,7 @@
   }, { threshold: 0.3 }));
 
   /* ------------------------------------------------------------------------
-     Pointer effects: hero stage, tilt cards, spotlight, magnetic button
+     Pointer effects: hero stage, tilt cards, magnetic button
      ------------------------------------------------------------------------ */
   if (finePointer && !reduceMotion) {
     const hero = $('.hero');
@@ -254,8 +254,6 @@
           card.classList.add('is-tilting');
           card.style.setProperty('--ry', `${((px - 0.5) * 9).toFixed(2)}deg`);
           card.style.setProperty('--rx', `${((0.5 - py) * 7).toFixed(2)}deg`);
-          card.style.setProperty('--gx', `${(px * 100).toFixed(1)}%`);
-          card.style.setProperty('--gy', `${(py * 100).toFixed(1)}%`);
         });
       });
       card.addEventListener('pointerleave', () => {
@@ -266,13 +264,6 @@
       });
     });
 
-    $$('[data-spotlight]').forEach((el) => {
-      el.addEventListener('pointermove', (e) => {
-        const r = el.getBoundingClientRect();
-        el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        el.style.setProperty('--my', `${e.clientY - r.top}px`);
-      });
-    });
 
     $$('.magnetic').forEach((btn) => {
       btn.addEventListener('pointermove', (e) => {
@@ -369,6 +360,7 @@
     };
     const cols = 5;
     const rows = 2;
+    const panels = [];
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
         const u0 = 0.1 + c * (0.8 / cols) + 0.008;
@@ -376,13 +368,9 @@
         const v0 = 0.14 + r * (0.72 / rows) + 0.03;
         const v1 = 0.14 + (r + 1) * (0.72 / rows) - 0.03;
         const pts = [map(u0, v0), map(u1, v0), map(u1, v1), map(u0, v1)].map((p) => p.join(',')).join(' ');
-        el('polygon', { points: pts, fill: 'url(#sim-panel)', stroke: '#9db5d8', 'stroke-width': '1' }, panelsG);
+        panels.push(el('polygon', { points: pts, fill: '#24569e', stroke: '#9db5d8', 'stroke-width': '1' }, panelsG));
       }
     }
-    const shine = el('polygon', {
-      points: [map(0.1, 0.14), map(0.9, 0.14), map(0.9, 0.86), map(0.1, 0.86)].map((p) => p.join(',')).join(' '),
-      fill: 'url(#sim-shine)', opacity: '0'
-    }, panelsG);
 
     // Copies of the windows drawn above the night shade, so they can glow
     const lit = $('#sim-lit', svg);
@@ -394,7 +382,7 @@
       time: $('#sim-time'), solar: $('#sim-solar'), home: $('#sim-home'), batt: $('#sim-batt'), grid: $('#sim-grid'),
       solarBar: $('#sim-solar-bar'), homeBar: $('#sim-home-bar'), battBar: $('#sim-batt-bar'), gridBar: $('#sim-grid-bar'),
       gridBox: $('.ro--grid'), status: $('#sim-status'),
-      skyTop: $('#sim-sky-top', svg), skyBottom: $('#sim-sky-bottom', svg), sun: $('#sim-sun', svg), moon: $('#sim-moon', svg),
+      sky: $('#sim-sky', svg), sun: $('#sim-sun', svg), moon: $('#sim-moon', svg),
       night: $('#sim-night', svg), spill: $('#sim-spill', svg), battFill: $('#sim-batt-fill', svg),
       fSolar: $('#flow-solar', svg), fHome: $('#flow-home', svg), fBatt: $('#flow-batt', svg), fGrid: $('#flow-grid', svg),
       nbText: $('#tag-neighbour-text', svg), gridText: $('#tag-grid-text', svg)
@@ -433,10 +421,10 @@
     }
     const days = { normal: simulate(false), ls: simulate(true) };
 
+    // One flat sky colour at a time, blended through the day
     const SKY = [
-      [5.0, '#0b1a33', '#1f3357'], [5.75, '#23365f', '#b56a6a'], [6.3, '#4a6aa5', '#f6a96b'],
-      [7.3, '#6fb1ee', '#cfe6ff'], [12, '#4c9df2', '#d7ecff'], [16.5, '#5fa6ef', '#ece6cf'],
-      [18.1, '#4b5f99', '#f59e62'], [18.8, '#2a3a6e', '#c4677a'], [19.6, '#0f1f3f', '#283c66'], [23, '#071228', '#132546']
+      [5.0, '#0e1d3a'], [5.75, '#2f4573'], [6.3, '#f0a874'], [7.3, '#8cc4f2'], [12, '#6fb3f2'],
+      [16.5, '#86bdf0'], [18.1, '#f19b66'], [18.8, '#5b4f86'], [19.6, '#15254a'], [23, '#0a1630']
     ];
     const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
     const mix = (a, b, t) => {
@@ -446,14 +434,11 @@
     };
     function sky(t) {
       for (let i = 0; i < SKY.length - 1; i++) {
-        const [h1, top1, bot1] = SKY[i];
-        const [h2, top2, bot2] = SKY[i + 1];
-        if (t >= h1 && t <= h2) {
-          const k = (t - h1) / (h2 - h1);
-          return [mix(top1, top2, k), mix(bot1, bot2, k)];
-        }
+        const [h1, c1] = SKY[i];
+        const [h2, c2] = SKY[i + 1];
+        if (t >= h1 && t <= h2) return mix(c1, c2, (t - h1) / (h2 - h1));
       }
-      return [SKY[SKY.length - 1][1], SKY[SKY.length - 1][2]];
+      return SKY[SKY.length - 1][1];
     }
     const darkness = (t) => {
       if (t < 5.6 || t > 19.4) return 1;
@@ -478,10 +463,9 @@
       const t = minute / 60;
       const n = darkness(t);
 
-      const [top, bottom] = sky(t);
-      ui.skyTop.setAttribute('stop-color', top);
-      ui.scene.style.setProperty('--sim-sky', top);
-      ui.skyBottom.setAttribute('stop-color', bottom);
+      const skyColour = sky(t);
+      ui.sky.setAttribute('fill', skyColour);
+      ui.scene.style.setProperty('--sim-sky', skyColour);
       stars.setAttribute('opacity', n.toFixed(2));
       ui.night.setAttribute('opacity', (n * 0.5).toFixed(3));
 
@@ -501,8 +485,9 @@
       houseLit.forEach((r) => r.setAttribute('opacity', clamp(n * 1.4, 0, 1).toFixed(2)));
       const nbPower = !lsOn;
       nbLit.forEach((r) => r.setAttribute('opacity', nbPower ? clamp(n * 1.4, 0, 1).toFixed(2) : '0'));
-      ui.spill.setAttribute('opacity', (n * 0.9).toFixed(2));
-      shine.setAttribute('opacity', (d.solar / PEAK * 0.55).toFixed(2));
+      ui.spill.setAttribute('opacity', (n * 0.3).toFixed(2));
+      const panelColour = mix('#1f3d6b', '#3a77c8', d.solar / PEAK);
+      panels.forEach((panel) => panel.setAttribute('fill', panelColour));
 
       const h = 32 * d.soc;
       ui.battFill.setAttribute('height', h.toFixed(1));
@@ -670,9 +655,9 @@
 
     function billRange(v) {
       if (v < 1000) return 'Under R1 000';
-      if (v < 2500) return 'R1 000 – R2 500';
-      if (v < 5000) return 'R2 500 – R5 000';
-      if (v < 10000) return 'R5 000 – R10 000';
+      if (v < 2500) return 'R1 000 to R2 500';
+      if (v < 5000) return 'R2 500 to R5 000';
+      if (v < 10000) return 'R5 000 to R10 000';
       return 'Over R10 000';
     }
 
