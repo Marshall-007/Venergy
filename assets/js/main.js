@@ -220,172 +220,40 @@
   }, { threshold: 0.3 }));
 
   /* ------------------------------------------------------------------------
-     Pointer effects: hero stage, tilt cards, magnetic button
-     ------------------------------------------------------------------------ */
-  if (finePointer && !reduceMotion) {
-    const hero = $('.hero');
-    if (hero && stage) {
-      let raf = 0;
-      hero.addEventListener('pointermove', (e) => {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          const px = e.clientX / window.innerWidth - 0.5;
-          const py = e.clientY / window.innerHeight - 0.5;
-          stage.classList.add('is-tracking');
-          stage.style.setProperty('--ry', `${(-11 + px * 16).toFixed(2)}deg`);
-          stage.style.setProperty('--rx', `${(7 - py * 12).toFixed(2)}deg`);
-        });
-      });
-      hero.addEventListener('pointerleave', () => {
-        stage.classList.remove('is-tracking');
-        stage.style.removeProperty('--ry');
-        stage.style.removeProperty('--rx');
-      });
-    }
-
-    $$('[data-tilt]').forEach((card) => {
-      let raf = 0;
-      card.addEventListener('pointermove', (e) => {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          const r = card.getBoundingClientRect();
-          const px = (e.clientX - r.left) / r.width;
-          const py = (e.clientY - r.top) / r.height;
-          card.classList.add('is-tilting');
-          card.style.setProperty('--ry', `${((px - 0.5) * 9).toFixed(2)}deg`);
-          card.style.setProperty('--rx', `${((0.5 - py) * 7).toFixed(2)}deg`);
-        });
-      });
-      card.addEventListener('pointerleave', () => {
-        cancelAnimationFrame(raf);
-        card.classList.remove('is-tilting');
-        card.style.setProperty('--rx', '0deg');
-        card.style.setProperty('--ry', '0deg');
-      });
-    });
-
-
-    $$('.magnetic').forEach((btn) => {
-      btn.addEventListener('pointermove', (e) => {
-        const r = btn.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width / 2) * 0.18;
-        const y = (e.clientY - r.top - r.height / 2) * 0.3;
-        btn.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
-      });
-      btn.addEventListener('pointerleave', () => { btn.style.translate = ''; });
-    });
-  }
-
-  /* ------------------------------------------------------------------------
-     Hero "live" chips and the typing rotator
+     Hero "live" solar reading
      ------------------------------------------------------------------------ */
   (() => {
     const solarEl = $('[data-live="solar"]');
-    const battEl = $('[data-live="batt"]');
     if (!solarEl || reduceMotion) return;
     let timer = 0;
     let solar = 3.2;
-    let batt = 96;
     const tick = () => {
       solar = clamp(solar + (Math.random() - 0.5) * 0.3, 2.9, 3.4);
-      batt = Math.min(99, batt + (Math.random() < 0.4 ? 1 : 0));
-      if (batt >= 99) batt = 94;
       tween(solarEl, solar, (v) => `${v.toFixed(1)} kW`, 900);
-      tween(battEl, batt, (v) => `${Math.round(v)}%`, 900);
     };
     solarEl._v = solar;
-    battEl._v = batt;
     onVisible($('.hero'), (visible) => {
       clearInterval(timer);
       if (visible) timer = setInterval(tick, 2600);
     });
   })();
 
-  $$('.rotator').forEach((el) => {
-    const words = (el.dataset.words || '').split('|').filter(Boolean);
-    if (words.length < 2 || reduceMotion) return;
-    let i = 0;
-    let running = false;
-    let t = 0;
-    const type = (word, n) => {
-      el.textContent = word.slice(0, n);
-      if (n < word.length) t = setTimeout(() => type(word, n + 1), 70);
-      else t = setTimeout(() => erase(word, word.length), 1700);
-    };
-    const erase = (word, n) => {
-      el.textContent = word.slice(0, n);
-      if (n > 0) t = setTimeout(() => erase(word, n - 1), 40);
-      else { i = (i + 1) % words.length; t = setTimeout(() => type(words[i], 1), 220); }
-    };
-    onVisible(el, (visible) => {
-      if (visible && !running) { running = true; t = setTimeout(() => erase(words[i], words[i].length), 1400); }
-      if (!visible && running) { running = false; clearTimeout(t); el.textContent = words[i]; }
-    });
-  });
-
   /* ------------------------------------------------------------------------
-     Energy simulator
+     Energy flow simulator
      ------------------------------------------------------------------------ */
   (() => {
-    const svg = $('.sim-svg');
-    if (!svg) return;
-    const NS = 'http://www.w3.org/2000/svg';
+    const map = $('#flow-map');
+    if (!map) return;
     const START = 300;
     const END = 1380;
     const CAPACITY = 10;    // kWh of storage
     const PEAK = 3.0;       // kW of solar at noon
 
-    const el = (tag, attrs, parent) => {
-      const n = document.createElementNS(NS, tag);
-      Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v));
-      if (parent) parent.appendChild(n);
-      return n;
-    };
-
-    // Stars (deterministic so the sky looks the same every visit)
-    const stars = $('#sim-stars', svg);
-    let seed = 7;
-    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
-    for (let i = 0; i < 56; i++) {
-      el('circle', { cx: (rnd() * 800).toFixed(1), cy: (rnd() * 370 - 145).toFixed(1), r: (rnd() * 1.1 + 0.5).toFixed(2), opacity: (rnd() * 0.5 + 0.5).toFixed(2) }, stars);
-    }
-
-    // Solar panels on the roof, mapped onto the roof trapezoid
-    const panelsG = $('#sim-panels', svg);
-    const roof = { tl: 252, tr: 428, bl: 190, br: 490, top: 182, bottom: 265 };
-    const map = (u, v) => {
-      const xt = lerp(roof.tl, roof.tr, u);
-      const xb = lerp(roof.bl, roof.br, u);
-      return [lerp(xt, xb, v).toFixed(1), lerp(roof.top, roof.bottom, v).toFixed(1)];
-    };
-    const cols = 5;
-    const rows = 2;
-    const panels = [];
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const u0 = 0.1 + c * (0.8 / cols) + 0.008;
-        const u1 = 0.1 + (c + 1) * (0.8 / cols) - 0.008;
-        const v0 = 0.14 + r * (0.72 / rows) + 0.03;
-        const v1 = 0.14 + (r + 1) * (0.72 / rows) - 0.03;
-        const pts = [map(u0, v0), map(u1, v0), map(u1, v1), map(u0, v1)].map((p) => p.join(',')).join(' ');
-        panels.push(el('polygon', { points: pts, fill: '#24569e', stroke: '#9db5d8', 'stroke-width': '1' }, panelsG));
-      }
-    }
-
-    // Copies of the windows drawn above the night shade, so they can glow
-    const lit = $('#sim-lit', svg);
-    const houseLit = $$('.win', svg).map((w) => el('rect', { x: w.getAttribute('x'), y: w.getAttribute('y'), width: w.getAttribute('width'), height: w.getAttribute('height'), rx: w.getAttribute('rx'), opacity: '0' }, lit));
-    const nbLit = $$('.nb-win', svg).map((w) => el('rect', { x: w.getAttribute('x'), y: w.getAttribute('y'), width: w.getAttribute('width'), height: w.getAttribute('height'), rx: w.getAttribute('rx'), opacity: '0' }, lit));
-
     const ui = {
       range: $('#sim-range'), play: $('#sim-play'), ls: $('#sim-ls'), card: $('.sim-card'), scene: $('.sim-scene'),
       time: $('#sim-time'), solar: $('#sim-solar'), home: $('#sim-home'), batt: $('#sim-batt'), grid: $('#sim-grid'),
-      solarBar: $('#sim-solar-bar'), homeBar: $('#sim-home-bar'), battBar: $('#sim-batt-bar'), gridBar: $('#sim-grid-bar'),
-      gridBox: $('.ro--grid'), status: $('#sim-status'),
-      sky: $('#sim-sky', svg), sun: $('#sim-sun', svg), moon: $('#sim-moon', svg),
-      night: $('#sim-night', svg), spill: $('#sim-spill', svg), battFill: $('#sim-batt-fill', svg),
-      fSolar: $('#flow-solar', svg), fHome: $('#flow-home', svg), fBatt: $('#flow-batt', svg), fGrid: $('#flow-grid', svg),
-      nbText: $('#tag-neighbour-text', svg), gridText: $('#tag-grid-text', svg)
+      gridLabel: $('#sim-grid-label'), ring: $('#sim-batt-ring'), status: $('#sim-status'),
+      fSolar: $('#flow-solar'), fHome: $('#flow-home'), fBatt: $('#flow-batt'), fGrid: $('#flow-grid')
     };
 
     const gauss = (t, mu, s) => Math.exp(-0.5 * Math.pow((t - mu) / s, 2));
@@ -421,32 +289,7 @@
     }
     const days = { normal: simulate(false), ls: simulate(true) };
 
-    // One flat sky colour at a time, blended through the day
-    const SKY = [
-      [5.0, '#0e1d3a'], [5.75, '#2f4573'], [6.3, '#f0a874'], [7.3, '#8cc4f2'], [12, '#6fb3f2'],
-      [16.5, '#86bdf0'], [18.1, '#f19b66'], [18.8, '#5b4f86'], [19.6, '#15254a'], [23, '#0a1630']
-    ];
-    const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
-    const mix = (a, b, t) => {
-      const [r1, g1, b1] = hex(a);
-      const [r2, g2, b2] = hex(b);
-      return `rgb(${Math.round(lerp(r1, r2, t))},${Math.round(lerp(g1, g2, t))},${Math.round(lerp(b1, b2, t))})`;
-    };
-    function sky(t) {
-      for (let i = 0; i < SKY.length - 1; i++) {
-        const [h1, c1] = SKY[i];
-        const [h2, c2] = SKY[i + 1];
-        if (t >= h1 && t <= h2) return mix(c1, c2, (t - h1) / (h2 - h1));
-      }
-      return SKY[SKY.length - 1][1];
-    }
-    const darkness = (t) => {
-      if (t < 5.6 || t > 19.4) return 1;
-      if (t < 7) return 1 - (t - 5.6) / 1.4;
-      if (t > 17.8) return (t - 17.8) / 1.6;
-      return 0;
-    };
-
+    // Dots move along a line while power flows; faster for more power
     const setFlow = (path, power, reverse) => {
       const on = Math.abs(power) > 0.05;
       path.classList.toggle('is-on', on);
@@ -460,50 +303,21 @@
     function render() {
       const lsOn = ui.ls.checked;
       const d = (lsOn ? days.ls : days.normal)[clamp(minute - START, 0, END - START)];
-      const t = minute / 60;
-      const n = darkness(t);
+      const night = d.solar < 0.05;
 
-      const skyColour = sky(t);
-      ui.sky.setAttribute('fill', skyColour);
-      ui.scene.style.setProperty('--sim-sky', skyColour);
-      stars.setAttribute('opacity', n.toFixed(2));
-      ui.night.setAttribute('opacity', (n * 0.5).toFixed(3));
-
-      if (t > 5.85 && t < 18.65) {
-        const p = (t - 6) / 12.5;
-        const x = 70 + p * 660;
-        const y = 300 - Math.sin(clamp(p, 0, 1) * Math.PI) * 330;
-        ui.sun.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
-        ui.sun.setAttribute('opacity', '1');
-      } else {
-        ui.sun.setAttribute('opacity', '0');
-      }
-      const moonP = t >= 18.5 ? (t - 18.5) / 9.5 : (t + 5.5) / 9.5;
-      ui.moon.setAttribute('transform', `translate(${(110 + moonP * 600).toFixed(1)} ${(90 - Math.sin(moonP * Math.PI) * 150).toFixed(1)})`);
-      ui.moon.setAttribute('opacity', (n > 0.25 ? n : 0).toFixed(2));
-
-      houseLit.forEach((r) => r.setAttribute('opacity', clamp(n * 1.4, 0, 1).toFixed(2)));
-      const nbPower = !lsOn;
-      nbLit.forEach((r) => r.setAttribute('opacity', nbPower ? clamp(n * 1.4, 0, 1).toFixed(2) : '0'));
-      ui.spill.setAttribute('opacity', (n * 0.3).toFixed(2));
-      const panelColour = mix('#1f3d6b', '#3a77c8', d.solar / PEAK);
-      panels.forEach((panel) => panel.setAttribute('fill', panelColour));
-
-      const h = 32 * d.soc;
-      ui.battFill.setAttribute('height', h.toFixed(1));
-      ui.battFill.setAttribute('y', (323 + 32 - h).toFixed(1));
-      ui.battFill.setAttribute('fill', d.soc < 0.15 ? '#e5484d' : d.soc < 0.3 ? '#ffb703' : '#18a957');
+      map.classList.toggle('is-ls', lsOn);
+      map.classList.toggle('is-night', night);
+      ui.scene.classList.toggle('is-night', night);
 
       setFlow(ui.fSolar, d.solar, false);
       setFlow(ui.fHome, d.load, false);
       setFlow(ui.fBatt, d.batt, d.batt < 0);
       setFlow(ui.fGrid, d.grid, false);
 
-      svg.classList.toggle('sim-ls', lsOn);
-      ui.nbText.textContent = lsOn ? 'Neighbour · no power' : 'Neighbour · no solar';
-      ui.nbText.setAttribute('fill', lsOn ? '#c02a2f' : '#0a2139');
-      ui.gridText.textContent = lsOn ? 'Grid down' : 'Eskom grid';
-      ui.gridText.setAttribute('fill', lsOn ? '#c02a2f' : '#0a2139');
+      ui.ring.style.strokeDasharray = `${(d.soc * 100).toFixed(1)} 100`;
+      ui.ring.classList.toggle('is-low', d.soc < 0.15);
+      ui.ring.classList.toggle('is-mid', d.soc >= 0.15 && d.soc < 0.3);
+      ui.gridLabel.textContent = lsOn ? 'Grid down' : 'Grid';
 
       const hh = Math.floor(minute / 60);
       const mm = minute % 60;
@@ -513,11 +327,6 @@
       ui.home.textContent = `${d.load.toFixed(1)} kW`;
       ui.batt.textContent = `${Math.round(d.soc * 100)}%`;
       ui.grid.textContent = lsOn ? 'Off' : `${d.grid.toFixed(1)} kW`;
-      ui.gridBox.classList.toggle('is-off', lsOn);
-      ui.solarBar.style.width = `${(d.solar / PEAK) * 100}%`;
-      ui.homeBar.style.width = `${clamp(d.load / 2.5, 0, 1) * 100}%`;
-      ui.battBar.style.width = `${d.soc * 100}%`;
-      ui.gridBar.style.width = `${clamp(d.grid / 2, 0, 1) * 100}%`;
 
       let msg;
       let cls = '';
@@ -618,20 +427,11 @@
     if (!form) return;
     const bill = $('#bill');
     const billOut = $('#bill-out');
-    const roofEl = $('#roof');
     const card = $('.result-card');
     const out = {
       name: $('#r-name'), sub: $('#r-sub'), month: $('#r-month'), year: $('#r-year'),
       cover: $('#r-cover'), payback: $('#r-payback'), backup: $('#r-backup'), co2: $('#r-co2'), price: $('#r-price')
     };
-
-    const SLOTS = 18;
-    for (let i = 0; i < SLOTS; i++) {
-      const tile = document.createElement('i');
-      tile.style.setProperty('--i', String(i));
-      roofEl.appendChild(tile);
-    }
-    const tiles = $$('i', roofEl);
 
     function recommend(property, monthlyBill, goal) {
       const monthlyKwh = monthlyBill / CONFIG.tariff;
@@ -690,9 +490,6 @@
       out.backup.textContent = r.pkg ? r.pkg.backup : 'tailored to your essential loads';
       out.price.textContent = r.pkg ? rands(r.pkg.price) : 'Custom quote';
 
-      const lit = Math.min(r.panels, SLOTS);
-      tiles.forEach((tile, i) => tile.classList.toggle('on', i < lit));
-
       // Replay the "new result" animation only when the recommendation changes
       if (lastLabel && label !== lastLabel && !reduceMotion) {
         card.classList.remove('is-updating');
@@ -717,6 +514,56 @@
       card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
     });
     update();
+  })();
+
+  /* ------------------------------------------------------------------------
+     Price list tabs (solar hybrid, backup power, generators)
+     ------------------------------------------------------------------------ */
+  (() => {
+    const tabs = $$('.price-tab');
+    if (!tabs.length) return;
+    const panelOf = (tab) => document.getElementById(tab.getAttribute('aria-controls'));
+
+    function select(tab, focus) {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        panelOf(t).hidden = !on;
+      });
+      if (focus) tab.focus();
+      const strip = tab.parentElement;
+      strip.scrollTo({ left: tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+      track('price_tab', { range: tab.id.replace('tab-', '') });
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab, false));
+      tab.addEventListener('keydown', (e) => {
+        const keys = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
+        if (!(e.key in keys)) return;
+        e.preventDefault();
+        select(tabs[(keys[e.key] + tabs.length) % tabs.length], true);
+      });
+    });
+    select(tabs.find((t) => t.getAttribute('aria-selected') === 'true') || tabs[0], false);
+
+    // Links such as "See generator prices" open the matching tab
+    const openFromHash = (hash, smooth) => {
+      const tab = tabs.find((t) => `#${t.getAttribute('aria-controls')}` === hash);
+      if (!tab) return false;
+      select(tab, false);
+      $('#packages').scrollIntoView({ behavior: smooth && !reduceMotion ? 'smooth' : 'auto', block: 'start' });
+      return true;
+    };
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href^="#prices-"]');
+      if (link && openFromHash(link.getAttribute('href'), true)) {
+        e.preventDefault();
+        history.replaceState(null, '', link.getAttribute('href'));
+      }
+    });
+    if (location.hash) openFromHash(location.hash, false);
   })();
 
   /* ------------------------------------------------------------------------

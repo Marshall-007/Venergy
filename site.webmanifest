@@ -1,7 +1,7 @@
 {
-  "name": "V Energy · Solar installers in South Africa",
+  "name": "V Energy: solar, backup power and generators",
   "short_name": "V Energy",
-  "description": "Solar panels, hybrid inverters and lithium batteries for homes and businesses across South Africa.",
+  "description": "Solar hybrid systems, inverter and battery backup, and generators for homes and businesses across South Africa.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

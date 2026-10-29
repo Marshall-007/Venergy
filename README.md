@@ -1,6 +1,7 @@
 # V Energy website
 
-The marketing site for **V Energy** (Vees Capital (Pty) Ltd), solar installers in Northriding, Randburg.
+The marketing site for **V Energy** (Vees Capital (Pty) Ltd), suppliers and installers of solar hybrid systems,
+backup power and generators, based in Northriding, Randburg.
 It is a static site: plain HTML, CSS and JavaScript with no build step and no frameworks, so it runs on
 any web host (cPanel/Apache, LiteSpeed, Netlify, GitHub Pages, …).
 
@@ -8,12 +9,12 @@ any web host (cPanel/Apache, LiteSpeed, Netlify, GitHub Pages, …).
 
 | Section | What it does |
 | --- | --- |
-| Hero | Headline, booking and savings CTAs, 3D photo stage with live-style monitoring chips |
+| Hero | Headline, booking and savings CTAs, photo stage with two live-style monitoring chips |
 | Trust strip | Key numbers and a scrolling list of brands we install |
-| Services | Homes, business, load-shedding backup, maintenance, emergency call-outs |
-| Simulator | Interactive day in a solar home: drag the sun, switch load-shedding on and off |
+| Services | Home solar and hybrid systems, commercial solar, backup power, generators, maintenance, emergency call-outs |
+| Simulator | Monitoring-style energy flow (solar, grid, inverter, home, battery) through a day, with a load-shedding switch |
 | Smart solar advisor | Three questions → recommended package, savings, payback, CO₂ |
-| Packages | 2.5 / 3 / 5 / 10 kVA packages with prices, plus a custom/commercial card |
+| Packages | Tabs for solar hybrid systems, backup power kits and generators with single-phase starting prices, a "priced according to scope" note and a custom/commercial card |
 | Why V Energy, process, recent installs, reviews, FAQ, contact | Trust, SEO content and conversion points |
 | Booking dialog | 3-step "book a free call" flow: visitors pick a time only (SAST) and the site works out the next working day with that time free; calendar file and WhatsApp copy of the booking |
 
@@ -43,9 +44,10 @@ robots.txt, sitemap.xml, site.webmanifest, favicon.*, apple-touch-icon.png, .hta
 
 ## Common edits
 
-- **Prices / packages**: edit the package cards in `index.html` (search for `pkg-price`), the FAQ answer
-  about cost, the `hasOfferCatalog` block in the structured data, and `PACKAGES` in `assets/js/main.js`
-  (used by the advisor).
+- **Prices / packages**: edit the package cards in `index.html` (search for `pkg-price`; the three tabs are
+  `prices-solar`, `prices-backup` and `prices-generators`), the FAQ answer about cost, the `hasOfferCatalog`
+  block in the structured data, and `PACKAGES` in `assets/js/main.js` (solar packages used by the advisor).
+  Listed prices are single-phase; three-phase work is quoted.
 - **Phone numbers, WhatsApp, email**: search `index.html` for `27108245582`, `27790410946`, `27813471724`
   and `sales@venergy.co.za`. WhatsApp goes to 081 347 1724: the `wa.me/27813471724` links in the HTML
   pages and `CONFIG.whatsapp` in `main.js`.
@@ -83,7 +85,11 @@ stock (for example from Unsplash or Pexels).
 - [ ] Name the neighbouring countries you work in, if you want them listed: the site currently says
       "neighbouring countries" without naming them (Areas we serve, and the FAQ about areas).
 - [ ] Check the office address spelling ("Franourt Office Park") matches your Google Business Profile.
-- [ ] Confirm package prices are current.
+- [ ] Confirm package prices are current, and whether they include VAT. The backup power kit and generator
+      prices are proposed starting prices based on South African retail and installer prices found online in
+      October 2026; adjust them to your own supplier costs.
+- [ ] Add real photos of your generators (portable, silent diesel, standby and industrial). The Generators
+      card currently uses an aerial photo of an industrial site.
 - [ ] Make sure the site is served over HTTPS (canonical and social tags use `https://venergy.co.za/`).
 - [ ] Submit `https://venergy.co.za/sitemap.xml` in Google Search Console.
 
