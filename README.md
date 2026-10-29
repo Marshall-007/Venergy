@@ -84,6 +84,9 @@ stock (for example from Unsplash or Pexels).
       and the areas served (all nine provinces).
 - [ ] Name the neighbouring countries you work in, if you want them listed: the site currently says
       "neighbouring countries" without naming them (Areas we serve, and the FAQ about areas).
+- [ ] Swap in your official logo if you have one. The repository only contains the web template's "Solar
+      Energy" logo (not V Energy's), so the site uses a simple V mark (`favicon.svg`, `assets/img/brand/`, and
+      the `i-vmark` symbol in each page).
 - [ ] Check the office address spelling ("Franourt Office Park") matches your Google Business Profile.
 - [ ] Keep package prices current. All listed prices exclude VAT, and the site says so on every price card,
       in the price note, the FAQ and the savings advisor (which adds 15% VAT to home payback estimates).

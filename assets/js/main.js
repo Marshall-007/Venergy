@@ -35,10 +35,10 @@
   };
 
   const PACKAGES = [
-    { name: '2.5 kVA Essential Backup', short: '2.5 kVA', kva: 2.5, panels: 2, price: 25000, inverter: '2.5 kVA inverter', battery: '2 × 100 Ah batteries', backup: 'lights, Wi-Fi, TV & laptops' },
-    { name: '3 kVA Home Starter', short: '3 kVA', kva: 3, panels: 3, price: 56000, inverter: '3 kVA inverter', battery: '2 × 100 Ah batteries', backup: 'lights, Wi-Fi, TV, fridge & gate' },
-    { name: '5 kVA Family Power', short: '5 kVA', kva: 5, panels: 6, price: 116000, inverter: '5 kVA hybrid inverter', battery: '4 × 100 Ah batteries', backup: 'most of the home' },
-    { name: '10 kVA Whole Home', short: '10 kVA', kva: 10, panels: 12, price: 210000, inverter: '10 kVA hybrid inverter', battery: '8 × 100 Ah batteries', backup: 'the whole home' }
+    { name: '2.5 kVA Essential Backup', short: '2.5 kVA', kva: 2.5, panels: 2, price: 25000, inverter: '2.5 kVA inverter', battery: '1 × 200 Ah lithium battery', backup: 'lights, Wi-Fi, TV & laptops' },
+    { name: '3 kVA Home Starter', short: '3 kVA', kva: 3, panels: 3, price: 56000, inverter: '3 kVA inverter', battery: '1 × 200 Ah lithium battery', backup: 'lights, Wi-Fi, TV, fridge & gate' },
+    { name: '5 kVA Family Power', short: '5 kVA', kva: 5, panels: 6, price: 116000, inverter: '5 kVA hybrid inverter', battery: '2 × 200 Ah lithium batteries', backup: 'most of the home' },
+    { name: '10 kVA Whole Home', short: '10 kVA', kva: 10, panels: 12, price: 210000, inverter: '10 kVA hybrid inverter', battery: '4 × 200 Ah lithium batteries', backup: 'the whole home' }
   ];
 
   /* ------------------------------------------------------------------------
