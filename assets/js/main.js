@@ -19,6 +19,7 @@
     sunYield: 4.8,      // kWh produced per installed kWp per day in South Africa, after losses
     panelKw: 0.55,      // rating of one panel in kW
     co2PerKwh: 0.95,    // kg of CO2 avoided per kWh of grid power replaced
+    vat: 0.15,          // package prices exclude VAT; homes pay it, so their payback includes it
 
     // Call-back booking. Visitors choose a time only; the call goes on the next working day
     // that has that time free. Times are South African Standard Time (UTC+2).
@@ -444,11 +445,12 @@
       const panels = pkg ? pkg.panels : Math.round(kwp / CONFIG.panelKw);
       const usedKwh = Math.min(kwp * CONFIG.sunYield * 30 * selfUse, monthlyKwh * 0.9);
       const monthly = usedKwh * CONFIG.tariff;
+      const cost = pkg ? pkg.price * (property === 'business' ? 1 : 1 + CONFIG.vat) : 0;
       return {
         pkg, kwp, panels, monthly,
         yearly: monthly * 12,
         cover: monthly / monthlyBill,
-        payback: pkg ? pkg.price / (monthly * 12) : null,
+        payback: pkg ? cost / (monthly * 12) : null,
         co2: (usedKwh * 12 * CONFIG.co2PerKwh) / 1000
       };
     }

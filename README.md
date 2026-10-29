@@ -85,9 +85,8 @@ stock (for example from Unsplash or Pexels).
 - [ ] Name the neighbouring countries you work in, if you want them listed: the site currently says
       "neighbouring countries" without naming them (Areas we serve, and the FAQ about areas).
 - [ ] Check the office address spelling ("Franourt Office Park") matches your Google Business Profile.
-- [ ] Confirm package prices are current, and whether they include VAT. The backup power kit and generator
-      prices are proposed starting prices based on South African retail and installer prices found online in
-      October 2026; adjust them to your own supplier costs.
+- [ ] Keep package prices current. All listed prices exclude VAT, and the site says so on every price card,
+      in the price note, the FAQ and the savings advisor (which adds 15% VAT to home payback estimates).
 - [ ] Add real photos of your generators (portable, silent diesel, standby and industrial). The Generators
       card currently uses an aerial photo of an industrial site.
 - [ ] Make sure the site is served over HTTPS (canonical and social tags use `https://venergy.co.za/`).

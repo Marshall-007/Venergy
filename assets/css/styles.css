@@ -1395,6 +1395,8 @@ h2 em {
 }
 .pkg--featured .pkg-phase { background: rgba(255, 255, 255, .12); color: #e3ebf6; }
 .pkg-price--quote span { font-size: 1.75rem; }
+.pkg-price .pkg-vat { margin-top: 2px; color: var(--muted); font-size: .78rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.pkg--featured .pkg-price .pkg-vat { color: #b3c4dc; }
 
 .pkg-kva {
   display: inline-block;
