@@ -56,6 +56,10 @@ robots.txt, sitemap.xml, site.webmanifest, favicon.*, apple-touch-icon.png, .hta
 - **Form destination**: forms post to FormSubmit using the existing endpoint
   (`3cd046a3a50af33a7b7bb5796841d5ac`), CC'ing sales@ and marshall@. Change it in `CONFIG.formAjax`
   and in the `action` / `_cc` fields in `index.html`.
+- **Logo**: the V Energy mark (the V with a solar panel and the sun behind it) is SVG in `favicon.svg` and
+  `assets/img/brand/logo.svg`, and the `i-vmark` symbol (with its `vm-b` and `vm-s` gradients) in the sprite at
+  the top of `index.html`, `Thankyou.html` and `privacy.html`. `favicon.ico`, `apple-touch-icon.png` and
+  `assets/img/brand/icon-*.png` are rendered from it, so re-export them if the mark changes.
 - **After editing CSS or JS**, bump the `?v=` number on the `styles.css` and `main.js` links in the HTML
   files so returning visitors get the new version.
 
@@ -84,14 +88,14 @@ stock (for example from Unsplash or Pexels).
       and the areas served (all nine provinces).
 - [ ] Name the neighbouring countries you work in, if you want them listed: the site currently says
       "neighbouring countries" without naming them (Areas we serve, and the FAQ about areas).
-- [ ] Swap in your official logo if you have one. The repository only contains the web template's "Solar
-      Energy" logo (not V Energy's), so the site uses a simple V mark (`favicon.svg`, `assets/img/brand/`, and
-      the `i-vmark` symbol in each page).
+- [ ] If you have the original logo artwork (AI, EPS, SVG or a large PNG), compare it with the mark on the site.
+      The mark was redrawn as a vector from a screenshot of the logo, so small details may differ.
 - [ ] Check the office address spelling ("Franourt Office Park") matches your Google Business Profile.
 - [ ] Keep package prices current. All listed prices exclude VAT, and the site says so on every price card,
       in the price note, the FAQ and the savings advisor (which adds 15% VAT to home payback estimates).
-- [ ] Add real photos of your generators (portable, silent diesel, standby and industrial). The Generators
-      card currently uses an aerial photo of an industrial site.
+- [ ] Add real photos of your generators (portable, silent diesel, standby and industrial) when you have them.
+      The Generators card shows a navy spec panel ("3 to 2 000 kVA") instead of a photo; to use a photo, follow
+      the Photos steps and replace the `svc-media--gen` block with a `<picture>` like the other cards.
 - [ ] Make sure the site is served over HTTPS (canonical and social tags use `https://venergy.co.za/`).
 - [ ] Submit `https://venergy.co.za/sitemap.xml` in Google Search Console.
 

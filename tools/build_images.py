@@ -37,7 +37,6 @@ IMAGES = {
     "svc-emergency": ("installer-on-roof.jpg", None, [480, 720, 900], "stock"),
     "why-consult": ("consultant-with-panel.jpg", (761, 0, 3980, 4024), [480, 720, 960, 1280], "stock"),
     "band-field": ("panels-in-field.jpg", None, [768, 1280, 1920], "stock"),
-    "commercial": ("commercial-warehouse-aerial.webp", (0, 0, 1428, 1071), [480, 800, 1200, 1428], "stock"),
     "home-rooftop": ("home-rooftop-solar.jpg", (0, 40, 1024, 520), [480, 720, 1024], "stock"),
     "power-room": ("inverter-power-room.jpg", None, [480, 853], "stock"),
 }

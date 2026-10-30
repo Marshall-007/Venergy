@@ -687,7 +687,8 @@
       $('.book-body', form).scrollTop = 0;
       if (focus) {
         const target = n === 3 ? $('#b-name') : $('input:checked, input', steps[n - 1]);
-        if (target) setTimeout(() => target.focus({ preventScroll: true }), 60);
+        // never pull focus away from a field the visitor is already typing in
+        if (target) setTimeout(() => { if (!steps[n - 1].contains(document.activeElement)) target.focus({ preventScroll: true }); }, 60);
       }
       track('booking_step', { step: n });
     }
