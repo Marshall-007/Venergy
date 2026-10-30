@@ -1,870 +1,1445 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en-ZA">
 <head>
-  <meta charset="utf-8" />
-  <title>Solar - V Energy Website</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Favicon -->
-  <link href="img/icon.svg" rel="icon" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Solar, Backup Power &amp; Generators in South Africa | V Energy</title>
+  <meta name="description" content="Solar hybrid systems, inverter and battery backup, and generators from home to industrial size, installed across South Africa by V Energy for 10+ years. Book a free call.">
+  <link rel="canonical" href="https://venergy.co.za/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="geo.region" content="ZA-GP">
+  <meta name="geo.placename" content="Northriding, Randburg">
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap" />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="V Energy">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:url" content="https://venergy.co.za/">
+  <meta property="og:title" content="V Energy | Solar, backup power and generators">
+  <meta property="og:description" content="Solar hybrid systems, backup power and generators for homes and businesses across South Africa. 10+ years of installs. Book a free call.">
+  <meta property="og:image" content="https://venergy.co.za/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="V Energy installers fitting solar panels under a clear blue sky">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="V Energy | Solar, backup power and generators">
+  <meta name="twitter:description" content="Solar hybrid systems, backup power and generators across South Africa. 10+ years of installs. Book a free call.">
+  <meta name="twitter:image" content="https://venergy.co.za/assets/img/og-image.jpg">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 
-  <!-- Libraries Stylesheet -->
-  <link rel="stylesheet" href="lib/owlcarousel/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" href="lib/lightbox/css/lightbox.min.css" />
-
-  <!-- Customized Bootstrap Stylesheet -->
-  <link rel="stylesheet" href="css/style.css" />
-
-
-
-
-  <style>
-    .demo {
-      background: #e8f5fc;
-      padding: 30px 0;
+  <script>
+    // Arial is built into Windows, Mac and iPhone. Other devices (mostly Android) use its twin Arimo,
+    // so fetch that early and the first paint is already in the right font.
+    if (!/Windows|Macintosh|iPhone|iPad|iPod/.test(navigator.userAgent)) {
+      const font = document.createElement('link');
+      font.rel = 'preload'; font.as = 'font'; font.type = 'font/woff2'; font.crossOrigin = '';
+      font.href = 'assets/fonts/arimo-latin.woff2';
+      document.head.appendChild(font);
     }
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=2026103004">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="assets/js/main.js?v=2026103004" defer></script>
 
-    a {
-      text-decoration: none;
-    }
-
-    .pricingTable {
-      padding: 25px 10px 70px;
-      margin: 0 15px;
-      text-align: center;
-      z-index: 1;
-      position: relative;
-    }
-
-    .pricingTable:after,
-    .pricingTable:before {
-      content: "";
-      position: absolute;
-      left: 0;
-    }
-
-    .pricingTable .price-value .amount {
-      display: inline-block;
-      font-size: 32px;
-      font-weight: 700;
-    }
-
-    .pricingTable .price-value .month {
-      display: block;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 10px;
-      text-transform: uppercase;
-    }
-
-    .pricingTable:before {
-      width: 100%;
-      height: 100%;
-      background: #fff;
-      top: 0;
-      z-index: -1;
-      -webkit-clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
-      clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
-    }
-
-    .pricingTable:after {
-      width: 70px;
-      height: 30px;
-      background: #1daa72;
-      margin: 0 auto;
-      top: 70px;
-      right: 0;
-      -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
-      clip-path: polygon(50% 100%, 0 0, 100% 0);
-    }
-
-    .pricingTable .title {
-      padding: 15px 0;
-      margin: 0 -25px 30px;
-      background: #1daa72;
-      font-size: 25px;
-      font-weight: 600;
-      color: #fff;
-      text-transform: uppercase;
-      position: relative;
-    }
-
-    .pricingTable .title:after,
-    .pricingTable .title:before {
-      border-top: 15px solid #51836d;
-      border-bottom: 15px solid transparent;
-      position: absolute;
-      bottom: -30px;
-      content: "";
-    }
-
-    .pricingTable .title:before {
-      border-left: 15px solid transparent;
-      left: 0;
-    }
-
-    .pricingTable .title:after {
-      border-right: 15px solid transparent;
-      right: 0;
-    }
-
-    .pricingTable .price-value {
-      margin-bottom: 25px;
-      color: #1daa72;
-    }
-
-    .pricingTable .currency {
-      display: inline-block;
-      font-size: 30px;
-      vertical-align: top;
-      margin-top: 8px;
-    }
-
-    .price-value .amount {
-      display: inline-block;
-      font-size: 50px;
-      font-weight: 700;
-    }
-
-    .price-value .month {
-      display: block;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 10px;
-      text-transform: uppercase;
-    }
-
-    .pricingTable .pricing-content {
-      padding: 0;
-      margin: 0 0 25px;
-      list-style: none;
-      border-top: 1px solid #8f8f8f;
-      border-bottom: 1px solid #8f8f8f;
-    }
-
-    .pricingTable .pricing-content li {
-      font-size: 17px;
-      color: #8f8f8f;
-      line-height: 55px;
-    }
-
-    .pricingTable .pricingTable-signup {
-      display: inline-block;
-      padding: 10px 30px;
-      background: #1daa72;
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
-      overflow: hidden;
-      position: relative;
-      transition: all 0.7s ease 0s;
-    }
-
-    .pricingTable .pricingTable-signup:before {
-      content: "";
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom,
-          rgba(255, 255, 255, 0) 0,
-          rgba(255, 255, 255, 1) 50%,
-          rgba(255, 255, 255, 0) 100%);
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transform: translate(0, 100%);
-      transition: all 0.6s ease-in-out 0s;
-    }
-
-    .pricingTable .pricingTable-signup:hover:before {
-      opacity: 1;
-      transform: translate(0, -100%);
-    }
-
-    /* Blue color */
-    .pricingTable.blue .pricingTable-signup,
-    .pricingTable.blue .title,
-    .pricingTable.blue:after {
-      background: #49b0ca;
-    }
-
-    .pricingTable.blue .title:after,
-    .pricingTable.blue .title:before {
-      border-top: 15px solid #407a88;
-    }
-
-    .pricingTable.blue .price-value {
-      color: #49b0ca;
-    }
-
-    /* Yellow color  */
-
-
-
-
-    .pricingTable.yellow .pricingTable-signup,
-    .pricingTable.yellow .title,
-    .pricingTable.yellow:after {
-      background: #fad51e;
-    }
-
-    .pricingTable.yellow .title:after,
-    .pricingTable.yellow .title:before {
-      border-top: 15px solid #d8b81b;
-    }
-
-    .pricingTable.yellow .price-value {
-      color: #fad51e;
-    }
-
-
-
-
-
-    /* End of color  */
-
-    .pricingTable.pink .pricingTable-signup,
-    .pricingTable.pink .title,
-    .pricingTable.pink:after {
-      background: #f06ace;
-    }
-
-    .pricingTable.pink .price-value {
-      color: #f06ace;
-    }
-
-    .pricingTable.pink .title:after,
-    .pricingTable.pink .title:before {
-      border-top: 15px solid #773667;
-    }
-
-    @media only screen and (max-width: 990px) {
-      .pricingTable {
-        margin-bottom: 30px;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HomeAndConstructionBusiness",
+        "@id": "https://venergy.co.za/#business",
+        "name": "V Energy",
+        "legalName": "Vees Capital (Pty) Ltd",
+        "url": "https://venergy.co.za/",
+        "logo": "https://venergy.co.za/assets/img/brand/icon-512.png",
+        "image": [
+          "https://venergy.co.za/assets/img/og-image.jpg",
+          "https://venergy.co.za/assets/img/install-c-1400.webp",
+          "https://venergy.co.za/assets/img/install-b-1072.webp"
+        ],
+        "description": "V Energy supplies, installs and maintains solar hybrid systems, inverter and lithium battery backup, and generators from home to industrial size for homes and businesses across South Africa.",
+        "foundingDate": "2016",
+        "telephone": "+27108245582",
+        "email": "sales@venergy.co.za",
+        "priceRange": "R6 999 to R210 000",
+        "currenciesAccepted": "ZAR",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Franourt Office Park, Cnr Felstead & Northumberland Ave",
+          "addressLocality": "Northriding, Randburg",
+          "addressRegion": "Gauteng",
+          "postalCode": "2162",
+          "addressCountry": "ZA"
+        },
+        "areaServed": [
+          { "@type": "Country", "name": "South Africa" },
+          { "@type": "City", "name": "Johannesburg" },
+          { "@type": "City", "name": "Pretoria" },
+          { "@type": "City", "name": "Cape Town" },
+          { "@type": "City", "name": "Durban" },
+          { "@type": "City", "name": "Bloemfontein" },
+          { "@type": "City", "name": "Gqeberha" },
+          { "@type": "City", "name": "East London" },
+          { "@type": "City", "name": "Pietermaritzburg" },
+          { "@type": "City", "name": "Polokwane" },
+          { "@type": "City", "name": "Mbombela" },
+          { "@type": "City", "name": "Kimberley" },
+          { "@type": "City", "name": "Mahikeng" }
+        ],
+        "contactPoint": [
+          { "@type": "ContactPoint", "telephone": "+27108245582", "contactType": "sales", "areaServed": "ZA", "availableLanguage": "en" },
+          { "@type": "ContactPoint", "telephone": "+27790410946", "contactType": "customer service", "areaServed": "ZA", "availableLanguage": "en" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Solar, backup power and generators (single-phase starting prices, excluding VAT)",
+          "itemListElement": [
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "25000", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "2.5 kVA Essential Backup solar hybrid system" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "56000", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "3 kVA Home Starter solar hybrid system" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "116000", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "5 kVA Family Power solar hybrid system" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "210000", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "10 kVA Whole Home solar hybrid system" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "24900", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "Backup Lite: 3 kVA inverter and 2.5 kWh lithium battery" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "39900", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "Backup Plus: 5 kVA hybrid inverter and 5 kWh lithium battery" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "79900", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "Backup Max: 8 kVA hybrid inverter and 10 kWh lithium battery" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "6999", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "Portable petrol generator, 3 to 8 kVA" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "39900", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "Silent diesel generator, 8 to 20 kVA" } },
+            { "@type": "Offer", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "109900", "priceCurrency": "ZAR", "valueAddedTaxIncluded": false }, "itemOffered": { "@type": "Service", "name": "Automatic standby generator with changeover, 15 to 20 kVA" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Industrial generators, 30 to 2 000 kVA (three-phase, quoted per site)" } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://venergy.co.za/#website",
+        "url": "https://venergy.co.za/",
+        "name": "V Energy",
+        "publisher": { "@id": "https://venergy.co.za/#business" },
+        "inLanguage": "en-ZA"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://venergy.co.za/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much does a solar or backup system cost?", "acceptedAnswer": { "@type": "Answer", "text": "Every installation is priced according to its scope. Our listed prices exclude VAT and are for single-phase installations. As a guide, solar hybrid systems start from R25 000 for 2.5 kVA, R56 000 for 3 kVA, R116 000 for 5 kVA and R210 000 for 10 kVA. Backup power kits without panels start from R24 900, and generators from R6 999. Your final price depends on your usage, roof, cabling, battery needs and location, and we confirm it in writing after a free site assessment." } },
+          { "@type": "Question", "name": "Are your prices for single-phase or three-phase?", "acceptedAnswer": { "@type": "Answer", "text": "Our listed prices exclude VAT and are for single-phase installations, which covers most homes and small businesses. Three-phase systems, such as larger commercial solar and industrial generators, are quoted separately after a site assessment." } },
+          { "@type": "Question", "name": "Can I get backup power without solar panels?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our backup power kits are an inverter and lithium battery that charge from the grid and take over automatically when the power goes off, from R24 900 installed, excluding VAT. They are ready for solar, so you can add panels later." } },
+          { "@type": "Question", "name": "Do you supply generators?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We supply, install and service generators of every size: portable petrol generators for homes, silent diesel generators, automatic standby sets that start on their own when the power fails, and industrial generators from 30 kVA to 2 000 kVA for factories, farms and commercial sites. We can also connect a generator to your solar hybrid system." } },
+          { "@type": "Question", "name": "Will solar keep my lights on during load-shedding?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A hybrid inverter with battery storage switches over automatically when the grid goes down, so your essential appliances keep running. During the day your panels keep powering your home and recharging the batteries." } },
+          { "@type": "Question", "name": "How much can I save on electricity?", "acceptedAnswer": { "@type": "Answer", "text": "Savings depend on your system size, usage pattern and tariff. Our Smart Solar Advisor gives an instant estimate, and we confirm exact figures after your free site assessment." } },
+          { "@type": "Question", "name": "How long does installation take?", "acceptedAnswer": { "@type": "Answer", "text": "Most residential systems are installed in one to two days once the design is approved and the equipment is on site. Larger commercial projects are scheduled to minimise disruption to your business." } },
+          { "@type": "Question", "name": "Do I need approval from my municipality or Eskom?", "acceptedAnswer": { "@type": "Answer", "text": "Grid-tied systems must be registered with your municipality or Eskom as a small-scale embedded generator (SSEG). We guide you through the requirements and provide the documentation you need, including a Certificate of Compliance (CoC)." } },
+          { "@type": "Question", "name": "How long do solar panels, inverters and batteries last?", "acceptedAnswer": { "@type": "Answer", "text": "Tier-1 solar panels typically carry 25-year performance warranties. Quality lithium (LiFePO4) batteries, which we fit in 24 V or 48 V depending on your needs, are rated for thousands of cycles, often 10 years or more, and hybrid inverters usually come with 5- to 10-year manufacturer warranties." } },
+          { "@type": "Question", "name": "Can I expand my system later?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We design systems to be modular, so you can add panels or batteries as your needs or budget grow." } },
+          { "@type": "Question", "name": "Do you offer maintenance and repairs?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer health checks, fault-finding, panel cleaning, repairs and upgrades, plus emergency call-outs if your system goes down." } },
+          { "@type": "Question", "name": "Which areas do you cover?", "acceptedAnswer": { "@type": "Answer", "text": "Our head office is in Northriding, Randburg, and we install across all nine provinces: Gauteng, the Western Cape, KwaZulu-Natal, the Free State, the Eastern Cape, Limpopo, Mpumalanga, the Northern Cape and North West. We also take on projects in neighbouring countries. Just ask." } }
+        ]
       }
-    }
-
-    /* Scrolling */
-    .scrolling-wrapper {
-      overflow-x: scroll;
-      white-space: nowrap;
-    }
-
-
-    /* Adjust CSS to make tables appear in one line */
-    .pricingTable {
-      display: inline-block;
-      margin: 0 15px;
-      vertical-align: top;
-    }
-  </style>
-  <script type="text/javascript" src=""></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script type="text/javascript"
-    src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
-
-
-
+    ]
+  }
+  </script>
 </head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+    <symbol id="i-battery" viewBox="0 0 24 24"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1M22 11v2"/><path d="m11 7-3 5h4l-3 5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-siren" viewBox="0 0 24 24"><path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2zM21 12h1M18.5 4.5 18 5M2 12h1M12 2v1M4.93 4.93l.71.71M12 12v6"/></symbol>
+    <symbol id="i-panel" viewBox="0 0 24 24"><path d="M4.5 3h15L22 15H2z"/><path d="M3.1 7.5h17.8M2.6 11.3h18.8M9.5 3 8.7 15M14.5 3l.8 12M12 15v4M8 21h8"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 4h3v16H7zM14 4h3v16h-3z"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4z"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+    <symbol id="i-generator" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="12" rx="2"/><path d="M6 7V4.5h5V7M13 10l-2.5 3.5h3L11 17M6 19v2M18 19v2"/></symbol>
+    <symbol id="i-pylon" viewBox="0 0 24 24"><path d="M8 22 12 2l4 20M5 8h14M6.5 13h11M9.2 17.5h5.6M10 8l4 5M14 8l-4 5"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z"/></symbol>
+    <defs><linearGradient id="vm-b" x1="0" y1="46.7" x2="0" y2="156" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#01b2f5"/><stop offset="1" stop-color="#1c74be"/></linearGradient><linearGradient id="vm-s" x1="0" y1="17.1" x2="0" y2="83.1" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fbcd1f"/><stop offset="1" stop-color="#ef862f"/></linearGradient></defs><symbol id="i-vmark" viewBox="0 0 207.3 158.4"><path fill="url(#vm-s)" stroke="none" d="M108.3 44.7A43.6 43.6 0 1 1 148.9 100.8L152.2 93.6A36.4 36.4 0 1 0 115.9 44.7ZM108.3 44.7L108.3 44.5L108.3 43.6L108 42.9L107.6 42.1L103.6 37.2L109.9 36.7L110.8 36.5L111.5 36.2L112.1 35.6L112.6 34.9L114.8 36.2L111.1 44.7ZM114.4 32.2Q115.5 30.7 115 28.9L111.4 16.4L123.7 20.7Q125.4 21.3 127 20.2L128.3 22.4L116.4 33.6ZM128 19.6Q129.7 18.7 130.2 17L132 9.9L138.1 13.9Q139.6 14.9 141.5 14.5L142 16.9L129.3 21.8ZM141.4 14.5Q143.3 14.2 144.1 12.6L150.1 1L156.1 12.6Q156.9 14.2 158.8 14.5L158.3 16.9L141.9 17ZM159.7 14.7Q161.5 15.2 163.1 14.2L169.3 10.3L171 17.4Q171.4 19.2 173 20.1L171.7 22.3L159.2 17.1ZM173.7 20.6Q175.3 21.6 177 21.1L189.3 17L185.6 29.4Q185 31.1 186.1 32.7L184.1 34.1L172.3 22.7ZM187 33.9Q187.9 35.6 189.7 36L196.8 37.6L193 43.8Q192.1 45.4 192.5 47.2L190.1 47.8L184.8 35.3ZM192.7 48.1Q193.1 49.9 194.7 50.7L206.3 56.6L194.8 62.7Q193.2 63.6 192.9 65.4L190.5 65L190.3 48.6ZM192.5 67.2Q192.1 69 193 70.6L196.8 76.8L189.7 78.4Q188 78.8 187 80.5L184.9 79.1L190.1 66.6ZM185.9 82.1Q184.8 83.6 185.3 85.3L189 97.8L176.7 93.6Q175 93 173.4 94.1L172.1 92L183.9 80.6ZM172.7 94.5Q171.1 95.5 170.6 97.2L168.8 104.3L162.7 100.4Q161.2 99.4 159.3 99.8L158.8 97.4L171.4 92.4ZM159.5 99.8L158.6 100.1L157.9 100.5L157.3 101.1L156.8 101.8L151 113.4L146.8 105.5L150.4 97.5L159 97.4Z"/><path fill="url(#vm-b)" stroke="none" d="M2.4 46.7L32.4 46.7L68.5 128.9L56.1 156L53 156Z"/><path fill="url(#vm-b)" stroke="url(#vm-b)" stroke-width="2.8" stroke-linejoin="round" d="M108.4 48.1L125.6 48.1L117.4 65.9L100.3 65.9ZM130.3 48.1L147.5 48.1L139.3 65.9L122.1 65.9ZM152.1 48.1L169.3 48.1L161.2 65.9L144 65.9ZM98.2 70.3L115.4 70.3L107.3 88.1L90.1 88.1ZM120.1 70.3L137.3 70.3L129.2 88.1L112 88.1ZM142 70.3L159.2 70.3L151 88.1L133.8 88.1ZM88.1 92.5L105.3 92.5L97.1 110.3L79.9 110.3ZM109.9 92.5L127.1 92.5L119 110.3L101.8 110.3ZM131.8 92.5L149 92.5L140.9 110.3L123.7 110.3ZM77.9 114.7L95.1 114.7L87 132.4L69.8 132.4ZM99.8 114.7L117 114.7L108.8 132.4L91.6 132.4ZM121.7 114.7L138.8 114.7L130.7 132.4L113.5 132.4ZM67.8 136.8L85 136.8L76.8 154.6L59.6 154.6ZM89.6 136.8L106.8 136.8L98.7 154.6L81.5 154.6ZM111.5 136.8L128.7 136.8L120.5 154.6L103.4 154.6Z"/></symbol>
+  </svg>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
-  <!-- Navbar Start -->
-  <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-1 py-lg-0 px-lg-5">
-    <a href="index.html" class="navbar-brand d-block d-lg-none">
-      <h1 class="display-4 text-white text-uppercase m-0">V Energy</h1>
-    </a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-      <div class="navbar-nav ml-auto py-0">
-        <a href="#home" class="nav-item nav-link active">Home</a>
-        <a href="#about" class="nav-item nav-link">About</a>
-        <a href="#service" class="nav-item nav-link">Service</a>
-        <a href="#project" class="nav-item nav-link">Project</a>
-      </div>
-      <a href="index.html" class="navbar-brand bg-primary px-4 mx-3 d-none d-lg-block">
-        <h1 class="display-4 text-white text-uppercase m-0">V Energy</h1>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="#top" aria-label="V Energy, back to top">
+        <svg class="brand-mark" aria-hidden="true"><use href="#i-vmark"/></svg>
+        <span class="brand-word">V&nbsp;Energy</span>
       </a>
-      <div class="navbar-nav mr-auto py-0">
-        <a href="#faqs" class="nav-item nav-link">FAQs</a>
-        <a href="#testimonial" class="nav-item nav-link">Testimonial</a>
-        <a href="#prices" class="nav-item nav-link">Prices</a>
-        <a href="#contact" class="nav-item nav-link">Contact</a>
+      <nav class="nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-solar-works">How it works</a></li>
+          <li><a href="#savings">Savings</a></li>
+          <li><a href="#packages">Pricing</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta">
+        <a class="header-phone" href="tel:+27108245582" data-track="call_click" aria-label="Call V Energy on 010&nbsp;824&nbsp;5582">
+          <svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>010&nbsp;824&nbsp;5582</span>
+        </a>
+        <a class="btn btn-primary btn-sm header-book" href="#callback" data-book data-source="Header">Book a free call</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="sr-only">Open menu</span>
+          <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
       </div>
     </div>
-  </nav>
-  <!-- Navbar End -->
-
-  <!-- Carousel Start -->
-  <div class="container-fluid p-0 mb-5 pb-1" id="home">
-    <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px">
-          <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover" />
-          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-            <div class="p-3" style="max-width: 900px">
-              <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px">
-                V Energy
-              </h4>
-              <div class="mb-lg-0 fade-in-image">
-                <h3 class="display-2 font-secondary text-white mb-4">
-                  Innovative Solar Solution For Home
-                </h3>
-              </div>
-              <a class="btn btn-light font-weight-bold py-3 px-5 mt-2 btn-scroll" href="#contact">Get A Quote</a>
-            </div>
-          </div>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav aria-label="Mobile">
+        <ul class="mm-list">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-solar-works">How solar works</a></li>
+          <li><a href="#savings">Savings advisor</a></li>
+          <li><a href="#packages">Packages &amp; pricing</a></li>
+          <li><a href="#projects">Our work</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mm-cta">
+        <a class="btn btn-primary btn-lg btn-block" href="#callback" data-book data-source="Mobile menu">
+          <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call
+        </a>
+        <div class="mm-row">
+          <a class="btn btn-outline" href="tel:+27108245582" data-track="call_click"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call us</a>
+          <a class="btn btn-wa" href="https://wa.me/27813471724?text=Hi%20V%20Energy%2C%20I%27d%20like%20a%20free%20solar%20consultation." target="_blank" rel="noopener" data-track="whatsapp_click"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
         </div>
-        <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px">
-          <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover" />
-          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-            <div class="p-3" style="max-width: 900px">
-              <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px">
-                V Energy
-              </h4>
-              <div class="mb-lg-0 fade-in-image">
-                <h3 class="display-2 font-secondary text-white mb-4">
-                  Let The Sun Work For Your Home
-                </h3>
-              </div>
-              <a class="btn btn-light font-weight-bold py-3 px-5 mt-2 btn-scroll" href="#contact">Get A Quote</a>
-            </div>
-          </div>
-        </div>
+        <p class="mm-note"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:sales@venergy.co.za">sales@venergy.co.za</a></p>
       </div>
-
     </div>
-  </div>
-  <!-- Carousel End -->
+  </header>
 
-  <!-- About Start -->
-  <div class="container-fluid py-5" id="about">
-    <div class="container py-5">
-      <div class="row align-items-center">
-        <div class="col-lg-5">
-          <img class="img-fluid1 mb-5 mb-lg-0 ml-1 fade-in-image" src="img/about.jpg" alt="About Image" />
-        </div>
-        <div class="col-lg-6">
-          <h1 class="text-uppercase text-primary mb-2" style="letter-spacing: 2px">
-            About Us
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1 class="hero-title" id="hero-title">
+            <span class="hero-kicker">Solar, backup power and generators across South Africa</span>
+            Beat rising power bills. <span class="hl">Keep the lights&nbsp;on.</span>
           </h1>
-          <p>
-            V Energy is a leading provider of solar solutions for commercial
-            and residential use in South Africa. We offer high-quality solar
-            panels, inverters, batteries and systems that are designed to meet
-            your electrical needs and budget. Whether you want to save money,
-            increase your property value, or reduce your environmental impact,
-            we have the right solar solution for you.
-          </p>
-
-          <p>
-            We have a team of experienced and qualified engineers, installers
-            and technicians who can handle any solar project from start to
-            finish. We also provide ongoing maintenance and support to ensure
-            your solar system performs optimally for years to come. At V
-            Energy, we are passionate about solar power and its benefits for
-            our customers and our planet. We are committed to delivering
-            exceptional service and customer satisfaction. Contact us today
-            for a free quote and consultation. Let us help you harness the
-            power of the sun!
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- About End -->
-
-  <!-- Service Start -->
-  <div class="container-fluid py-5" id="service">
-    <div class="container py-5">
-      <div class="section-title position-relative text-center">
-        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
-          Services
-        </h6>
-        <h7>
-          Whatever your electrical requirements are, our professional team at
-          Vees Capital(Pty) Ltd offers a wide range of services.
-          <p>We never ask our customers to compromise.</p>
-        </h7>
-        <h1 class="font-secondary display-4">What We Cover</h1>
-      </div>
-      <div class="row">
-        <div class="col-lg-4 mb-3">
-          <div class="product-item mb-2">
-            <div class="product-img">
-
-              <img class="img-fluid mb-lg-0 fade-in-image" src="img/product-1.jpg" alt />
-              <!-- <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                                <i class="fa fa-2x fa-plus text-white"></i>
-                            </a> -->
-            </div>
-            <div class="bg-secondary text-center p-4">
-              <h3 class="m-0">Residencial Services</h3>
-            </div>
+          <p class="hero-lead">Power cuts put your day on hold, and your electricity bill keeps climbing. V Energy fixes both with solar, battery backup and generators sized for your home or business, backed by over 10 years of experience.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#callback" data-book data-source="Hero">
+              <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#savings">
+              See what I'd save<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
           </div>
+          <p class="hero-note"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Free site assessment &amp; quote · No obligation</p>
+          <ul class="hero-proof">
+            <li>
+              <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+              <span><strong>5-star</strong> reviewed</span>
+            </li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-award"/></svg><span><strong>10+ years</strong> experience</span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span><strong>CoC</strong> on every install</span></li>
+          </ul>
         </div>
-        <div class="col-lg-4 mb-3">
-          <div class="product-item mb-2">
-            <div class="product-img">
-              <img class="img-fluid mb-lg-0 fade-in-image" src="img/product-2.jpg" alt />
 
+        <div class="hero-visual">
+          <div class="stage" data-stage>
+            <figure class="stage-card stage-main">
+              <picture>
+                <source type="image/avif" srcset="assets/img/hero-main-480.avif 480w, assets/img/hero-main-720.avif 720w, assets/img/hero-main-960.avif 960w, assets/img/hero-main-1229.avif 1229w" sizes="(min-width: 1024px) 540px, 86vw">
+                <img src="assets/img/hero-main-960.webp" srcset="assets/img/hero-main-480.webp 480w, assets/img/hero-main-720.webp 720w, assets/img/hero-main-960.webp 960w, assets/img/hero-main-1229.webp 1229w" sizes="(min-width: 1024px) 540px, 86vw" width="1229" height="768" alt="Solar installers in hard hats lifting a panel into place on a mounting frame" fetchpriority="high">
+              </picture>
+            </figure>
+            <figure class="stage-card stage-real">
+              <picture>
+                <source type="image/avif" srcset="assets/img/install-a-360.avif 360w, assets/img/install-a-540.avif 540w, assets/img/install-a-720.avif 720w, assets/img/install-a-912.avif 912w" sizes="(min-width: 1024px) 210px, 36vw">
+                <img src="assets/img/install-a-540.webp" srcset="assets/img/install-a-360.webp 360w, assets/img/install-a-540.webp 540w, assets/img/install-a-720.webp 720w, assets/img/install-a-912.webp 912w" sizes="(min-width: 1024px) 210px, 36vw" width="912" height="1140" alt="A V Energy hybrid inverter and two lithium batteries neatly mounted on a garage wall" decoding="async">
+              </picture>
+              <figcaption><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Real V Energy install</figcaption>
+            </figure>
+            <div class="chip chip-solar" aria-hidden="true">
+              <span class="chip-ic"><svg class="i"><use href="#i-sun"/></svg></span>
+              <span class="chip-txt"><small>Solar now</small><strong data-live="solar">3.2 kW</strong></span>
             </div>
-            <div class="bg-secondary text-center p-4">
-              <h3 class="m-0">Commercial Services</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mb-3">
-          <div class="product-item mb-2">
-            <div class="product-img">
-              <img class="img-fluid mb-lg-0 fade-in-image" src="img/product-3.jpg" alt />
-            </div>
-            <div class="bg-secondary text-center p-4">
-              <h3 class="m-0">Emergency Services</h3>
+            <div class="chip chip-save" aria-hidden="true">
+              <span class="chip-txt"><small>Saved this month</small><strong>R1 870</strong></span>
+              <svg class="spark" viewBox="0 0 84 28" preserveAspectRatio="none"><path d="M2 24 L14 20 L24 22 L36 14 L48 16 L60 8 L72 10 L82 3"/></svg>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  </div>
-  <!-- Service End -->
+    </section>
 
-  <!-- Gallery Start -->
-  <div class="container-fluid bg-gallery" id="project" style="padding: 120px 0; margin: 90px 0">
-    <div class="section-title position-relative text-center" style="margin-bottom: 120px">
-      <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
-        Project
-      </h6>
-      <h1 class="font-secondary display-4 text-white">
-        Project Photo Gallery
-      </h1>
-    </div>
-    <div class="owl-carousel gallery-carousel">
-      <div class="gallery-item">
-        <img class="img-fluid w-100" src="img/gallery-1.jpeg" alt />
-        <a class="btn btn-primary" href="img/gallery-1.jpeg" data-lightbox="gallery">
-          <i class="fa fa-2x fa-plus text-white"></i>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <img class="img-fluid w-100" src="img/gallery-2.jpeg" alt />
-        <a class="btn btn-primary" href="img/gallery-2.jpeg" data-lightbox="gallery">
-          <i class="fa fa-2x fa-plus text-white"></i>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <img class="img-fluid w-100" src="img/gallery-3.jpeg" alt />
-        <a class="btn btn-primary" href="img/gallery-3.jpeg" data-lightbox="gallery">
-          <i class="fa fa-2x fa-plus text-white"></i>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <img class="img-fluid w-100" src="img/gallery-4.jpg" alt />
-        <a class="btn btn-primary" href="img/gallery-4.jpg" data-lightbox="gallery">
-          <i class="fa fa-2x fa-plus text-white"></i>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <img class="img-fluid w-100" src="img/gallery-5.jpg" alt />
-        <a class="btn btn-primary" href="img/gallery-5.jpg" data-lightbox="gallery">
-          <i class="fa fa-2x fa-plus text-white"></i>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <img class="img-fluid w-100" src="img/Residencial.webp" alt />
-        <a class="btn btn-primary" href="img/Residencial.webp" data-lightbox="gallery">
-          <i class="fa fa-2x fa-plus text-white"></i>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <img class="img-fluid w-100" src="img/Intallation.webp" alt />
-        <a class="btn btn-primary" href="img/Intallation.webp" data-lightbox="gallery">
-          <i class="fa fa-2x fa-plus text-white"></i>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <img class="img-fluid w-100" src="img/gallery-9.jpg" alt />
-        <a class="btn btn-primary" href="img/gallery-9.jpg" data-lightbox="gallery">
-          <i class="fa fa-2x fa-plus text-white"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-  <!-- Gallary end -->
-
-  <!-- FAQs Start -->
-  <div class="container-fluid py-5" id="faqs">
-    <div class="container py-5">
-      <div class="section-title position-relative text-center">
-        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
-          FAQs
-        </h6>
-        <h1 class="display-4">You Should Know</h1>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6 border-right border-primary">
-          <div class="text-center text-md-left mr-md-3 mb-4 mb-md-0">
-            <h3 class="mb-4">Why Switch to Solar?</h3>
-            <h5 class="mb-3 fade-in-from-bottom ">
-              Save money on your electricity bills by reducing your grid
-              dependence.
-            </h5>
-            <h5 class="mb-3">
-              Increase your property value by making your home or business
-              more energy-efficient.
-            </h5>
-            <h5 class="mb-3">
-              Reduce your carbon footprint by using a clean, renewable and
-              abundant source of power.
-            </h5>
-            <h5 class="mb-0">
-              Gain more control and independence over your energy supply and
-              avoid rising grid prices.
-            </h5>
-          </div>
-        </div>
-        <hr />
-        <div class="col-md-6">
-          <div class="text-center text-md-left ml-md-3">
-            <h3 class="mb-4">Why Choose V Energy?</h3>
-            <h5 class="mb-3">
-              <i class="fa fa-check text-success mr-2"></i>Get high-quality
-              solar products and services from a leading solar provider in
-              South Africa.
-            </h5>
-            <h5 class="mb-3">
-              <i class="fa fa-check text-success mr-2"></i>Enjoy free
-              consultation, site inspection and system design.
-            </h5>
-            <h5 class="mb-3">
-              <i class="fa fa-check text-success mr-2"></i>
-              Helps you stay powered and reduce the inconvenience caused by loadshedding.
-
-            </h5>
-            <h5 class="mb-0">
-              <i class="fa fa-check text-success mr-2"></i>Receive exceptional
-              service and customer satisfaction from our qualified and
-              experienced team.
-            </h5>
-          </div>
-        </div>
-        <div class="col-md-12 text-center pt-3">
-          <a class="btn btn-primary font-weight-bold py-3 px-5 mt-4 btn-scroll" href="#contact">Get A Quote</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- FAQs End -->
-
-  <!-- Testimonial Start -->
-  
-   <div class="container-fluid py-5" id="testimonial">
-<iframe src='https://widgets.sociablekit.com/google-reviews/iframe/25349062' frameborder='0' width='100%'
-    height='450'></iframe>
-    <!--<div class="container py-5">
-      <div class="section-title position-relative text-center" style="margin-bottom: 120px">
-        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
-          Testimonial
-        </h6>
-        <h1 class="display-4">Our Clients Say</h1>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="owl-carousel testimonial-carousel">
-            <div class="text-center">
-              <img class="mx-auto mb-3" src="img/No Image.jpg" style="width: 100px; border-radius: 50%;" />
-              <p style="font-size: 22px">
-                Venergy has transformed our home with their exceptional solar
-                energy installation services. The team was professional,
-                efficient, and provided top-notch customer service throughout
-                the process. We now enjoy the benefits of clean, renewable
-                energy and have significantly reduced our electricity bills.
-                Highly recommended!
-              </p>
-              <h4>John Smith</h4>
-              <span>Homeowner</span>
-            </div>
-            <div class="text-center">
-              <img class="mx-auto mb-3" src="img/No Image.jpg" style="width: 100px; border-radius: 50%;" />
-              <p style="font-size: 22px">
-                Choosing Venergy for our solar panel installation was one of
-                the best decisions we made. Their team of experts guided us
-                every step of the way, from system design to installation and
-                maintenance. We are impressed with the quality of their
-                workmanship and the performance of our solar system. Thank
-                you, Venergy, for helping us go green!
-              </p>
-              <h4>Sarah Johnson</h4>
-              <span>Business Owner</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>-->
-  </div> 
-  <!-- Testimonial End -->
-  <div class="container-fluid " id="prices">
-    <div class="container py-3">
-      <div class="section-title position-relative text-center">
-        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
-          Prices
-        </h6>
-      </div>
-      <div class="demo">
-      </div>
+    <!-- ============ TRUST ============ -->
+    <section class="trust" id="trust" aria-label="Why homeowners trust V Energy">
       <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-sm-4 fade-in-image ">
-            <div class="pricingTable">
-              <h3 class="title">2.5 Kva System</h3>
-              <div class="price-value">
-                <span class="currency">R</span>
-                <span class="amount">25 000.00</span>
-                <span class="month"></span>
-              </div>
-              <ul class="pricing-content">
-                <li><b>2 </b>X 100ah Battries</li>
-                <li><b>2 </b>X Solar Panels</li>
-                <li><b>2.5Kva </b>X Inverter</li>
-              </ul>
-              <a href="#contact" class="pricingTable-signup">Order Now</a>
+        <ul class="stats">
+          <li data-reveal>
+            <strong><span data-count="10">10</span>+</strong>
+            <span>Years installing solar in South Africa</span>
+          </li>
+          <li data-reveal style="--d: 80ms">
+            <strong>5<svg class="i star-i" aria-hidden="true"><use href="#i-star"/></svg></strong>
+            <a class="stat-link" href="#reviews"><span class="sr-only">5 stars. </span>Rated by our <span class="nw">customers<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+          </li>
+          <li data-reveal style="--d: 160ms">
+            <strong><span data-count="25">25</span>&nbsp;yr</strong>
+            <span>Panel performance warranty<sup>*</sup></span>
+          </li>
+          <li data-reveal style="--d: 240ms">
+            <strong>Free</strong>
+            <span>Consultation, site visit &amp; design</span>
+          </li>
+        </ul>
+        <p class="trust-foot"><sup>*</sup>Manufacturer warranty on tier-1 panels.</p>
+      </div>
+      <div class="marquee">
+        <p class="marquee-label">Brands we install &amp; support</p>
+        <div class="marquee-viewport">
+          <ul class="marquee-track">
+            <li>Deye</li><li>Sunsynk</li><li>SVOLT</li><li>Pylontech</li><li>Dyness</li><li>JA Solar</li><li>Jinko Solar</li><li>Canadian Solar</li><li>Victron Energy</li><li>Growatt</li>
+          </ul>
+          <ul class="marquee-track" aria-hidden="true">
+            <li>Deye</li><li>Sunsynk</li><li>SVOLT</li><li>Pylontech</li><li>Dyness</li><li>JA Solar</li><li>Jinko Solar</li><li>Canadian Solar</li><li>Victron Energy</li><li>Growatt</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="kicker">What we do</p>
+          <h2 id="services-title">Solar, backup power and generators, <em>done properly</em></h2>
+          <p class="lead">Whatever your electrical needs, one experienced team handles everything: design, installation, compliance and aftercare. We never ask our customers to compromise.</p>
+        </div>
+
+        <div class="bento">
+          <article class="svc svc--feature" data-reveal>
+            <div class="svc-media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/svc-home-480.avif 480w, assets/img/svc-home-720.avif 720w, assets/img/svc-home-900.avif 900w" sizes="(min-width: 1024px) 600px, (min-width: 700px) 50vw, calc(100vw - 32px)">
+                <img src="assets/img/svc-home-720.webp" srcset="assets/img/svc-home-480.webp 480w, assets/img/svc-home-720.webp 720w, assets/img/svc-home-900.webp 900w" sizes="(min-width: 1024px) 600px, (min-width: 700px) 50vw, calc(100vw - 32px)" width="900" height="600" alt="Solar panels installed on a terracotta-tiled family home" loading="lazy" decoding="async">
+              </picture>
             </div>
-          </div>
-          <div class="col-md-3 col-sm-4 fade-in-image">
-            <div class="pricingTable">
-              <h3 class="title">3 Kva System</h3>
-              <div class="price-value">
-                <span class="currency">R</span>
-                <span class="amount">56 000.00</span>
-                <span class="month"></span>
-              </div>
-              <ul class="pricing-content">
-                <li><b>2 </b>X 100ah Battries</li>
-                <li><b>3 </b>X Solar Panels</li>
-                <li><b>3Kva </b> Inverter</li>
+            <div class="svc-body">
+              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Homes</span>
+              <h3>Home solar &amp; hybrid systems</h3>
+              <p>Solar panels, a hybrid inverter and lithium batteries sized to your household. Run on sunshine by day and stored power at night, with automatic switch-over the moment the grid drops.</p>
+              <ul class="ticks">
+                <li>Lower monthly bills</li>
+                <li>Seamless outage backup</li>
+                <li>Live monitoring on your phone</li>
               </ul>
-              <a href="#contact" class="pricingTable-signup">Order Now</a>
+              <a class="svc-link" href="#callback" data-book data-service="Home solar &amp; battery" data-source="Services: home">Get a home quote<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
-          </div>
-          <div class="col-md-3 col-sm-4 fade-in-image">
-            <div class="pricingTable">
-              <h3 class="title">5 Kva System</h3>
-              <div class="price-value">
-                <span class="currency">R</span>
-                <span class="amount">116 000.00</span>
-                <span class="month"></span>
-              </div>
-              <ul class="pricing-content">
-                <li><b>4 </b>X 100ah Battries</li>
-                <li><b>6 </b>X Solar Panels</li>
-                <li><b>5kva </b> Inverter</li>
+          </article>
+
+          <article class="svc svc--feature" data-reveal style="--d: 80ms">
+            <div class="svc-media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/svc-business-480.avif 480w, assets/img/svc-business-680.avif 680w, assets/img/svc-business-960.avif 960w, assets/img/svc-business-1200.avif 1200w, assets/img/svc-business-1470.avif 1470w" sizes="(min-width: 1024px) 600px, (min-width: 700px) 50vw, calc(100vw - 32px)">
+                <img src="assets/img/svc-business-680.webp" srcset="assets/img/svc-business-480.webp 480w, assets/img/svc-business-680.webp 680w, assets/img/svc-business-960.webp 960w, assets/img/svc-business-1200.webp 1200w, assets/img/svc-business-1470.webp 1470w" sizes="(min-width: 1024px) 600px, (min-width: 700px) 50vw, calc(100vw - 32px)" width="1470" height="980" alt="Aerial view of rows of solar panels on a large commercial rooftop" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="svc-body">
+              <span class="tag tag--blue"><svg class="i" aria-hidden="true"><use href="#i-building"/></svg>Business</span>
+              <h3>Commercial &amp; industrial solar</h3>
+              <p>Cut daytime operating costs with rooftop systems engineered around your load profile, for offices, retail, warehouses and light industry.</p>
+              <ul class="ticks">
+                <li>Big daytime savings</li>
+                <li>Scalable, modular design</li>
+                <li>Installs planned around your trading hours</li>
               </ul>
-              <a href="#contact" class="pricingTable-signup">Order Now</a>
+              <a class="svc-link" href="#callback" data-book data-service="Business / commercial solar" data-source="Services: business">Talk to an engineer<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="svc" data-reveal>
+            <div class="svc-media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/install-b-400.avif 400w, assets/img/install-b-680.avif 680w, assets/img/install-b-860.avif 860w, assets/img/install-b-1072.avif 1072w" sizes="(min-width: 1024px) 300px, (min-width: 700px) 50vw, calc(100vw - 32px)">
+                <img src="assets/img/install-b-680.webp" srcset="assets/img/install-b-400.webp 400w, assets/img/install-b-680.webp 680w, assets/img/install-b-860.webp 860w, assets/img/install-b-1072.webp 1072w" sizes="(min-width: 1024px) 300px, (min-width: 700px) 50vw, calc(100vw - 32px)" width="1072" height="1340" alt="Hybrid inverter and two lithium batteries installed by V Energy" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="svc-body">
+              <span class="tag tag--green"><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>Backup</span>
+              <h3>Backup power</h3>
+              <p>Inverter and lithium battery kits with no panels needed. They charge from the grid and take over silently and automatically when the power goes off.</p>
+              <a class="svc-link" href="#prices-backup">See backup prices<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="svc" data-reveal style="--d: 80ms">
+            <div class="svc-media svc-media--gen">
+              <span class="gen-ic" aria-hidden="true"><svg class="i"><use href="#i-generator"/></svg></span>
+              <p class="gen-range"><strong>3 to 2&nbsp;000&nbsp;kVA</strong> Silent and open-frame, home to industrial</p>
+            </div>
+            <div class="svc-body">
+              <span class="tag tag--blue"><svg class="i" aria-hidden="true"><use href="#i-generator"/></svg>Generators</span>
+              <h3>Generators, any size</h3>
+              <p>Portable petrol, silent diesel and automatic standby generators for homes, up to industrial sets of 2&nbsp;000&nbsp;kVA for factories, farms and commercial sites.</p>
+              <a class="svc-link" href="#prices-generators">See generator prices<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="svc" data-reveal style="--d: 160ms">
+            <div class="svc-media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/svc-repairs-480.avif 480w, assets/img/svc-repairs-680.avif 680w, assets/img/svc-repairs-960.avif 960w, assets/img/svc-repairs-1152.avif 1152w" sizes="(min-width: 1024px) 300px, (min-width: 700px) 50vw, calc(100vw - 32px)">
+                <img src="assets/img/svc-repairs-680.webp" srcset="assets/img/svc-repairs-480.webp 480w, assets/img/svc-repairs-680.webp 680w, assets/img/svc-repairs-960.webp 960w, assets/img/svc-repairs-1152.webp 1152w" sizes="(min-width: 1024px) 300px, (min-width: 700px) 50vw, calc(100vw - 32px)" width="1152" height="768" alt="Technician testing solar panel output with a multimeter on a roof" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="svc-body">
+              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg>Service</span>
+              <h3>Maintenance, repairs &amp; upgrades</h3>
+              <p>Health checks, fault-finding, panel cleaning, battery upgrades and system expansions that keep every kilowatt flowing.</p>
+              <a class="svc-link" href="#callback" data-book data-service="Repairs, maintenance or upgrade" data-source="Services: maintenance">Book a service<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="svc svc--urgent" data-reveal style="--d: 240ms">
+            <div class="svc-media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/svc-emergency-480.avif 480w, assets/img/svc-emergency-720.avif 720w, assets/img/svc-emergency-900.avif 900w" sizes="(min-width: 1024px) 300px, (min-width: 700px) 50vw, calc(100vw - 32px)">
+                <img src="assets/img/svc-emergency-720.webp" srcset="assets/img/svc-emergency-480.webp 480w, assets/img/svc-emergency-720.webp 720w, assets/img/svc-emergency-900.webp 900w" sizes="(min-width: 1024px) 300px, (min-width: 700px) 50vw, calc(100vw - 32px)" width="900" height="600" alt="Installer in blue overalls securing a solar panel on a rooftop" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="svc-body">
+              <span class="tag tag--red"><svg class="i" aria-hidden="true"><use href="#i-siren"/></svg>Urgent</span>
+              <h3>Emergency call-outs</h3>
+              <p>System down? Our technicians respond quickly to diagnose the problem and get your power back on.</p>
+              <a class="svc-link" href="tel:+27108245582" data-track="call_click">Call for urgent help<svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ENERGY SIMULATOR ============ -->
+    <section class="section sim" id="how-solar-works" aria-labelledby="sim-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <p class="kicker">See it in action</p>
+          <h2 id="sim-title">Watch your home run on <em>sunshine</em></h2>
+          <p class="lead">Move through a day and switch on load-shedding. This is the kind of live view your system's monitoring app gives you: solar powers the home first, the battery covers the evening and the grid is only a backup.</p>
+        </div>
+
+        <div class="sim-card" data-reveal>
+          <div class="sim-scene">
+            <p class="sim-scene-title">Live energy flow</p>
+            <div class="flow-map" id="flow-map">
+              <svg class="flow-lines" viewBox="0 0 400 300" aria-hidden="true">
+                <path class="flow-base" d="M200 50 V150"/>
+                <path class="flow flow--solar" id="flow-solar" d="M200 50 V150"/>
+                <path class="flow-base flow-base--grid" d="M66.67 150 H200"/>
+                <path class="flow flow--grid" id="flow-grid" d="M66.67 150 H200"/>
+                <path class="flow-base" d="M200 150 H333.33"/>
+                <path class="flow flow--home" id="flow-home" d="M200 150 H333.33"/>
+                <path class="flow-base" d="M200 150 V250"/>
+                <path class="flow flow--batt" id="flow-batt" d="M200 150 V250"/>
+              </svg>
+              <div class="fnode fnode--solar">
+                <span class="fnode-ic"><svg class="i" aria-hidden="true"><use href="#i-sun"/></svg></span>
+                <span class="fnode-txt"><span class="fnode-label">Solar panels</span><strong class="fnode-val" id="sim-solar">2.8 kW</strong></span>
+              </div>
+              <div class="fnode fnode--grid">
+                <span class="fnode-ic"><svg class="i" aria-hidden="true"><use href="#i-pylon"/></svg></span>
+                <span class="fnode-txt"><span class="fnode-label" id="sim-grid-label">Grid</span><strong class="fnode-val" id="sim-grid">0.0 kW</strong></span>
+              </div>
+              <div class="fnode fnode--inv">
+                <span class="fnode-ic"><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg><span class="fnode-inv-label">Hybrid inverter</span></span>
+              </div>
+              <div class="fnode fnode--home">
+                <span class="fnode-ic"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>
+                <span class="fnode-txt"><span class="fnode-label">Home</span><strong class="fnode-val" id="sim-home">0.8 kW</strong></span>
+              </div>
+              <div class="fnode fnode--batt">
+                <span class="fnode-ic">
+                  <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="ring-bg" cx="32" cy="32" r="30"/><circle class="ring-val" id="sim-batt-ring" cx="32" cy="32" r="30" pathLength="100"/></svg>
+                  <svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>
+                </span>
+                <span class="fnode-txt"><span class="fnode-label">Battery</span><strong class="fnode-val" id="sim-batt">100%</strong></span>
+              </div>
             </div>
           </div>
 
-          <div class="col-md-3 col-sm-4 fade-in-image">
-            <div class="pricingTable">
-              <h3 class="title">10Kva System</h3>
-              <div class="price-value">
-                <span class="currency">R</span>
-                <span class="amount">210 000.00</span>
-                <span class="month"></span>
-              </div>
-              <ul class="pricing-content">
-                <li><b>8 </b>X 100ah Battries</li>
-                <li><b>12 </b>X Solar Panels</li>
-                <li><b>2 X 5Kva</b> Inverter</li>
-              </ul>
-              <a href="#contact" class="pricingTable-signup">Order Now</a>
+          <div class="sim-panel">
+            <div class="sim-clock">
+              <span class="sim-clock-label">Time of day</span>
+              <output class="sim-time" id="sim-time" for="sim-range">12:00</output>
             </div>
+            <label class="sim-range-wrap">
+              <span class="sr-only">Time of day</span>
+              <input class="sim-range" id="sim-range" type="range" min="300" max="1380" step="5" value="720">
+              <span class="sim-range-scale" aria-hidden="true"><span>05:00</span><span>12:00</span><span>23:00</span></span>
+            </label>
+            <div class="sim-controls">
+              <button class="btn btn-outline btn-sm" type="button" id="sim-play" aria-pressed="false">
+                <svg class="i i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i i-pause" aria-hidden="true"><use href="#i-pause"/></svg><span>Play day</span>
+              </button>
+              <label class="switch">
+                <input type="checkbox" id="sim-ls">
+                <span class="switch-ui" aria-hidden="true"></span>
+                <span class="switch-label">Load-shedding</span>
+              </label>
+            </div>
+            <p class="sim-status" id="sim-status" aria-live="polite">Midday: your panels are powering the home and charging the battery.</p>
+            <p class="fineprint">Simulation of a typical single-phase 5 kVA hybrid system with 10 kWh of lithium storage on a sunny South African day.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ SAVINGS ADVISOR ============ -->
+    <section class="section advisor" id="savings" aria-labelledby="savings-title">
+      <div class="container advisor-grid">
+        <div class="advisor-copy" data-reveal>
+          <p class="kicker">Smart solar advisor</p>
+          <h2 id="savings-title">What size system <em>do you need?</em></h2>
+          <p class="lead">Answer three quick questions for an instant recommendation and savings estimate. No sign-up, no spam.</p>
+
+          <form class="advisor-form" id="advisor" action="#contact" novalidate>
+            <fieldset class="q">
+              <legend><span class="q-num">1</span>Where will it be installed?</legend>
+              <div class="seg seg--2">
+                <label><input type="radio" name="property" value="home" checked><span><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home</span></label>
+                <label><input type="radio" name="property" value="business"><span><svg class="i" aria-hidden="true"><use href="#i-building"/></svg>Business</span></label>
+              </div>
+            </fieldset>
+
+            <div class="q">
+              <div class="q-row">
+                <label class="q-label" for="bill"><span class="q-num">2</span>Your average monthly electricity bill</label>
+                <output class="bill-out" id="bill-out" for="bill">R2&nbsp;500</output>
+              </div>
+              <input class="range" type="range" id="bill" name="bill" min="500" max="20000" step="100" value="2500">
+              <div class="range-scale" aria-hidden="true"><span>R500</span><span>R10 000</span><span>R20 000+</span></div>
+            </div>
+
+            <fieldset class="q">
+              <legend><span class="q-num">3</span>What matters most to you?</legend>
+              <div class="seg seg--3">
+                <label><input type="radio" name="goal" value="backup"><span>Backup during outages</span></label>
+                <label><input type="radio" name="goal" value="both" checked><span>Backup + savings</span></label>
+                <label><input type="radio" name="goal" value="savings"><span>Maximum savings</span></label>
+              </div>
+            </fieldset>
+            <button class="btn btn-dark btn-block advisor-go" type="submit">See my recommendation<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </form>
+        </div>
+
+        <div class="advisor-result" data-reveal style="--d: 120ms">
+          <div class="result-card" aria-live="polite">
+            <figure class="result-photo">
+              <picture>
+                <source type="image/avif" srcset="assets/img/home-rooftop-480.avif 480w, assets/img/home-rooftop-720.avif 720w, assets/img/home-rooftop-1024.avif 1024w" sizes="(min-width: 1024px) 520px, calc(100vw - 80px)">
+                <img src="assets/img/home-rooftop-720.webp" srcset="assets/img/home-rooftop-480.webp 480w, assets/img/home-rooftop-720.webp 720w, assets/img/home-rooftop-1024.webp 1024w" sizes="(min-width: 1024px) 520px, calc(100vw - 80px)" width="1024" height="480" alt="Rooftop solar panels on a family home under a clear blue sky" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+            <p class="result-label">Our recommendation</p>
+            <h3 class="result-name" id="r-name">5 kVA Family Power</h3>
+            <p class="result-sub" id="r-sub">6 panels · 5 kVA hybrid inverter · 2 × 200 Ah lithium batteries</p>
+            <dl class="result-stats">
+              <div><dt>Est. monthly saving</dt><dd id="r-month">R1 410</dd></div>
+              <div><dt>Est. yearly saving</dt><dd id="r-year">R16 920</dd></div>
+              <div><dt>Bill covered</dt><dd id="r-cover">56%</dd></div>
+              <div><dt>Payback</dt><dd id="r-payback">≈ 6.9 yrs</dd></div>
+            </dl>
+            <div class="result-extra">
+              <p><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg><span>Keeps running in outages: <strong id="r-backup">most of the home</strong></span></p>
+              <p><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg><span>CO₂ avoided: <strong id="r-co2">4.6 t</strong> a year</span></p>
+            </div>
+            <p class="result-price"><span>Package from, excl. VAT</span><strong id="r-price">R116 000</strong></p>
+            <a class="btn btn-primary btn-lg btn-block" href="#callback" data-book data-advisor data-source="Savings advisor">
+              <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call about this system
+            </a>
+            <p class="fineprint">Estimate only, based on typical South African sun hours and a R3.50/kWh tariff. Prices exclude VAT, and the payback for homes includes 15% VAT. Pricing depends on the scope of your installation and is confirmed after a free site assessment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PACKAGES ============ -->
+    <section class="section packages" id="packages" aria-labelledby="packages-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <p class="kicker">Packages &amp; pricing</p>
+          <h2 id="packages-title">Clear pricing. <em>Serious hardware.</em></h2>
+          <p class="lead">Starting prices for our most popular solar, backup power and generator options. Prices exclude VAT and are for single-phase installations, and every job is priced according to its scope.</p>
+        </div>
+
+        <div class="price-tabs" role="tablist" aria-label="Product range" data-reveal>
+          <button class="price-tab" type="button" role="tab" id="tab-solar" aria-controls="prices-solar" aria-selected="true"><svg class="i" aria-hidden="true"><use href="#i-sun"/></svg>Solar hybrid systems</button>
+          <button class="price-tab" type="button" role="tab" id="tab-backup" aria-controls="prices-backup" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>Backup power</button>
+          <button class="price-tab" type="button" role="tab" id="tab-generators" aria-controls="prices-generators" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true"><use href="#i-generator"/></svg>Generators</button>
+        </div>
+
+        <div class="price-panel" id="prices-solar" role="tabpanel" aria-labelledby="tab-solar" tabindex="0">
+          <h3 class="price-panel-title">Solar hybrid systems</h3>
+          <p class="price-intro">Solar panels with a hybrid inverter and lithium batteries, 24&nbsp;V or 48&nbsp;V depending on your needs. Lower bills by day and backup through the night.</p>
+          <div class="pkgs">
+          <article class="pkg">
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">2.5 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Essential Backup</h4>
+              <p class="pkg-desc">Keeps the basics on during outages.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R25&nbsp;000</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>2.5 kVA inverter</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-panel"/></svg>2 × solar panels</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>1 × 200 Ah lithium battery</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Lights, Wi-Fi, TV &amp; laptops</li>
+            </ul>
+            <a class="btn btn-outline btn-block" href="#callback" data-book data-service="Home solar &amp; battery" data-package="2.5 kVA Essential Backup solar system (from R25 000 excl. VAT)" data-source="Packages">Book this system</a>
+          </article>
+          <article class="pkg">
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">3 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Home Starter</h4>
+              <p class="pkg-desc">More solar, more backup, lower bills.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R56&nbsp;000</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>3 kVA inverter</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-panel"/></svg>3 × solar panels</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>1 × 200 Ah lithium battery</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Adds your fridge &amp; gate motor</li>
+            </ul>
+            <a class="btn btn-outline btn-block" href="#callback" data-book data-service="Home solar &amp; battery" data-package="3 kVA Home Starter solar system (from R56 000 excl. VAT)" data-source="Packages">Book this system</a>
+          </article>
+          <article class="pkg pkg--featured">
+            <span class="pkg-badge"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg>Recommended</span>
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">5 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Family Power</h4>
+              <p class="pkg-desc">Run most of your home on sunshine.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R116&nbsp;000</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>5 kVA hybrid inverter</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-panel"/></svg>6 × solar panels</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>2 × 200 Ah lithium batteries</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Most of the home (excl. geyser &amp; oven)</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="#callback" data-book data-service="Home solar &amp; battery" data-package="5 kVA Family Power solar system (from R116 000 excl. VAT)" data-source="Packages">Book this system</a>
+          </article>
+          <article class="pkg">
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">10 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Whole Home</h4>
+              <p class="pkg-desc">For big homes and small businesses.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R210&nbsp;000</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>10 kVA hybrid inverter</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-panel"/></svg>12 × solar panels</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>4 × 200 Ah lithium batteries</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>The whole home, heavier loads included</li>
+            </ul>
+            <a class="btn btn-outline btn-block" href="#callback" data-book data-service="Home solar &amp; battery" data-package="10 kVA Whole Home solar system (from R210 000 excl. VAT)" data-source="Packages">Book this system</a>
+          </article>
+          </div>
+        </div>
+
+        <div class="price-panel" id="prices-backup" role="tabpanel" aria-labelledby="tab-backup" tabindex="0">
+          <h3 class="price-panel-title">Backup power</h3>
+          <p class="price-intro">An inverter and lithium battery with no panels. It charges from the grid and takes over the moment the power goes off. Add solar whenever you are ready.</p>
+          <div class="pkgs pkgs--3">
+          <article class="pkg">
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">3 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Backup Lite</h4>
+              <p class="pkg-desc">Keeps the essentials on during outages.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R24&nbsp;900</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>3 kVA inverter</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>2.5 kWh lithium battery</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Lights, Wi-Fi, TV &amp; laptops</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Switches over automatically</li>
+            </ul>
+            <a class="btn btn-outline btn-block" href="#callback" data-book data-service="Backup power (inverter + battery)" data-package="Backup Lite: 3 kVA inverter + 2.5 kWh lithium battery (from R24 900 excl. VAT)" data-source="Packages">Book this kit</a>
+          </article>
+          <article class="pkg pkg--featured">
+            <span class="pkg-badge"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg>Recommended</span>
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">5 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Backup Plus</h4>
+              <p class="pkg-desc">Longer backup with room to grow.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R39&nbsp;900</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>5 kVA hybrid inverter</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>5 kWh lithium battery</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Adds the fridge &amp; gate motor</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-sun"/></svg>Ready for solar panels later</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="#callback" data-book data-service="Backup power (inverter + battery)" data-package="Backup Plus: 5 kVA hybrid inverter + 5 kWh lithium battery (from R39 900 excl. VAT)" data-source="Packages">Book this kit</a>
+          </article>
+          <article class="pkg">
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">8 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Backup Max</h4>
+              <p class="pkg-desc">Runs most of the home through an outage.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R79&nbsp;900</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>8 kVA hybrid inverter</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg>10 kWh lithium battery</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Most of the home (excl. geyser &amp; oven)</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-sun"/></svg>Ready for solar panels later</li>
+            </ul>
+            <a class="btn btn-outline btn-block" href="#callback" data-book data-service="Backup power (inverter + battery)" data-package="Backup Max: 8 kVA hybrid inverter + 10 kWh lithium battery (from R79 900 excl. VAT)" data-source="Packages">Book this kit</a>
+          </article>
+          </div>
+        </div>
+
+        <div class="price-panel" id="prices-generators" role="tabpanel" aria-labelledby="tab-generators" tabindex="0">
+          <h3 class="price-panel-title">Generators</h3>
+          <p class="price-intro">From portable petrol units to silent diesel and automatic standby sets, plus industrial generators up to 2&nbsp;000&nbsp;kVA. Supplied, installed and serviced by our team.</p>
+          <div class="pkgs">
+          <article class="pkg">
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">3 to 8 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Portable petrol</h4>
+              <p class="pkg-desc">Affordable backup for homes, small shops and work sites.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R6&nbsp;999</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-generator"/></svg>Open-frame petrol generator</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>Recoil or electric start</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Runs lights, fridge, TV &amp; Wi-Fi</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Changeover switch available</li>
+            </ul>
+            <a class="btn btn-outline btn-block" href="#callback" data-book data-service="Generator" data-package="Portable petrol generator, 3 to 8 kVA (from R6 999 excl. VAT)" data-source="Packages">Ask about this generator</a>
+          </article>
+          <article class="pkg">
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">8 to 20 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Silent diesel</h4>
+              <p class="pkg-desc">Quiet, fuel-efficient power for homes, offices and clinics.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R39&nbsp;900</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-generator"/></svg>Diesel engine in a sound-proof canopy</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Quiet enough for residential areas</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>Auto-start ready</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Installation quoted on site</li>
+            </ul>
+            <a class="btn btn-outline btn-block" href="#callback" data-book data-service="Generator" data-package="Silent diesel generator, 8 to 20 kVA (from R39 900 excl. VAT)" data-source="Packages">Ask about this generator</a>
+          </article>
+          <article class="pkg pkg--featured">
+            <span class="pkg-badge"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg>Recommended</span>
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">15 to 20 kVA</span><span class="pkg-phase">Single-phase</span></p>
+              <h4 class="pkg-name">Automatic standby</h4>
+              <p class="pkg-desc">Starts by itself within seconds when the power fails.</p>
+            </div>
+            <p class="pkg-price"><small>From</small><span>R109&nbsp;900</span><small class="pkg-vat">excl. VAT</small></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-generator"/></svg>Silent diesel generator</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>Automatic changeover switch (ATS)</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Installed, wired &amp; commissioned</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg>Service plans available</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="#callback" data-book data-service="Generator" data-package="Automatic standby generator with ATS, 15 to 20 kVA (from R109 900 excl. VAT)" data-source="Packages">Ask about this generator</a>
+          </article>
+          <article class="pkg">
+            <div class="pkg-top">
+              <p class="pkg-tags"><span class="pkg-kva">30 to 2&nbsp;000&nbsp;kVA</span><span class="pkg-phase">Three-phase</span></p>
+              <h4 class="pkg-name">Industrial</h4>
+              <p class="pkg-desc">Prime and standby power for factories, farms, hospitals and commercial sites.</p>
+            </div>
+            <p class="pkg-price pkg-price--quote"><small>Priced</small><span>On request</span></p>
+            <ul class="pkg-list">
+              <li><svg class="i" aria-hidden="true"><use href="#i-generator"/></svg>Prime or standby rated</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg>Synchronised multi-set systems</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-pylon"/></svg>Fuel management &amp; remote monitoring</li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg>Installation &amp; maintenance contracts</li>
+            </ul>
+            <a class="btn btn-outline btn-block" href="#callback" data-book data-service="Generator" data-package="Industrial generator, 30 to 2&nbsp;000&nbsp;kVA (three-phase, quote)" data-source="Packages">Request a quote</a>
+          </article>
+          </div>
+        </div>
+        <p class="swipe-hint" aria-hidden="true"><svg class="i"><use href="#i-arrow"/></svg>Swipe to compare</p>
+
+        <div class="scope-note" data-reveal>
+          <span class="why-ic why-ic--green" aria-hidden="true"><svg class="i"><use href="#i-file"/></svg></span>
+          <p><strong>Single-phase prices, excluding VAT</strong>These are starting prices, excluding VAT, for single-phase installations of the equipment listed. Three-phase systems are quoted separately. Your final price depends on the scope of your installation, such as roof and mounting, cable runs, DB board work, battery capacity and voltage (24&nbsp;V or 48&nbsp;V lithium, depending on your needs) and site location, and we confirm it in writing after a free site assessment.</p>
+        </div>
+
+        <div class="custom-card" data-reveal>
+          <div class="custom-media">
+            <picture>
+              <source type="image/avif" srcset="assets/img/power-room-480.avif 480w, assets/img/power-room-853.avif 853w" sizes="(min-width: 900px) 420px, calc(100vw - 32px)">
+              <img src="assets/img/power-room-853.webp" srcset="assets/img/power-room-480.webp 480w, assets/img/power-room-853.webp 853w" sizes="(min-width: 900px) 420px, calc(100vw - 32px)" width="853" height="592" alt="Commercial power room with an inverter, a grid-tie inverter and distribution boards mounted on a wall" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="custom-body">
+            <p class="kicker">Commercial &amp; custom</p>
+            <h3 id="custom-title">Need a bigger or custom system?</h3>
+            <p>Commercial, industrial and three-phase systems designed around your load profile, from 10 kVA solar systems to industrial generators of 2&nbsp;000&nbsp;kVA. Get an engineer's eye on your site and an itemised proposal.</p>
+            <a class="btn btn-dark" href="#callback" data-book data-service="Business / commercial solar" data-source="Packages: custom">Talk to an engineer<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY V ENERGY ============ -->
+    <section class="section why" id="about" aria-labelledby="why-title">
+      <div class="container why-grid">
+        <div class="why-visual" data-reveal>
+          <div class="why-frame" data-parallax="lg" data-speed="-0.06">
+            <picture>
+              <source type="image/avif" srcset="assets/img/why-consult-480.avif 480w, assets/img/why-consult-720.avif 720w, assets/img/why-consult-960.avif 960w, assets/img/why-consult-1280.avif 1280w" sizes="(min-width: 1024px) 480px, 90vw">
+              <img src="assets/img/why-consult-720.webp" srcset="assets/img/why-consult-480.webp 480w, assets/img/why-consult-720.webp 720w, assets/img/why-consult-960.webp 960w, assets/img/why-consult-1280.webp 1280w" sizes="(min-width: 1024px) 480px, 90vw" width="1280" height="1600" alt="Solar consultant inspecting a panel during a system design session" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="float-badge fb-1" data-parallax="lg" data-speed="0.08">
+            <strong>10+</strong><span>years of<br>solar installs</span>
+          </div>
+          <div class="float-badge fb-2" data-parallax="lg" data-speed="0.14">
+            <svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span>CoC certified<br>installations</span>
+          </div>
+        </div>
+
+        <div class="why-copy">
+          <div data-reveal>
+            <p class="kicker">Why V Energy</p>
+            <h2 id="why-title">A decade of keeping South Africa <em>powered</em></h2>
+            <p class="lead">V Energy (Vees Capital (Pty) Ltd) is a Randburg-based team of engineers, installers and technicians who have been designing and installing solar, backup power and generator systems across South Africa since 2016. We're passionate about reliable power, and obsessive about doing it right.</p>
+          </div>
+          <ul class="why-list">
+            <li data-reveal>
+              <span class="why-ic"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg></span>
+              <div><h3>Experienced, qualified team</h3><p>Our own engineers, installers and technicians handle every project from start to finish.</p></div>
+            </li>
+            <li data-reveal style="--d: 60ms">
+              <span class="why-ic why-ic--blue"><svg class="i" aria-hidden="true"><use href="#i-panel"/></svg></span>
+              <div><h3>Tier-1 hardware only</h3><p>Proven panels, inverters, lithium batteries and generators from established brands, with local support and real warranties.</p></div>
+            </li>
+            <li data-reveal style="--d: 120ms">
+              <span class="why-ic why-ic--green"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg></span>
+              <div><h3>Free consultation &amp; design</h3><p>Free site inspection, system design and a clear, itemised quote with no hidden extras.</p></div>
+            </li>
+            <li data-reveal style="--d: 180ms">
+              <span class="why-ic"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span>
+              <div><h3>Neat, compliant installs</h3><p>Tidy trunking, labelled boards and a Certificate of Compliance (CoC) on completion.</p></div>
+            </li>
+            <li data-reveal style="--d: 240ms">
+              <span class="why-ic why-ic--blue"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+              <div><h3>Aftercare that lasts</h3><p>Ongoing maintenance and support, so your system keeps performing for years to come.</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section process" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <p class="kicker">How it works</p>
+          <h2 id="process-title">From first call to switch‑on in <em>5 simple steps</em></h2>
+        </div>
+        <ol class="steps" data-steps>
+          <li class="step" data-reveal>
+            <span class="step-ic"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <h3>Book a free call</h3>
+            <p>Tell us what you want to power. 15 minutes, zero obligation.</p>
+          </li>
+          <li class="step" data-reveal style="--d: 80ms">
+            <span class="step-ic"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></span>
+            <h3>Free site assessment</h3>
+            <p>We check your roof, DB board and usage to size the right system.</p>
+          </li>
+          <li class="step" data-reveal style="--d: 160ms">
+            <span class="step-ic"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg></span>
+            <h3>Design &amp; quote</h3>
+            <p>A tailored design and a clear, itemised quote. No hidden extras.</p>
+          </li>
+          <li class="step" data-reveal style="--d: 240ms">
+            <span class="step-ic"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+            <h3>Expert installation</h3>
+            <p>Neat, safe work by our own team. Most homes take 1 to 2 days.</p>
+          </li>
+          <li class="step" data-reveal style="--d: 320ms">
+            <span class="step-ic"><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg></span>
+            <h3>Switch-on &amp; aftercare</h3>
+            <p>CoC, app setup and a full handover, plus ongoing support.</p>
+          </li>
+        </ol>
+        <div class="center" data-reveal>
+          <a class="btn btn-primary btn-lg" href="#callback" data-book data-source="Process">
+            <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Start with a free call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARALLAX BAND ============ -->
+    <section class="band" aria-labelledby="band-title">
+      <div class="band-media" aria-hidden="true">
+        <div class="band-parallax" data-parallax data-speed="0.18">
+          <picture>
+            <source type="image/avif" srcset="assets/img/band-field-768.avif 768w, assets/img/band-field-1280.avif 1280w, assets/img/band-field-1920.avif 1920w" sizes="100vw">
+            <img src="assets/img/band-field-1280.webp" srcset="assets/img/band-field-768.webp 768w, assets/img/band-field-1280.webp 1280w, assets/img/band-field-1920.webp 1920w" sizes="100vw" width="1920" height="800" alt="" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </div>
+      <div class="container band-inner">
+        <div class="band-card" data-reveal>
+          <h2 id="band-title">South Africa gets some of the best sunshine on earth. <span>Let's put it to work for you.</span></h2>
+          <p class="band-rotator">Powering homes and businesses across South Africa since 2016.</p>
+          <a class="btn btn-primary btn-lg" href="#callback" data-book data-source="Band">
+            <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RECENT INSTALLS ============ -->
+    <section class="section work" id="projects" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="kicker">Recent installations</p>
+          <h2 id="work-title">Neat work you'll be <em>proud to show off</em></h2>
+          <p class="lead">Real V Energy installations: hybrid inverters and lithium batteries, mounted, trunked and labelled to a professional standard.</p>
+        </div>
+        <div class="work-grid">
+          <figure class="work-item work-item--lg" data-reveal>
+            <a href="assets/img/install-c-1400.webp" data-lightbox data-caption="Commissioning a hybrid inverter with twin SVOLT lithium batteries">
+              <picture>
+                <source type="image/avif" srcset="assets/img/install-c-480.avif 480w, assets/img/install-c-800.avif 800w, assets/img/install-c-1120.avif 1120w, assets/img/install-c-1400.avif 1400w" sizes="(min-width: 1024px) 720px, calc(100vw - 32px)">
+                <img src="assets/img/install-c-800.webp" srcset="assets/img/install-c-480.webp 480w, assets/img/install-c-800.webp 800w, assets/img/install-c-1120.webp 1120w, assets/img/install-c-1400.webp 1400w" sizes="(min-width: 1024px) 720px, calc(100vw - 32px)" width="1400" height="1050" alt="V Energy technician commissioning a hybrid inverter with twin SVOLT lithium batteries" loading="lazy" decoding="async">
+              </picture>
+              <span class="zoom" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span>
+            </a>
+            <figcaption>Commissioning a hybrid inverter with twin SVOLT lithium batteries</figcaption>
+          </figure>
+          <figure class="work-item" data-reveal style="--d: 80ms">
+            <a href="assets/img/install-a-912.webp" data-lightbox data-caption="Hybrid inverter, lithium storage and neat trunking">
+              <picture>
+                <source type="image/avif" srcset="assets/img/install-a-360.avif 360w, assets/img/install-a-540.avif 540w, assets/img/install-a-720.avif 720w, assets/img/install-a-912.avif 912w" sizes="(min-width: 1024px) 340px, 50vw">
+                <img src="assets/img/install-a-540.webp" srcset="assets/img/install-a-360.webp 360w, assets/img/install-a-540.webp 540w, assets/img/install-a-720.webp 720w, assets/img/install-a-912.webp 912w" sizes="(min-width: 1024px) 340px, 50vw" width="912" height="1140" alt="Hybrid inverter above two wall-mounted lithium batteries with neat cable trunking" loading="lazy" decoding="async">
+              </picture>
+              <span class="zoom" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span>
+            </a>
+            <figcaption>Hybrid inverter, lithium storage and neat trunking</figcaption>
+          </figure>
+          <figure class="work-item" data-reveal style="--d: 160ms">
+            <a href="assets/img/install-b-1072.webp" data-lightbox data-caption="Clean isolator, DB and battery integration">
+              <picture>
+                <source type="image/avif" srcset="assets/img/install-b-400.avif 400w, assets/img/install-b-680.avif 680w, assets/img/install-b-860.avif 860w, assets/img/install-b-1072.avif 1072w" sizes="(min-width: 1024px) 340px, 50vw">
+                <img src="assets/img/install-b-680.webp" srcset="assets/img/install-b-400.webp 400w, assets/img/install-b-680.webp 680w, assets/img/install-b-860.webp 860w, assets/img/install-b-1072.webp 1072w" sizes="(min-width: 1024px) 340px, 50vw" width="1072" height="1340" alt="Inverter, isolators and distribution board integrated with two lithium batteries" loading="lazy" decoding="async">
+              </picture>
+              <span class="zoom" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span>
+            </a>
+            <figcaption>Clean isolator, DB and battery integration</figcaption>
+          </figure>
+          <div class="work-cta" data-reveal style="--d: 240ms">
+            <h3>Your home could be next</h3>
+            <p>Get a free site assessment and a system designed around how you actually use power.</p>
+            <a class="btn btn-primary" href="#callback" data-book data-source="Recent installs">Book a free assessment</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <p class="kicker">Reviews</p>
+          <h2 id="reviews-title">Don't just take <em>our word</em> for it</h2>
+          <p class="rating-line">
+            <span class="stars stars--lg" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <span>Highly rated by homeowners and businesses across South Africa</span>
+          </p>
+        </div>
+
+        <!--
+          SAMPLE REVIEWS: these nine quotes are placeholders that show the layout.
+          Replace each one with a genuine customer review and its real star rating
+          (for example, copied from your Google Business Profile) before the site goes live.
+        -->
+        <div class="review-track" data-reveal tabindex="0" role="region" aria-label="Customer reviews">
+          <figure class="review">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>From the first call to switch-on, the team was professional and incredibly neat. Load-shedding is now something we only hear about on the news.</p></blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">TM</span><span><strong>Thabo M.</strong><small>Northriding · 5 kVA hybrid</small></span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" role="img" aria-label="4 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg class="star-off" aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>Good quality install and a friendly team. Scheduling took a few days longer than we hoped, but the system has run perfectly since.</p></blockquote>
+            <figcaption><span class="avatar avatar--blue" aria-hidden="true">NP</span><span><strong>Nomsa P.</strong><small>Durban · 5 kVA hybrid</small></span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>Our office now runs on solar during the day. The installation was planned around our hours, so there was no downtime at all.</p></blockquote>
+            <figcaption><span class="avatar avatar--green" aria-hidden="true">JV</span><span><strong>Johan V.</strong><small>Pretoria · Commercial</small></span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>They explained everything in plain English and never tried to upsell us. Our electricity bill has dropped by more than half.</p></blockquote>
+            <figcaption><span class="avatar avatar--blue" aria-hidden="true">LK</span><span><strong>Lindiwe K.</strong><small>Randburg · Home solar</small></span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" role="img" aria-label="4 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg class="star-off" aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>Quick to respond when our old inverter failed. Diagnosed and fixed the same week. Great, honest service.</p></blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">PN</span><span><strong>Priya N.</strong><small>Fourways · Repairs</small></span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>Our shop no longer closes when the power goes off. Clear quote, tidy work and they followed up after the install.</p></blockquote>
+            <figcaption><span class="avatar avatar--green" aria-hidden="true">RL</span><span><strong>Ruan L.</strong><small>Cape Town · Commercial</small></span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>The app shows exactly what the panels are producing. Easily the best investment we've made in the house.</p></blockquote>
+            <figcaption><span class="avatar avatar--blue" aria-hidden="true">SD</span><span><strong>Sipho D.</strong><small>Roodepoort · 10 kVA whole home</small></span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>Honest advice, fair pricing and a really tidy install. We've already recommended V Energy to our neighbours.</p></blockquote>
+            <figcaption><span class="avatar avatar--green" aria-hidden="true">KS</span><span><strong>Karen S.</strong><small>Sandton · Backup kit</small></span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" role="img" aria-label="4 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg class="star-off" aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote><p>Professional from quote to handover. The monitoring app took a while to set up, but their support team sorted it out quickly.</p></blockquote>
+            <figcaption><span class="avatar" aria-hidden="true">AB</span><span><strong>Andre B.</strong><small>Bloemfontein · Home solar</small></span></figcaption>
+          </figure>
+        </div>
+
+        <div class="g-reviews" data-reveal>
+          <div class="g-reviews-head">
+            <div>
+              <h3>Live from Google</h3>
+              <p>Read the latest reviews on our Google Business Profile.</p>
+            </div>
+            <div class="g-reviews-actions">
+              <button class="btn btn-outline btn-sm" type="button" data-load-reviews aria-controls="g-reviews">Show live reviews</button>
+              <a class="btn btn-ghost btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=V%20Energy%20Northriding%20Randburg" target="_blank" rel="noopener">Open on Google<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+          <div class="g-reviews-frame" id="g-reviews" data-src="https://widgets.sociablekit.com/google-reviews/iframe/25349062" hidden>
+            <p class="g-reviews-ph">Loading our latest Google reviews…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div class="faq-intro" data-reveal>
+          <p class="kicker">FAQ</p>
+          <h2 id="faq-title">Questions? <em>Answered.</em></h2>
+          <p class="lead">Everything you need to know about going solar with V Energy. Can't find your answer? Speak to a real person.</p>
+          <div class="faq-actions">
+            <a class="btn btn-primary" href="#callback" data-book data-source="FAQ"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call</a>
+            <a class="btn btn-wa" href="https://wa.me/27813471724?text=Hi%20V%20Energy%2C%20I%20have%20a%20question%20about%20solar." target="_blank" rel="noopener" data-track="whatsapp_click"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Ask on WhatsApp</a>
+          </div>
+        </div>
+        <div class="faq-list" data-reveal style="--d: 100ms">
+          <details class="faq-item" open>
+            <summary><h3>How much does a solar or backup system cost?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Every installation is priced according to its scope. Our listed prices exclude VAT and are for single-phase installations. As a guide, solar hybrid systems start from <strong>R25 000</strong> for 2.5 kVA, <strong>R56 000</strong> for 3 kVA, <strong>R116 000</strong> for 5 kVA and <strong>R210 000</strong> for 10 kVA. Backup power kits without panels start from <strong>R24 900</strong>, and generators from <strong>R6 999</strong>. Your final price depends on your usage, roof, cabling, battery needs and location, and we confirm it in writing after a free site assessment.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>Are your prices for single-phase or three-phase?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Our listed prices exclude VAT and are for single-phase installations, which covers most homes and small businesses. Three-phase systems, such as larger commercial solar and industrial generators, are quoted separately after a site assessment.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>Can I get backup power without solar panels?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Yes. Our backup power kits are an inverter and lithium battery that charge from the grid and take over automatically when the power goes off, from R24 900 installed, excluding VAT. They are ready for solar, so you can add panels later.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>Do you supply generators?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Yes. We supply, install and service generators of every size: portable petrol generators for homes, silent diesel generators, automatic standby sets that start on their own when the power fails, and industrial generators from 30 kVA to 2&nbsp;000&nbsp;kVA for factories, farms and commercial sites. We can also connect a generator to your solar hybrid system.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>Will solar keep my lights on during load-shedding?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Yes. A hybrid inverter with battery storage switches over automatically when the grid goes down, so your essential appliances keep running. During the day your panels keep powering your home and recharging the batteries.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>How much can I save on electricity?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Savings depend on your system size, usage pattern and tariff. Our <a href="#savings">Smart Solar Advisor</a> gives an instant estimate, and we confirm exact figures after your free site assessment.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>How long does installation take?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Most residential systems are installed in one to two days once the design is approved and the equipment is on site. Larger commercial projects are scheduled to minimise disruption to your business.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>Do I need approval from my municipality or Eskom?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Grid-tied systems must be registered with your municipality or Eskom as a small-scale embedded generator (SSEG). We guide you through the requirements and provide the documentation you need, including a Certificate of Compliance (CoC).</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>How long do solar panels, inverters and batteries last?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Tier-1 solar panels typically carry 25-year performance warranties. Quality lithium (LiFePO4) batteries, which we fit in 24&nbsp;V or 48&nbsp;V depending on your needs, are rated for thousands of cycles, often 10 years or more, and hybrid inverters usually come with 5- to 10-year manufacturer warranties.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>Can I expand my system later?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Yes. We design systems to be modular, so you can add panels or batteries as your needs or budget grow.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>Do you offer maintenance and repairs?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Yes. We offer health checks, fault-finding, panel cleaning, repairs and upgrades, plus emergency call-outs if your system goes down.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><h3>Which areas do you cover?</h3><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-a"><p>Our head office is in Northriding, Randburg, and we install across all nine provinces: Gauteng, the Western Cape, KwaZulu-Natal, the Free State, the Eastern Cape, Limpopo, Mpumalanga, the Northern Cape and North West. We also take on projects in neighbouring countries. Just ask.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT / FINAL CTA ============ -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-copy" data-reveal>
+          <p class="kicker kicker--dark">Free · 15 minutes · No obligation</p>
+          <h2 id="contact-title">Ready to keep the lights on?</h2>
+          <p class="lead">Book a free call with a V Energy specialist. We'll answer your questions, estimate your savings and arrange a free site assessment. No pressure, no obligation.</p>
+          <div class="contact-ctas">
+            <a class="btn btn-dark btn-lg" href="#callback" data-book data-source="Contact">
+              <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call
+            </a>
+            <a class="btn btn-wa btn-lg" href="https://wa.me/27813471724?text=Hi%20V%20Energy%2C%20I%27d%20like%20a%20free%20solar%20consultation." target="_blank" rel="noopener" data-track="whatsapp_click">
+              <svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp us
+            </a>
+          </div>
+          <ul class="contact-list">
+            <li>
+              <svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>
+              <span><a href="tel:+27108245582" data-track="call_click">010&nbsp;824&nbsp;5582</a> · <a href="tel:+27790410946" data-track="call_click">079&nbsp;041&nbsp;0946</a> · <a href="tel:+27813471724" data-track="call_click">081&nbsp;347&nbsp;1724</a></span>
+            </li>
+            <li>
+              <svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>
+              <a href="mailto:sales@venergy.co.za">sales@venergy.co.za</a>
+            </li>
+            <li>
+              <svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Felstead%20Rd%20%26%20Northumberland%20Ave%2C%20Northriding%2C%20Randburg" target="_blank" rel="noopener">Franourt Office Park, Cnr Felstead &amp; Northumberland Ave, Northriding, Randburg 2162</a>
+            </li>
+            <li>
+              <svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>
+              <span>Call-backs Monday to Friday 08:00 to 17:00, Saturday 09:00 to 13:00. Office visits by appointment.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-card" id="callback" data-reveal style="--d: 120ms">
+          <h3>Prefer a call-back?</h3>
+          <p>Leave your number and we'll call you at a time that suits you.</p>
+          <form class="quick-form" action="https://formsubmit.co/3cd046a3a50af33a7b7bb5796841d5ac" method="POST" data-ajax-form>
+            <input type="hidden" name="_subject" value="Website call-back request for V Energy">
+            <input type="hidden" name="_cc" value="sales@venergy.co.za,marshall@venergy.co.za">
+            <input type="hidden" name="_next" value="https://venergy.co.za/Thankyou.html">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="Form" value="Call-back request">
+            <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+            <div class="field-row">
+              <div class="field">
+                <label for="q-name">Your name</label>
+                <input id="q-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="q-phone">Mobile number</label>
+                <input id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 082 123 4567" required pattern="[0-9 +\(\)\-]{9,}">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="q-email">Email <span class="opt">(optional)</span></label>
+                <input id="q-email" name="email" type="email" autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="q-area">Suburb or area</label>
+                <input id="q-area" name="Area" type="text" autocomplete="address-level2" placeholder="e.g. Randburg">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="q-interest">I'm interested in</label>
+                <select id="q-interest" name="Interested in">
+                  <option>Home solar &amp; battery</option>
+                  <option>Business / commercial solar</option>
+                  <option>Backup power (inverter + battery)</option>
+                  <option>Generator</option>
+                  <option>Repairs, maintenance or upgrade</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="q-time">Best time to call</label>
+                <select id="q-time" name="Best time to call">
+                  <option>Anytime</option>
+                  <option>Morning (08:00 to 12:00)</option>
+                  <option>Afternoon (12:00 to 17:00)</option>
+                  <option>Saturday morning</option>
+                </select>
+              </div>
+            </div>
+            <label class="consent">
+              <input type="checkbox" name="Consent" value="Yes, contact me about this enquiry" required>
+              <span>I agree that V Energy may contact me about this enquiry. See our <a href="privacy.html">privacy notice</a>.</span>
+            </label>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Request my call-back</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="container areas" data-reveal>
+        <h3>Areas we serve</h3>
+        <p class="areas-note">Head office in Northriding, Randburg. We install in all nine provinces, from Gauteng and the Free State to KwaZulu-Natal, the Western Cape and the Eastern Cape, and take on projects in neighbouring countries.</p>
+        <ul class="area-list">
+          <li>Johannesburg</li><li>Pretoria</li><li>Cape Town</li><li>Durban</li><li>Bloemfontein</li><li>Gqeberha</li><li>East London</li><li>Pietermaritzburg</li><li>Polokwane</li><li>Mbombela</li><li>Kimberley</li><li>Mahikeng</li><li class="more">&amp; everywhere in between</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand--light" href="#top" aria-label="V Energy, back to top">
+          <svg class="brand-mark" aria-hidden="true"><use href="#i-vmark"/></svg>
+          <span class="brand-word">V&nbsp;Energy</span>
+        </a>
+        <p>Solar panels, hybrid inverters and lithium battery systems for homes and businesses across South Africa, designed, installed and supported by one experienced team since 2016.</p>
+        <a class="btn btn-primary" href="#callback" data-book data-source="Footer"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call</a>
+      </div>
+      <nav class="footer-col" aria-label="Explore">
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-solar-works">How solar works</a></li>
+          <li><a href="#savings">Savings advisor</a></li>
+          <li><a href="#packages">Packages &amp; pricing</a></li>
+          <li><a href="#projects">Our work</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Services">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="#callback" data-book data-service="Home solar &amp; battery" data-source="Footer">Home solar &amp; batteries</a></li>
+          <li><a href="#callback" data-book data-service="Business / commercial solar" data-source="Footer">Commercial solar</a></li>
+          <li><a href="#callback" data-book data-service="Backup power (inverter + battery)" data-source="Footer">Backup power</a></li>
+          <li><a href="#callback" data-book data-service="Generator" data-source="Footer">Generators</a></li>
+          <li><a href="#callback" data-book data-service="Repairs, maintenance or upgrade" data-source="Footer">Maintenance &amp; repairs</a></li>
+          <li><a href="tel:+27108245582" data-track="call_click">Emergency call-outs</a></li>
+        </ul>
+      </nav>
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul class="footer-contact">
+          <li><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span><a href="tel:+27108245582" data-track="call_click">010&nbsp;824&nbsp;5582</a><br><a href="tel:+27790410946" data-track="call_click">079&nbsp;041&nbsp;0946</a><br><a href="tel:+27813471724" data-track="call_click">081&nbsp;347&nbsp;1724</a></span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:sales@venergy.co.za">sales@venergy.co.za</a></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span>Franourt Office Park, Cnr Felstead &amp; Northumberland Ave, Northriding, Randburg 2162</span></li>
+        </ul>
       </div>
     </div>
-
-
-  </div>
-  </div>
-
-
-
-  <!-- Contact Start -->
-  <div class="container-fluid py-5" id="contact">
-    <div class="container py-5">
-      <div class="section-title position-relative text-center">
-        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px">
-          Contact
-        </h6>
-        <h1 class="font-secondary display-4">Get In Touch</h1>
-        <h6>Get an Obligation- Free Quote and evaluation.</h6>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="contact-form">
-            <div id="success"></div>
-            <form action="https://formsubmit.co/3cd046a3a50af33a7b7bb5796841d5ac" method="POST">
-              <div class="form-row">
-                <div class="col-sm-6 control-group">
-                  <input type="hidden" name="_cc" value="sales@Venergy.co.za,marshall@venergy.co.za">
-                  <input type="hidden" name="_next" value="http://venergy.co.za/Thankyou.html" />
-                  <input type="hidden" name="_captcha" value="false">
-                  <input type="text" class="form-control bg-secondary border-0 py-4 px-3" name="name"
-                    placeholder="Your Name" required="required"
-                    data-validation-required-message="Please enter your name" />
-                  <p class="help-block text-danger"></p>
-                </div>
-                <div class="col-sm-6 control-group">
-                  <input type="email" class="form-control bg-secondary border-0 py-4 px-3" name="email"
-                    placeholder="Your Email" required="required"
-                    data-validation-required-message="Please enter your email" />
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <!-- Contact details -->
-              <div class="control-group">
-                <input type="text" class="form-control bg-secondary border-0 py-4 px-3" name="Contact Number"
-                  placeholder="Contact Number (Optional)"
-                  data-validation-required-message="Please enter your contact number" />
-                <p class="help-block text-danger"></p>
-              </div>
-              <!-- {{{{{{{{{{}}}}}}}}}} -->
-              <div class="control-group">
-                <input type="text" class="form-control bg-secondary border-0 py-4 px-3" name="Subject"
-                  placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="control-group">
-                <textarea class="form-control bg-secondary border-0 py-2 px-3" rows="6" name="message"
-                  placeholder="Message" required="required"
-                  data-validation-required-message="Please enter your message"></textarea>
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="text-center">
-                <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">
-                  Send Message
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    <div class="container footer-bottom">
+      <p>© <span data-year>2026</span> Vees Capital (Pty) Ltd t/a V Energy. All rights reserved.</p>
+      <p><a href="privacy.html">Privacy notice</a> · Website by Marshall Dube</p>
     </div>
-  </div>
-  <!-- Contact End -->
+    <a class="wa-fab" href="https://wa.me/27813471724?text=Hi%20V%20Energy%2C%20I%27d%20like%20a%20free%20solar%20consultation." target="_blank" rel="noopener" data-track="whatsapp_click" aria-label="Chat with V Energy on WhatsApp">
+      <svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="wa-tip">Chat with us</span>
+    </a>
+  </footer>
 
-  <!-- Footer Start -->
-  <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style="margin-top: 90px">
-    <div class="row pt-5">
-      <div class="col-12 mb-4 px-4">
-        <div class="row mb-5 p-4" style="background: rgba(256, 256, 256, 0.05)">
-          <div class="col-md-4">
-            <div class="text-md-center">
-              <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px">
-                Our Office
-              </h5>
-              <p class="mb-4 m-md-0">
-                <a href="https://goo.gl/maps/xU1VvJNi6rmhT3R27" style="color: white;"> Franourt Office Park C/O Felstead
-                  and Northumberland Ave,<br />
-                  Northriding, Randburg 2162</a>
-              </p>
+  <a class="to-top" href="#top" aria-label="Back to top"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg></a>
+
+  <!-- ============ STICKY MOBILE ACTIONS ============ -->
+  <nav class="action-bar" aria-label="Quick contact">
+    <a class="ab-btn" href="tel:+27108245582" data-track="call_click"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>Call</span></a>
+    <a class="ab-btn ab-btn--wa" href="https://wa.me/27813471724?text=Hi%20V%20Energy%2C%20I%27d%20like%20a%20free%20solar%20consultation." target="_blank" rel="noopener" data-track="whatsapp_click"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span></a>
+    <a class="ab-btn ab-btn--book" href="#callback" data-book data-source="Mobile action bar"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg><span>Book free call</span></a>
+  </nav>
+
+  <!-- ============ BOOKING DIALOG ============ -->
+  <dialog class="book" id="book" aria-labelledby="book-title">
+    <form class="book-form" id="book-form" action="https://formsubmit.co/3cd046a3a50af33a7b7bb5796841d5ac" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New call booking from the V Energy website">
+      <input type="hidden" name="_cc" value="sales@venergy.co.za,marshall@venergy.co.za">
+      <input type="hidden" name="_next" value="https://venergy.co.za/Thankyou.html">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="Form" value="Call booking">
+      <input type="hidden" name="Preferred call time" id="b-when">
+      <input type="hidden" name="Package of interest" id="b-package">
+      <input type="hidden" name="Advisor estimate" id="b-advisor">
+      <input type="hidden" name="Booked from" id="b-source">
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="book-head">
+        <div class="book-title-row">
+          <span class="book-mark" aria-hidden="true"><svg><use href="#i-vmark"/></svg></span>
+          <div>
+            <p class="book-kicker">15 minutes, no obligation</p>
+            <h2 id="book-title">Book your free solar call</h2>
+          </div>
+          <button class="icon-btn" type="button" data-close aria-label="Close booking"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+        <ol class="book-steps" aria-hidden="true">
+          <li class="is-active"><span>1</span>Your need</li>
+          <li><span>2</span>Pick a time</li>
+          <li><span>3</span>Your details</li>
+        </ol>
+        <div class="book-progress"><span></span></div>
+      </div>
+
+      <div class="book-body">
+        <fieldset class="book-step" data-step="1">
+          <legend>What can we help you with?</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="Service" value="Home solar &amp; battery" required><span><svg class="i" aria-hidden="true"><use href="#i-home"/></svg><strong>Home solar &amp; battery</strong><small>Lower bills + backup</small></span></label>
+            <label class="choice"><input type="radio" name="Service" value="Business / commercial solar"><span><svg class="i" aria-hidden="true"><use href="#i-building"/></svg><strong>Business solar</strong><small>Offices, retail, industrial</small></span></label>
+            <label class="choice"><input type="radio" name="Service" value="Backup power (inverter + battery)"><span><svg class="i" aria-hidden="true"><use href="#i-battery"/></svg><strong>Backup power</strong><small>Inverter + battery</small></span></label>
+            <label class="choice"><input type="radio" name="Service" value="Generator"><span><svg class="i" aria-hidden="true"><use href="#i-generator"/></svg><strong>Generator</strong><small>Home, silent or industrial</small></span></label>
+            <label class="choice"><input type="radio" name="Service" value="Repairs, maintenance or upgrade"><span><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg><strong>Repairs &amp; upgrades</strong><small>Fix, service or expand</small></span></label>
+            <label class="choice"><input type="radio" name="Service" value="Not sure yet"><span><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><strong>Not sure yet</strong><small>Advise me on the best option</small></span></label>
+          </div>
+          <div class="field">
+            <label for="b-bill">Average monthly electricity bill <span class="opt">(optional)</span></label>
+            <select id="b-bill" name="Monthly bill">
+              <option value="">Select a range</option>
+              <option>Under R1 000</option>
+              <option>R1 000 to R2 500</option>
+              <option>R2 500 to R5 000</option>
+              <option>R5 000 to R10 000</option>
+              <option>Over R10 000</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <p class="step-error" role="alert"></p>
+        </fieldset>
+
+        <fieldset class="book-step" data-step="2" hidden>
+          <legend>What time should we call you?</legend>
+          <p class="step-help">Choose a time (South African time). We'll call you then, today if we can, otherwise on the next working day.</p>
+          <div class="slot-grid" id="b-slots" role="radiogroup" aria-label="Choose a time"></div>
+          <p class="slot-when" id="b-slot-when" aria-live="polite"></p>
+          <div class="field">
+            <span class="field-label" id="b-method-label">How should we connect?</span>
+            <div class="seg seg--3 seg--sm" role="radiogroup" aria-labelledby="b-method-label">
+              <label><input type="radio" name="Call method" value="Phone call" checked><span><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Phone</span></label>
+              <label><input type="radio" name="Call method" value="WhatsApp call"><span><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</span></label>
+              <label><input type="radio" name="Call method" value="Video call"><span><svg class="i" aria-hidden="true"><use href="#i-video"/></svg>Video</span></label>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="text-md-center">
-              <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px">
-                Email Us
-              </h5>
-              <a style="color: azure;" href="mailto:sales@Venergy.co.za">
-                <p class="mb-4 m-md-0">sales@Venergy.co.za</p>
-              </a>
+          <p class="step-error" role="alert"></p>
+        </fieldset>
 
+        <fieldset class="book-step" data-step="3" hidden>
+          <legend>Where can we reach you?</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="b-name">Your name</label>
+              <input id="b-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="b-phone">Mobile number</label>
+              <input id="b-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 082 123 4567" required pattern="[0-9 +\(\)\-]{9,}">
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="text-md-center">
-              <h5 class="text-primary text-uppercase mb-2" style="letter-spacing: 5px">
-                Call Us
-              </h5>
-              <p class="m-0">
-                <a style="color: azure;" href="tel:+27108245582">Tel: 010 824 5582</a> <br /><a style="color: azure;"
-                  href="tel:+27790410946">Cell: 079 041 0946</a>
-                <br /><a style="color: azure;" href="tel:+27813471724">Cell: 081 347 1724</a>
-              </p>
+          <div class="field-row">
+            <div class="field">
+              <label for="b-email">Email <span class="opt">(for your quote)</span></label>
+              <input id="b-email" name="email" type="email" autocomplete="email">
             </div>
+            <div class="field">
+              <label for="b-area">Suburb or area</label>
+              <input id="b-area" name="Area" type="text" autocomplete="address-level2" placeholder="e.g. Northriding" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="b-notes">Anything we should know? <span class="opt">(optional)</span></label>
+            <textarea id="b-notes" name="Notes" rows="3" placeholder="e.g. We want to run the fridge, Wi-Fi and gate during outages."></textarea>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="Consent" value="Yes, contact me about this enquiry" required>
+            <span>I agree that V Energy may contact me about this enquiry. See our <a href="privacy.html" target="_blank">privacy notice</a>.</span>
+          </label>
+          <p class="step-error" role="alert"></p>
+        </fieldset>
+
+        <div class="book-done" hidden tabindex="-1">
+          <div class="done-badge" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></div>
+          <h3>You're booked in!</h3>
+          <p class="done-summary"></p>
+          <div class="done-actions">
+            <a class="btn btn-outline" id="b-ics" download="v-energy-call.ics" href="#"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Add to calendar</a>
+            <a class="btn btn-outline" id="b-gcal" target="_blank" rel="noopener" href="#">Google Calendar</a>
+          </div>
+          <a class="btn btn-wa btn-block" id="b-wa-done" target="_blank" rel="noopener" href="#" data-track="whatsapp_click"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Also send it on WhatsApp</a>
+        </div>
+
+        <div class="book-fail" hidden tabindex="-1">
+          <h3>That didn't send</h3>
+          <p>Your connection may have dropped. Please try again, or reach us directly. Your details are already filled in on WhatsApp.</p>
+          <div class="done-actions">
+            <button class="btn btn-primary" type="button" data-retry>Try again</button>
+            <a class="btn btn-wa" id="b-wa-fail" target="_blank" rel="noopener" href="#" data-track="whatsapp_click"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Send on WhatsApp</a>
+            <a class="btn btn-outline" href="tel:+27108245582" data-track="call_click"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>010&nbsp;824&nbsp;5582</a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container-fluid bg-dark text-white text-center border-top py-4 px-sm-3 px-md-5"
-    style="border-color: rgba(256, 256, 256, 0.05) !important">
-    <i>Please set an apointment with us to see our visiting hours.</i>
-  </div>
-  <div class="container-fluid bg-dark text-white text-center border-top py-4 px-sm-3 px-md-5"
-    style="border-color: rgba(256, 256, 256, 0.05) !important">
-    <p class="m-0 text-white">
-      &copy; . All Rights Reserved.<a href="#">Vees Capital(Pty) Ltd</a>
-      Designed by Marshall Dube
-    </p>
-  </div>
-  <!-- Footer End -->
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            Solar Energy System
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <img class="img-fluid mb-4" src="img/carousel-1.jpg" alt />
-        </div>
+      <div class="book-foot">
+        <button class="btn btn-ghost" type="button" data-back>Back</button>
+        <button class="btn btn-primary" type="button" data-next>Continue<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button class="btn btn-primary" type="submit" data-submit hidden>Confirm my free call</button>
+        <button class="btn btn-primary" type="button" data-close data-finish hidden>Done</button>
       </div>
-    </div>
-  </div>
-  <!-- Modal -->
+    </form>
+  </dialog>
 
-  <!-- Scroll to Bottom -->
-  <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
-
-  <!-- Back to Top -->
-  <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-  <!-- Contact Javascript File -->
-  <!-- <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script> -->
-
-  <!-- Template Javascript -->
-  <script src="js/main.js"></script>
+  <!-- ============ LIGHTBOX ============ -->
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lb-title">
+    <h2 class="sr-only" id="lb-title">Photo viewer</h2>
+    <figure>
+      <img alt="" id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-prev" type="button" data-lb="prev" aria-label="Previous photo"><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+    <button class="lb-btn lb-next" type="button" data-lb="next" aria-label="Next photo"><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+    <button class="lb-btn lb-close" type="button" data-lb="close" aria-label="Close photo viewer"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </dialog>
 </body>
-
 </html>

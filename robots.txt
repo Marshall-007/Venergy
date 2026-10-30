@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /media/
+Disallow: /tools/
+
+Sitemap: https://venergy.co.za/sitemap.xml
