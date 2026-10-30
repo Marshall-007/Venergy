@@ -35,7 +35,7 @@ privacy.html          POPIA privacy notice
 404.html              not-found page (wired up in .htaccess)
 assets/css/styles.css all styles
 assets/js/main.js     all behaviour; settings live in CONFIG at the top
-assets/fonts/         self-hosted Sora + Inter (SIL Open Font License)
+assets/fonts/         Arimo, Arial's free twin for devices without Arial (SIL Open Font License, see OFL.txt)
 assets/img/           optimised photos (AVIF + WebP, several widths), brand icons, og-image.jpg
 media/originals/      full-size source photos used to build assets/img (not needed on the server)
 tools/build_images.py rebuilds assets/img from media/originals
@@ -60,6 +60,9 @@ robots.txt, sitemap.xml, site.webmanifest, favicon.*, apple-touch-icon.png, .hta
   `assets/img/brand/logo.svg`, and the `i-vmark` symbol (with its `vm-b` and `vm-s` gradients) in the sprite at
   the top of `index.html`, `Thankyou.html` and `privacy.html`. `favicon.ico`, `apple-touch-icon.png` and
   `assets/img/brand/icon-*.png` are rendered from it, so re-export them if the mark changes.
+- **Font**: the whole site uses Arial, set by the two `@font-face` rules at the top of `assets/css/styles.css`.
+  Windows, Mac and iPhone use their built-in Arial; Android and Linux don't have it, so they download
+  `assets/fonts/arimo-latin.woff2` (23 KB), which has exactly Arial's letter widths.
 - **After editing CSS or JS**, bump the `?v=` number on the `styles.css` and `main.js` links in the HTML
   files so returning visitors get the new version.
 

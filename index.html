@@ -33,11 +33,19 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=2026103003">
+  <script>
+    // Arial is built into Windows, Mac and iPhone. Other devices (mostly Android) use its twin Arimo,
+    // so fetch that early and the first paint is already in the right font.
+    if (!/Windows|Macintosh|iPhone|iPad|iPod/.test(navigator.userAgent)) {
+      const font = document.createElement('link');
+      font.rel = 'preload'; font.as = 'font'; font.type = 'font/woff2'; font.crossOrigin = '';
+      font.href = 'assets/fonts/arimo-latin.woff2';
+      document.head.appendChild(font);
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=2026103004">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="assets/js/main.js?v=2026103003" defer></script>
+  <script src="assets/js/main.js?v=2026103004" defer></script>
 
   <script type="application/ld+json">
   {
@@ -158,6 +166,7 @@
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></symbol>
     <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 4h3v16H7zM14 4h3v16h-3z"/></symbol>
@@ -176,7 +185,7 @@
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
   <!-- ============ HEADER ============ -->
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="container header-bar">
       <a class="brand" href="#top" aria-label="V Energy, back to top">
         <svg class="brand-mark" aria-hidden="true"><use href="#i-vmark"/></svg>
@@ -239,7 +248,7 @@
             <span class="hero-kicker">Solar, backup power and generators across South Africa</span>
             Beat rising power bills. <span class="hl">Keep the lights&nbsp;on.</span>
           </h1>
-          <p class="hero-lead">For over 10 years, V Energy has supplied and installed solar hybrid systems, inverter and battery backup, and generators for homes and businesses across South Africa, so outages and tariff hikes stop being your problem.</p>
+          <p class="hero-lead">Power cuts put your day on hold, and your electricity bill keeps climbing. V Energy fixes both with solar, battery backup and generators sized for your home or business, backed by over 10 years of experience.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary btn-lg" href="#callback" data-book data-source="Hero">
               <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>Book a free call
@@ -297,14 +306,14 @@
           </li>
           <li data-reveal style="--d: 80ms">
             <strong>5<svg class="i star-i" aria-hidden="true"><use href="#i-star"/></svg></strong>
-            <span>Rated by our customers</span>
+            <a class="stat-link" href="#reviews"><span class="sr-only">5 stars. </span>Rated by our <span class="nw">customers<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
           </li>
           <li data-reveal style="--d: 160ms">
             <strong><span data-count="25">25</span>&nbsp;yr</strong>
             <span>Panel performance warranty<sup>*</sup></span>
           </li>
           <li data-reveal style="--d: 240ms">
-            <strong>R0</strong>
+            <strong>Free</strong>
             <span>Consultation, site visit &amp; design</span>
           </li>
         </ul>
@@ -1273,6 +1282,8 @@
       <svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="wa-tip">Chat with us</span>
     </a>
   </footer>
+
+  <a class="to-top" href="#top" aria-label="Back to top"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg></a>
 
   <!-- ============ STICKY MOBILE ACTIONS ============ -->
   <nav class="action-bar" aria-label="Quick contact">

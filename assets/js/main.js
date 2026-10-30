@@ -1093,13 +1093,17 @@
      Sticky mobile action bar, tracking hooks, footer year
      ------------------------------------------------------------------------ */
   (() => {
-    const bar = $('.action-bar');
+    const floats = $$('.action-bar, .to-top');
     const ctas = $('.hero-ctas');
-    if (!bar || !ctas) return;
+    if (!floats.length || !ctas) return;
     onVisible(ctas, (visible, entry) => {
       const past = !visible && entry && entry.boundingClientRect.top < 0;
-      bar.classList.toggle('is-visible', past);
+      floats.forEach((el) => el.classList.toggle('is-visible', past));
     });
+    // the arrow hides once the page is back at the top, so hand focus to the logo
+    const toTop = $('.to-top');
+    const brand = $('.site-header .brand');
+    if (toTop && brand) toTop.addEventListener('click', () => setTimeout(() => brand.focus({ preventScroll: true }), 0));
   })();
 
   document.addEventListener('click', (e) => {
