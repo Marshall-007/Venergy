@@ -10,7 +10,9 @@
      Settings you may want to change
      ------------------------------------------------------------------------ */
   const CONFIG = {
-    formAjax: 'https://formsubmit.co/ajax/3cd046a3a50af33a7b7bb5796841d5ac',
+    // Form emails go to info@ (copies to the _cc addresses in index.html). FormSubmit asks info@ to
+    // confirm once: the first message sent from the live site triggers an "Activate Form" email.
+    formAjax: 'https://formsubmit.co/ajax/info@venergy.co.za',
     whatsapp: '27813471724', // 081 347 1724
     phoneDisplay: '010 824 5582',
 

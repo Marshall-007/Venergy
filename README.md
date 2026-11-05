@@ -21,8 +21,8 @@ any web host (cPanel/Apache, LiteSpeed, Netlify, GitHub Pages, …).
 Every "Book a free call" button opens the booking dialog. If JavaScript is off, the same buttons jump to
 the call-back form, which still posts normally.
 
-Bookings and call-back requests are emailed through FormSubmit to the address behind the endpoint, with
-copies to sales@ and marshall@. The WhatsApp buttons open WhatsApp with the details filled in, addressed to
+Bookings and call-back requests are emailed through FormSubmit to info@venergy.co.za, with copies to
+sales@ and marshall@. The WhatsApp buttons open WhatsApp with the details filled in, addressed to
 the number in `CONFIG.whatsapp`; the visitor still taps Send, because a website cannot send a WhatsApp
 message on its own.
 
@@ -53,9 +53,10 @@ robots.txt, sitemap.xml, site.webmanifest, favicon.*, apple-touch-icon.png, .hta
   pages and `CONFIG.whatsapp` in `main.js`.
 - **Call-back hours and holidays**: `CONFIG.hours` and `CONFIG.holidays` in `main.js`.
 - **Advisor assumptions** (tariff, sun hours, panel size): `CONFIG` in `main.js`.
-- **Form destination**: forms post to FormSubmit using the existing endpoint
-  (`3cd046a3a50af33a7b7bb5796841d5ac`), CC'ing sales@ and marshall@. Change it in `CONFIG.formAjax`
-  and in the `action` / `_cc` fields in `index.html`.
+- **Form destination**: forms post to FormSubmit, which emails them to info@venergy.co.za and copies
+  sales@ and marshall@. Change the address in `CONFIG.formAjax` in `main.js` and in the two form
+  `action`s in `index.html`; change the copies in the two `_cc` fields. A new address has to be confirmed
+  once: the first form sent from the live site makes FormSubmit email it an "Activate Form" link.
 - **Logo**: the V Energy mark (the V with a solar panel and the sun behind it) is SVG in `favicon.svg` and
   `assets/img/brand/logo.svg`, and the `i-vmark` symbol (with its `vm-b` and `vm-s` gradients) in the sprite at
   the top of `index.html`, `Thankyou.html` and `privacy.html`. `favicon.ico`, `apple-touch-icon.png` and
@@ -104,6 +105,17 @@ stock (for example from Unsplash or Pexels).
 
 ## Deploying
 
-Upload everything except `media/`, `tools/` and `README.md` to the web root (the folder that holds
-`index.html`). The `.htaccess` file adds compression, caching and the 404 page on Apache/LiteSpeed hosts;
-every rule is wrapped in `<IfModule>` so it is safe if a module is missing.
+Run `python3 tools/build_release.py`. It copies only the files the live site needs into
+`dist/venergy-website/`, checks that every file the pages link to is there, and zips them as
+`dist/venergy-website.zip`.
+
+On cPanel: back up and remove the old site's files from `public_html` (an old `index.php`, `contact.php`,
+`css/`, `js/`, `lib/` and so on), upload the zip to `public_html`, extract it there, then delete the zip.
+Extracting puts `index.html` straight into `public_html` and keeps the hidden `.htaccess` file, which a
+folder upload from a Mac can skip.
+
+The `.htaccess` file makes `index.html` the homepage, and adds compression, caching and the 404 page on
+Apache/LiteSpeed hosts; every rule is wrapped in `<IfModule>` so it is safe if a module is missing.
+
+After the site is live, send one test through the call-back form. FormSubmit then emails info@ an
+"Activate Form" link (check spam); click it once and every later form arrives normally.
