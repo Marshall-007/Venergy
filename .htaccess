@@ -3,6 +3,12 @@
 
 ErrorDocument 404 /404.html
 
+# Serve index.html as the homepage, even if an old index.php is still on the server
+# (many cPanel hosts would otherwise show index.php first).
+<IfModule mod_dir.c>
+  DirectoryIndex index.html
+</IfModule>
+
 <IfModule mod_mime.c>
   AddType image/avif .avif
   AddType image/webp .webp
